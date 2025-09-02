@@ -57,7 +57,6 @@
 
     .about{display:grid;grid-template-columns:.8fr 1.2fr;gap:26px;align-items:center}
     .about-card{border:2px solid var(--gold);border-radius:20px;padding:18px;background:white;box-shadow:var(--shadow);position:relative;overflow:hidden}
-    /* Effet doré subtil derrière le texte */
     .about-card.highlight{
       background: linear-gradient(180deg, rgba(212,175,55,.10), rgba(255,255,255,1));
     }
@@ -77,6 +76,7 @@
     .review-list{display:grid;gap:14px;margin:16px 0}
     .review{border:1px solid rgba(212,175,55,.35);border-radius:16px;padding:12px 14px;background:white}
     .review small{color:var(--muted)}
+    .stars{display:inline-block;font-size:16px;color:var(--gold);margin-right:8px;letter-spacing:2px}
     .small{font-size:14px;color:#7a6a2f}
 
     footer{margin-top:60px;border-top:1px solid rgba(212,175,55,.3);padding:26px 0 34px;color:#6b6b6b;text-align:center}
@@ -135,7 +135,17 @@
         </ul>
         <h4 id="hours-title" class="hours-title">Horaires d'ouverture</h4>
         <ul id="hours-list" class="hours-list" aria-label="Horaires d'ouverture">
-          <!-- Rendu via JS pour gérer la langue -->
+          <li class="hours-item"><span>Lundi</span><span>12:00–15:00</span></li>
+          <li class="hours-item"><span>Lundi soir</span><span>19:00–23:00</span></li>
+          <li class="hours-item"><span>Mardi</span><span>12:00–15:00</span></li>
+          <li class="hours-item"><span>Mercredi soir</span><span>19:00–23:00</span></li>
+          <li class="hours-item"><span>Jeudi</span><span>12:00–15:00</span></li>
+          <li class="hours-item"><span>Jeudi soir</span><span>19:00–23:00</span></li>
+          <li class="hours-item"><span>Vendredi</span><span>12:00–15:00</span></li>
+          <li class="hours-item"><span>Vendredi soir</span><span>19:00–23:00</span></li>
+          <li class="hours-item"><span>Samedi</span><span>12:00–15:00</span></li>
+          <li class="hours-item"><span>Samedi soir</span><span>19:00–23:00</span></li>
+          <li class="hours-item"><span>Dimanche</span><span>Fermé</span></li>
         </ul>
         <div class="small" style="margin-top:8px" id="hours-note">Les horaires peuvent varier les jours fériés.</div>
       </div>
@@ -143,8 +153,22 @@
 
     <section class="reviews">
       <h3 id="reviews-title">Avis des clients</h3>
-      <div id="review-list" class="review-list" aria-live="polite"></div>
-      <p class="small" id="reviews-tip">Les avis s'afficheront automatiquement depuis Google dès que vous ajoutez votre <em>API key</em> et l'ID du lieu.</p>
+      <p class="small">Sélection d’avis clients. Cliquez pour lire l’avis original sur Google Maps.</p>
+      <div class="review-list">
+        <article class="review">
+          <blockquote>« Petits prix pour ce restaurant de quartier mais très bonne cuisine et grande gentillesse. Merci »</blockquote>
+          <footer><span class="stars">★★★★★</span><strong> Client Google</strong> · <a href="https://maps.app.goo.gl/a1nGqVdWiMH1Syr87" target="_blank" rel="noopener">Voir sur Google Maps</a></footer>
+        </article>
+        <article class="review">
+          <blockquote>« Absolument délicieux, les serveuses sont adorables, le service est rapide et les plats frais et vraiment savoureux ! »</blockquote>
+          <footer><span class="stars">★★★★★</span><strong> Client Google</strong> · <a href="https://maps.app.goo.gl/vbjXX976XRnwFoUEA" target="_blank" rel="noopener">Voir sur Google Maps</a></footer>
+        </article>
+        <article class="review">
+          <blockquote>« Ici vous trouverez le meilleur loc lac de Paris, j'ai rarement mangé une viande de bœuf aussi tendre et aussi bien marinée.
+Les autres plats sont aussi très très bons. Les restaurateurs sont d'une gentillesse infinie et les prix sont très corrects. Bref à tester si vous passez dans le coin ! »</blockquote>
+          <footer><span class="stars">★★★★★</span><strong> Client Google</strong> · <a href="https://maps.app.goo.gl/RRapTDmvMDUrzdK87" target="_blank" rel="noopener">Voir sur Google Maps</a></footer>
+        </article>
+      </div>
     </section>
   </main>
 
@@ -159,135 +183,8 @@
   </footer>
 
   <script>
-    // Année dynamique
+    // Année dynamique seulement
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // ---- I18N ----
-    const i18n = {
-      fr: {
-        htmlLang: 'fr',
-        badge: 'Cuisine cambodgienne authentique',
-        lede: "Mom's Restaurant vous accueille au <strong>3 rue Planchat, 75020 Paris</strong>, pour une cuisine familiale inspirée des marchés de Phnom Penh et des traditions khmères.",
-        btnMenu: 'Voir le menu',
-        btnMap: 'Nous trouver',
-        histTitle: "L'histoire de Mom",
-        histText: "Dans la tradition khmère, la cuisine est un héritage. Chez Mom's, on retrouve les parfums de la maison : la citronnelle, le galanga, le lait de coco et le poivre de Kampot. Nos recettes respectent les équilibres sucré-salé-acidulé qui font l'âme du Cambodge.",
-        infoTitle: 'Informations pratiques',
-        lblAddress: 'Adresse :',
-        lblMetro: 'Métro :',
-        lblPhone: 'Tél :',
-        hoursTitle: "Horaires d'ouverture",
-        hoursNote: 'Les horaires peuvent varier les jours fériés.',
-        reviewsTitle: 'Avis des clients',
-        footerRights: 'Tous droits réservés.',
-        days: [
-          ['Lundi','12:00–15:00'], ['Lundi soir','19:00–23:00'],
-          ['Mardi','12:00–15:00'], ['Mercredi soir','19:00–23:00'],
-          ['Jeudi','12:00–15:00'], ['Jeudi soir','19:00–23:00'],
-          ['Vendredi','12:00–15:00'], ['Vendredi soir','19:00–23:00'],
-          ['Samedi','12:00–15:00'], ['Samedi soir','19:00–23:00'],
-          ['Dimanche','Fermé']
-        ]
-      },
-      en: {
-        htmlLang: 'en',
-        badge: 'Authentic Cambodian cuisine',
-        lede: "Mom's Restaurant welcomes you at <strong>3 rue Planchat, 75020 Paris</strong>, offering homestyle recipes inspired by Phnom Penh markets and Khmer traditions.",
-        btnMenu: 'View Menu',
-        btnMap: 'Find us',
-        histTitle: "Mom's Story",
-        histText: "In Khmer tradition, cooking is heritage. At Mom's, you'll find the home aromas of lemongrass, galangal, coconut milk and Kampot pepper. Our recipes balance sweet, salty and tangy — the soul of Cambodia.",
-        infoTitle: 'Practical information',
-        lblAddress: 'Address:',
-        lblMetro: 'Metro:',
-        lblPhone: 'Phone:',
-        hoursTitle: 'Opening hours',
-        hoursNote: 'Hours may vary on public holidays.',
-        reviewsTitle: 'Customer reviews',
-        footerRights: 'All rights reserved.',
-        days: [
-          ['Monday','12:00–15:00'], ['Monday evening','19:00–23:00'],
-          ['Tuesday','12:00–15:00'], ['Wednesday evening','19:00–23:00'],
-          ['Thursday','12:00–15:00'], ['Thursday evening','19:00–23:00'],
-          ['Friday','12:00–15:00'], ['Friday evening','19:00–23:00'],
-          ['Saturday','12:00–15:00'], ['Saturday evening','19:00–23:00'],
-          ['Sunday','Closed']
-        ]
-      }
-    };
-
-    function renderHours(days){
-      const ul = document.getElementById('hours-list');
-      ul.innerHTML = '';
-      days.forEach(([label, time])=>{
-        const li = document.createElement('li');
-        li.className = 'hours-item';
-        li.innerHTML = `<span>${label}</span><span>${time}</span>`;
-        ul.appendChild(li);
-      });
-    }
-
-    function setLang(lang){
-      const t = i18n[lang] || i18n.fr;
-      document.documentElement.lang = t.htmlLang;
-      document.getElementById('badge').textContent = t.badge;
-      document.getElementById('lede').innerHTML = t.lede;
-      document.getElementById('btn-menu').textContent = t.btnMenu;
-      document.getElementById('btn-map').textContent = t.btnMap;
-      document.getElementById('hist-title').textContent = t.histTitle;
-      document.getElementById('hist-text').textContent = t.histText;
-      document.getElementById('info-title').textContent = t.infoTitle;
-      document.getElementById('lbl-address').textContent = t.lblAddress + ' ';
-      document.getElementById('lbl-metro').textContent = t.lblMetro + ' ';
-      document.getElementById('lbl-phone').textContent = t.lblPhone + ' ';
-      document.getElementById('hours-title').textContent = t.hoursTitle;
-      document.getElementById('hours-note').textContent = t.hoursNote;
-      document.getElementById('reviews-title').textContent = t.reviewsTitle;
-      document.getElementById('footer-rights').textContent = t.footerRights;
-      renderHours(t.days);
-      // Toggle button label
-      const btn = document.getElementById('lang-toggle');
-      btn.textContent = lang === 'fr' ? 'EN' : 'FR';
-      btn.setAttribute('aria-label', lang === 'fr' ? 'Switch to English' : 'Passer en français');
-      // Persist choice
-      localStorage.setItem('lang', lang);
-    }
-
-    // Init language from storage or default FR
-    const saved = localStorage.getItem('lang') || 'fr';
-    setLang(saved);
-
-    // Toggle language
-    document.getElementById('lang-toggle').addEventListener('click', ()=>{
-      const current = localStorage.getItem('lang') || 'fr';
-      setLang(current === 'fr' ? 'en' : 'fr');
-    });
-
-    // ---- Avis Google (désactivé tant que la clé n'est pas fournie) ----
-    window.initGoogleReviews = function(){
-      try{
-        const service = new google.maps.places.PlacesService(document.createElement('div'));
-        service.getDetails(
-          { placeId: 'PLACE_ID', fields: ['name','rating','user_ratings_total','reviews'] },
-          (place, status) => {
-            if(status !== google.maps.places.PlacesServiceStatus.OK || !place){ return; }
-            const list = document.getElementById('review-list');
-            const tip = document.getElementById('reviews-tip');
-            if(tip) tip.remove();
-            list.innerHTML='';
-            (place.reviews||[]).slice(0,5).forEach(r=>{
-              const el=document.createElement('div');
-              el.className='review';
-              el.innerHTML = `<strong>${r.author_name||'Client Google'}</strong> <small>• ${new Date(r.time*1000).toLocaleDateString(document.documentElement.lang==='fr'?'fr-FR':'en-GB')} • ${r.rating}★</small><p>${r.text||''}</p>`;
-              list.appendChild(el);
-            });
-          }
-        );
-      }catch(e){ console.warn('Reviews init error', e); }
-    };
   </script>
-
-  <!-- Décommentez la ligne suivante et remplacez YOUR_API_KEY par votre clé pour activer les avis -->
-  <!-- <script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initGoogleReviews"></script> -->
 </body>
 </html>
