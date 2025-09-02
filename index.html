@@ -54,6 +54,12 @@
     .about-card.highlight{background: linear-gradient(180deg, rgba(212,175,55,.10), rgba(255,255,255,1))}
     .about-card.highlight:before{content:"";position:absolute;inset:-20%;background:radial-gradient(ellipse at 30% 0%, rgba(212,175,55,.18), transparent 55%);pointer-events:none;filter:blur(10px)}
 
+    /* Section galerie */
+    .gallery{margin-top:50px}
+    .gallery h3{font-family:"Playfair Display", serif;font-size:28px;color:var(--gold);text-align:center;margin-bottom:24px}
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+    .gallery-grid img{width:100%;height:220px;object-fit:cover;border-radius:16px;box-shadow:var(--shadow)}
+
     /* Horaires plus visibles */
     .hours-card{border:2px solid var(--gold)}
     .hours-title{font-family:"Playfair Display",serif;margin:0 0 8px;font-size:22px;color:#7a6a2f}
@@ -91,6 +97,102 @@
   </style>
 </head>
 <body>
-  <!-- contenu identique -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" role="img" aria-label="Apsara">
+            <path d="M12 2c1.2 0 2 .8 2 2s-1 2-2 2-2-.8-2-2 1-2 2-2zm-5.5 9.2c1.7-1.4 3.7-2.2 5.5-2.2s3.8.8 5.5 2.2c.7.6.8 1.6.2 2.3l-.1.1c-.5.6-1.4.7-2 .2-1.1-.8-2.3-1.3-3.6-1.3s-2.5.5-3.6 1.3c-.6.4-1.5.3-2-.2-.7-.6-.7-1.7.1-2.4zM7 18.5c2-1.6 4.1-2.5 5-2.5s3 .9 5 2.5c.6.5.7 1.4.3 2.1-.4.7-1.2 1-2 .7C13.7 20.3 12.6 20 12 20s-1.7.3-3.3 1.3c-.8.5-1.7.1-2-.7-.4-.8-.3-1.6.3-2.1z"/>
+          </svg>
+        </div>
+        <div class="brand-title">Mom's <span>Restaurant</span></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="banner">
+    <h1 id="banner-title">Mom's Restaurant</h1>
+  </div>
+
+  <main class="container">
+    <section class="hero">
+      <div class="badge">Cuisine cambodgienne authentique</div>
+      <p class="lede">Mom's Restaurant vous accueille au <strong>3 rue Planchat, 75020 Paris</strong>, pour une cuisine familiale inspirée des marchés de Phnom Penh et des traditions khmères.</p>
+      <div class="cta-row">
+        <a class="btn-primary" href="menu.pdf" target="_blank">Voir le menu</a>
+        <a class="btn-primary" href="https://maps.google.com/?q=Mom's%20Restaurant%2C%203%20rue%20Planchat%2C%2075020%20Paris" target="_blank" rel="noopener">Nous trouver</a>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="about">
+      <div class="about-card highlight">
+        <h2>L'histoire de Mom</h2>
+        <p>Dans la tradition khmère, la cuisine est un héritage. Chez Mom's, on retrouve les parfums de la maison : la citronnelle, le galanga, le lait de coco et le poivre de Kampot. Nos recettes respectent les équilibres sucré-salé-acidulé qui font l'âme du Cambodge.</p>
+      </div>
+      <div class="about-card hours-card">
+        <h3 class="hours-title">Informations pratiques</h3>
+        <ul style="margin:0 0 12px 18px">
+          <li><strong>Adresse :</strong> 3 rue Planchat, 75020 Paris</li>
+          <li><strong>Métro :</strong> Avron (L2) · Buzenval (L9)</li>
+          <li><strong>Tél :</strong> <a href="tel:+33624156408">06 24 15 64 08</a></li>
+        </ul>
+        <h4 class="hours-title">Horaires d'ouverture</h4>
+        <ul class="hours-list">
+          <li class="hours-item"><span>Lundi</span><span>12:00–15:00, 19:00–23:00</span></li>
+          <li class="hours-item"><span>Mardi</span><span>12:00–15:00</span></li>
+          <li class="hours-item"><span>Mercredi</span><span>19:00–23:00</span></li>
+          <li class="hours-item"><span>Jeudi</span><span>12:00–15:00, 19:00–23:00</span></li>
+          <li class="hours-item"><span>Vendredi</span><span>12:00–15:00, 19:00–23:00</span></li>
+          <li class="hours-item"><span>Samedi</span><span>12:00–15:00, 19:00–23:00</span></li>
+          <li class="hours-item"><span>Dimanche</span><span>Fermé</span></li>
+        </ul>
+        <div class="small" style="margin-top:8px">Les horaires peuvent varier les jours fériés.</div>
+      </div>
+    </section>
+
+    <!-- Galerie photos -->
+    <section class="gallery">
+      <h3>Quelques spécialités à découvrir</h3>
+      <div class="gallery-grid">
+        <img src="plat1.jpg" alt="Plat cambodgien 1">
+        <img src="plat2.jpg" alt="Plat cambodgien 2">
+        <img src="plat3.jpg" alt="Plat cambodgien 3">
+      </div>
+    </section>
+
+    <section class="reviews">
+      <h3>Avis des clients</h3>
+      <div class="review-list">
+        <article class="review">
+          <blockquote>« Petits prix pour ce restaurant de quartier mais très bonne cuisine et grande gentillesse. Merci »</blockquote>
+          <footer><span class="stars">★★★★★</span><strong> Client Google</strong> · <a href="https://maps.app.goo.gl/a1nGqVdWiMH1Syr87" target="_blank" rel="noopener">Voir sur Google Maps</a></footer>
+        </article>
+        <article class="review">
+          <blockquote>« Absolument délicieux, les serveuses sont adorables, le service est rapide et les plats frais et vraiment savoureux ! »</blockquote>
+          <footer><span class="stars">★★★★★</span><strong> Client Google</strong> · <a href="https://maps.app.goo.gl/vbjXX976XRnwFoUEA" target="_blank" rel="noopener">Voir sur Google Maps</a></footer>
+        </article>
+        <article class="review">
+          <blockquote>« Ici vous trouverez le meilleur loc lac de Paris, j'ai rarement mangé une viande de bœuf aussi tendre et aussi bien marinée. Les autres plats sont aussi très très bons. Les restaurateurs sont d'une gentillesse infinie et les prix sont très corrects. Bref à tester si vous passez dans le coin ! »</blockquote>
+          <footer><span class="stars">★★★★★</span><strong> Client Google</strong> · <a href="https://maps.app.goo.gl/RRapTDmvMDUrzdK87" target="_blank" rel="noopener">Voir sur Google Maps</a></footer>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <strong>Mom's Restaurant</strong><br/>
+        <span>Cuisine cambodgienne — 3 rue Planchat, 75020 Paris</span>
+        <div class="small" style="margin-top:6px">© <span id="year"></span> Mom's Restaurant. Tous droits réservés.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
