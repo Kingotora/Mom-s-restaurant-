@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mom's Restaurant — Cuisine cambodgienne à Paris</title>
+  <meta name="description" content="Mom's Restaurant — cuisine cambodgienne authentique à Paris. 3 rue Planchat, 75020. Réservations, menu, et informations pratiques." />
+
+  <!-- Favicon unique -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Khmer:wght@500;700&family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --gold:#d4af37;
+      --gold-2:#c9a227;
+      --bg:#ffffff;
+      --ink:#222222;
+      --muted:#6b7280;
+      --shadow: 0 10px 25px rgba(0,0,0,.08);
+    }
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;}
+    a,button{color:inherit}
+    .container{width:min(1100px, 92%);margin:0 auto}
+
+    body::before{
+      content:"";position:fixed;inset:0;z-index:-1;opacity:.06;pointer-events:none;
+      background-image:linear-gradient(45deg, var(--gold) 1px, transparent 1px),linear-gradient(-45deg, var(--gold) 1px, transparent 1px);
+      background-size:22px 22px;background-position:0 0, 11px 11px;
+    }
+
+    header{position:sticky;top:0;background:rgba(255,255,255,.9);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid rgba(212,175,55,.25);z-index:50}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-logo{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--gold)}
+    .brand-logo svg{width:22px;height:22px;fill:var(--gold)}
+    .brand-title{font-family:"Noto Serif Khmer", serif;font-weight:700;letter-spacing:.2px}
+    .brand-title span{color:var(--gold)}
+    .nav .btn{padding:10px 16px;border:1.5px solid var(--gold);border-radius:999px;transition:.2s;background:transparent;cursor:pointer}
+    .nav .btn:hover{background:var(--gold);color:white}
+
+    .banner{width:100%;height:380px;background:#eee url('banniere.jpg') center/cover no-repeat;display:flex;align-items:center;justify-content:center}
+    .banner h1{font-family:"Playfair Display", serif;font-size:clamp(34px,5vw,54px);color:white;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+
+    .hero{padding:64px 0;text-align:center}
+    .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(212,175,55,.4);border-radius:999px;padding:6px 12px;font-size:14px;color:#7a6a2f;background:rgba(212,175,55,.08)}
+    .lede{color:var(--muted);font-size:18px;max-width:60ch;margin:18px auto}
+    .cta-row{margin-top:22px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+    .btn-primary{background:var(--gold);color:white;padding:12px 18px;border-radius:999px;box-shadow:var(--shadow);border:1px solid var(--gold-2)}
+
+    .divider{height:14px;margin:48px 0;background:
+      radial-gradient(circle at 50% 100%, var(--gold) 12px, transparent 13px),
+      linear-gradient(90deg, transparent 12px, var(--gold) 12px, var(--gold) calc(100% - 12px), transparent calc(100% - 12px));
+      background-size:26px 13px, 100% 2px;background-repeat:no-repeat;background-position:center top, center bottom}
+
+    .about{display:grid;grid-template-columns:.8fr 1.2fr;gap:26px;align-items:center}
+    .about-card{border:2px solid var(--gold);border-radius:20px;padding:18px;background:white;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    /* Effet doré subtil derrière le texte */
+    .about-card.highlight{
+      background: linear-gradient(180deg, rgba(212,175,55,.10), rgba(255,255,255,1));
+    }
+    .about-card.highlight:before{
+      content:"";position:absolute;inset:-20%;background:radial-gradient(ellipse at 30% 0%, rgba(212,175,55,.18), transparent 55%);
+      pointer-events:none;filter:blur(10px);
+    }
+
+    /* Horaires plus visibles */
+    .hours-card{border:2px solid var(--gold);}
+    .hours-title{font-family:"Playfair Display",serif;margin:0 0 8px;font-size:22px;color:#7a6a2f}
+    .hours-list{list-style:none;padding-left:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .hours-item{display:flex;justify-content:space-between;padding:10px 12px;border:1px dashed rgba(212,175,55,.55);border-radius:12px;font-weight:600}
+
+    /* Section avis */
+    .reviews{margin-top:36px}
+    .review-list{display:grid;gap:14px;margin:16px 0}
+    .review{border:1px solid rgba(212,175,55,.35);border-radius:16px;padding:12px 14px;background:white}
+    .review small{color:var(--muted)}
+    .small{font-size:14px;color:#7a6a2f}
+
+    footer{margin-top:60px;border-top:1px solid rgba(212,175,55,.3);padding:26px 0 34px;color:#6b6b6b;text-align:center}
+    .footer-grid{display:grid;grid-template-columns:1fr;gap:10px;justify-items:center}
+
+    @media (max-width:900px){
+      .about{grid-template-columns:1fr}
+      .hours-list{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" role="img" aria-label="Apsara">
+            <path d="M12 2c1.2 0 2 .8 2 2s-1 2-2 2-2-.8-2-2 1-2 2-2zm-5.5 9.2c1.7-1.4 3.7-2.2 5.5-2.2s3.8.8 5.5 2.2c.7.6.8 1.6.2 2.3l-.1.1c-.5.6-1.4.7-2 .2-1.1-.8-2.3-1.3-3.6-1.3s-2.5.5-3.6 1.3c-.6.4-1.5.3-2-.2-.7-.6-.7-1.7.1-2.4zM7 18.5c2-1.6 4.1-2.5 5-2.5s3 .9 5 2.5c.6.5.7 1.4.3 2.1-.4.7-1.2 1-2 .7C13.7 20.3 12.6 20 12 20s-1.7.3-3.3 1.3c-.8.5-1.7.1-2-.7-.4-.8-.3-1.6.3-2.1z"/>
+          </svg>
+        </div>
+        <div class="brand-title">Mom's <span>Restaurant</span></div>
+      </div>
+      <nav>
+        <button id="lang-toggle" class="btn" type="button" aria-label="Changer de langue">EN</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="banner">
+    <h1 id="banner-title">Mom's Restaurant</h1>
+  </div>
+
+  <main class="container">
+    <section class="hero">
+      <div id="badge" class="badge">Cuisine cambodgienne authentique</div>
+      <p id="lede" class="lede">Mom's Restaurant vous accueille au <strong>3 rue Planchat, 75020 Paris</strong>, pour une cuisine familiale inspirée des marchés de Phnom Penh et des traditions khmères.</p>
+      <div class="cta-row">
+        <a id="btn-menu" class="btn-primary" href="menu.pdf" target="_blank">Voir le menu</a>
+        <a id="btn-map" class="btn-primary" href="https://maps.google.com/?q=Mom's%20Restaurant%2C%203%20rue%20Planchat%2C%2075020%20Paris" target="_blank" rel="noopener">Nous trouver</a>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="about">
+      <div class="about-card highlight">
+        <h2 id="hist-title">L'histoire de Mom</h2>
+        <p id="hist-text">Dans la tradition khmère, la cuisine est un héritage. Chez Mom's, on retrouve les parfums de la maison : la citronnelle, le galanga, le lait de coco et le poivre de Kampot. Nos recettes respectent les équilibres sucré-salé-acidulé qui font l'âme du Cambodge.</p>
+      </div>
+      <div class="about-card hours-card">
+        <h3 id="info-title" class="hours-title">Informations pratiques</h3>
+        <ul style="margin:0 0 12px 18px">
+          <li><strong id="lbl-address">Adresse :</strong> 3 rue Planchat, 75020 Paris</li>
+          <li><strong id="lbl-metro">Métro :</strong> Avron (L2) · Buzenval (L9)</li>
+          <li><strong id="lbl-phone">Tél :</strong> <a href="tel:+33624156408">06 24 15 64 08</a></li>
+        </ul>
+        <h4 id="hours-title" class="hours-title">Horaires d'ouverture</h4>
+        <ul id="hours-list" class="hours-list" aria-label="Horaires d'ouverture">
+          <!-- Rendu via JS pour gérer la langue -->
+        </ul>
+        <div class="small" style="margin-top:8px" id="hours-note">Les horaires peuvent varier les jours fériés.</div>
+      </div>
+    </section>
+
+    <section class="reviews">
+      <h3 id="reviews-title">Avis des clients</h3>
+      <div id="review-list" class="review-list" aria-live="polite"></div>
+      <p class="small" id="reviews-tip">Les avis s'afficheront automatiquement depuis Google dès que vous ajoutez votre <em>API key</em> et l'ID du lieu.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <strong>Mom's Restaurant</strong><br/>
+        <span id="footer-line">Cuisine cambodgienne — 3 rue Planchat, 75020 Paris</span>
+        <div class="small" style="margin-top:6px">© <span id="year"></span> Mom's Restaurant. <span id="footer-rights">Tous droits réservés.</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Année dynamique
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ---- I18N ----
+    const i18n = {
+      fr: {
+        htmlLang: 'fr',
+        badge: 'Cuisine cambodgienne authentique',
+        lede: "Mom's Restaurant vous accueille au <strong>3 rue Planchat, 75020 Paris</strong>, pour une cuisine familiale inspirée des marchés de Phnom Penh et des traditions khmères.",
+        btnMenu: 'Voir le menu',
+        btnMap: 'Nous trouver',
+        histTitle: "L'histoire de Mom",
+        histText: "Dans la tradition khmère, la cuisine est un héritage. Chez Mom's, on retrouve les parfums de la maison : la citronnelle, le galanga, le lait de coco et le poivre de Kampot. Nos recettes respectent les équilibres sucré-salé-acidulé qui font l'âme du Cambodge.",
+        infoTitle: 'Informations pratiques',
+        lblAddress: 'Adresse :',
+        lblMetro: 'Métro :',
+        lblPhone: 'Tél :',
+        hoursTitle: "Horaires d'ouverture",
+        hoursNote: 'Les horaires peuvent varier les jours fériés.',
+        reviewsTitle: 'Avis des clients',
+        footerRights: 'Tous droits réservés.',
+        days: [
+          ['Lundi','12:00–15:00'], ['Lundi soir','19:00–23:00'],
+          ['Mardi','12:00–15:00'], ['Mercredi soir','19:00–23:00'],
+          ['Jeudi','12:00–15:00'], ['Jeudi soir','19:00–23:00'],
+          ['Vendredi','12:00–15:00'], ['Vendredi soir','19:00–23:00'],
+          ['Samedi','12:00–15:00'], ['Samedi soir','19:00–23:00'],
+          ['Dimanche','Fermé']
+        ]
+      },
+      en: {
+        htmlLang: 'en',
+        badge: 'Authentic Cambodian cuisine',
+        lede: "Mom's Restaurant welcomes you at <strong>3 rue Planchat, 75020 Paris</strong>, offering homestyle recipes inspired by Phnom Penh markets and Khmer traditions.",
+        btnMenu: 'View Menu',
+        btnMap: 'Find us',
+        histTitle: "Mom's Story",
+        histText: "In Khmer tradition, cooking is heritage. At Mom's, you'll find the home aromas of lemongrass, galangal, coconut milk and Kampot pepper. Our recipes balance sweet, salty and tangy — the soul of Cambodia.",
+        infoTitle: 'Practical information',
+        lblAddress: 'Address:',
+        lblMetro: 'Metro:',
+        lblPhone: 'Phone:',
+        hoursTitle: 'Opening hours',
+        hoursNote: 'Hours may vary on public holidays.',
+        reviewsTitle: 'Customer reviews',
+        footerRights: 'All rights reserved.',
+        days: [
+          ['Monday','12:00–15:00'], ['Monday evening','19:00–23:00'],
+          ['Tuesday','12:00–15:00'], ['Wednesday evening','19:00–23:00'],
+          ['Thursday','12:00–15:00'], ['Thursday evening','19:00–23:00'],
+          ['Friday','12:00–15:00'], ['Friday evening','19:00–23:00'],
+          ['Saturday','12:00–15:00'], ['Saturday evening','19:00–23:00'],
+          ['Sunday','Closed']
+        ]
+      }
+    };
+
+    function renderHours(days){
+      const ul = document.getElementById('hours-list');
+      ul.innerHTML = '';
+      days.forEach(([label, time])=>{
+        const li = document.createElement('li');
+        li.className = 'hours-item';
+        li.innerHTML = `<span>${label}</span><span>${time}</span>`;
+        ul.appendChild(li);
+      });
+    }
+
+    function setLang(lang){
+      const t = i18n[lang] || i18n.fr;
+      document.documentElement.lang = t.htmlLang;
+      document.getElementById('badge').textContent = t.badge;
+      document.getElementById('lede').innerHTML = t.lede;
+      document.getElementById('btn-menu').textContent = t.btnMenu;
+      document.getElementById('btn-map').textContent = t.btnMap;
+      document.getElementById('hist-title').textContent = t.histTitle;
+      document.getElementById('hist-text').textContent = t.histText;
+      document.getElementById('info-title').textContent = t.infoTitle;
+      document.getElementById('lbl-address').textContent = t.lblAddress + ' ';
+      document.getElementById('lbl-metro').textContent = t.lblMetro + ' ';
+      document.getElementById('lbl-phone').textContent = t.lblPhone + ' ';
+      document.getElementById('hours-title').textContent = t.hoursTitle;
+      document.getElementById('hours-note').textContent = t.hoursNote;
+      document.getElementById('reviews-title').textContent = t.reviewsTitle;
+      document.getElementById('footer-rights').textContent = t.footerRights;
+      renderHours(t.days);
+      // Toggle button label
+      const btn = document.getElementById('lang-toggle');
+      btn.textContent = lang === 'fr' ? 'EN' : 'FR';
+      btn.setAttribute('aria-label', lang === 'fr' ? 'Switch to English' : 'Passer en français');
+      // Persist choice
+      localStorage.setItem('lang', lang);
+    }
+
+    // Init language from storage or default FR
+    const saved = localStorage.getItem('lang') || 'fr';
+    setLang(saved);
+
+    // Toggle language
+    document.getElementById('lang-toggle').addEventListener('click', ()=>{
+      const current = localStorage.getItem('lang') || 'fr';
+      setLang(current === 'fr' ? 'en' : 'fr');
+    });
+
+    // ---- Avis Google (désactivé tant que la clé n'est pas fournie) ----
+    window.initGoogleReviews = function(){
+      try{
+        const service = new google.maps.places.PlacesService(document.createElement('div'));
+        service.getDetails(
+          { placeId: 'PLACE_ID', fields: ['name','rating','user_ratings_total','reviews'] },
+          (place, status) => {
+            if(status !== google.maps.places.PlacesServiceStatus.OK || !place){ return; }
+            const list = document.getElementById('review-list');
+            const tip = document.getElementById('reviews-tip');
+            if(tip) tip.remove();
+            list.innerHTML='';
+            (place.reviews||[]).slice(0,5).forEach(r=>{
+              const el=document.createElement('div');
+              el.className='review';
+              el.innerHTML = `<strong>${r.author_name||'Client Google'}</strong> <small>• ${new Date(r.time*1000).toLocaleDateString(document.documentElement.lang==='fr'?'fr-FR':'en-GB')} • ${r.rating}★</small><p>${r.text||''}</p>`;
+              list.appendChild(el);
+            });
+          }
+        );
+      }catch(e){ console.warn('Reviews init error', e); }
+    };
+  </script>
+
+  <!-- Décommentez la ligne suivante et remplacez YOUR_API_KEY par votre clé pour activer les avis -->
+  <!-- <script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initGoogleReviews"></script> -->
+</body>
+</html>
