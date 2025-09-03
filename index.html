@@ -9,139 +9,120 @@
   <!-- Favicon unique -->
   <link rel="icon" href="/favicon.ico" sizes="any">
 
+  <!-- 2 polices max : titres = Playfair, texte = Inter -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --gold:#ffd700; /* doré plus lumineux */
-      --gold-2:#e6c200;
-      --bg-gradient:linear-gradient(180deg,#0a0a0a,#000000); /* fond plus noir */
-      --ink:#f5f5f5; /* texte clair */
-      --muted:#bfbfbf;
+      --gold:#ffd700;            /* doré plus éclatant */
+      --gold-2:#e6c200;          /* doré foncé pour les bordures */
+      --bg-gradient:linear-gradient(180deg,#0a0a0a,#000); /* fond plus noir */
+      --ink:#f5f5f5;             /* texte clair */
+      --muted:#bfbfbf;           /* texte secondaire */
       --shadow:0 10px 25px rgba(0,0,0,.45);
     }
     html{scroll-behavior:smooth}
-    html,body{margin:0;padding:0;background:var(--bg-gradient);color:var(--ink);font-family:Inter, sans-serif;}
+    html,body{margin:0;padding:0;background:var(--bg-gradient);color:var(--ink);font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif}
     a,button{color:inherit}
     .container{width:min(1100px, 92%);margin:0 auto}
 
-    body::before{content:"";position:fixed;inset:0;z-index:-1;opacity:.05;pointer-events:none;background-image:linear-gradient(45deg, rgba(255,215,0,.4) 1px, transparent 1px),linear-gradient(-45deg, rgba(255,215,0,.4) 1px, transparent 1px);background-size:22px 22px;background-position:0 0, 11px 11px}
+    /* Discret motif en fond */
+    body::before{content:"";position:fixed;inset:0;z-index:-1;opacity:.04;pointer-events:none;background-image:linear-gradient(45deg, rgba(255,215,0,.4) 1px, transparent 1px),linear-gradient(-45deg, rgba(255,215,0,.4) 1px, transparent 1px);background-size:22px 22px;background-position:0 0, 11px 11px}
 
+    /* Header foncé et lisible */
     header{position:sticky;top:0;background:rgba(10,10,10,.95);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid rgba(255,215,0,.4);z-index:50}
-    .nav{position:relative;display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:10px}
+    .nav{position:relative;display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:10px}
     .brand{display:flex;align-items:center;gap:12px}
     .brand-logo{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--gold)}
     .brand-logo svg{width:22px;height:22px;fill:var(--gold)}
-    .brand-title{font-family:"Playfair Display", serif;font-weight:700;letter-spacing:.2px;color:var(--ink)}
+    .brand-title{font-family:"Playfair Display", serif;font-weight:700;letter-spacing:.2px}
     .brand-title span{color:var(--gold)}
 
-    h2,h3,h4{color:var(--gold);font-family:"Playfair Display", serif;font-weight:700;letter-spacing:.5px}
-
-    .btn{padding:10px 16px;border:1.5px solid var(--gold);border-radius:999px;transition:.2s;background:var(--gold);cursor:pointer;color:#111;font-weight:600;box-shadow:0 6px 16px rgba(255,215,0,.35)}
+    /* Boutons (or/noir) */
+    .btn{padding:10px 16px;border:1.5px solid var(--gold);border-radius:999px;transition:background .2s,color .2s,border-color .2s,transform .06s;background:var(--gold);cursor:pointer;color:#111;font-weight:600;box-shadow:0 6px 16px rgba(255,215,0,.35)}
+    .btn:active{transform:translateY(1px)}
     .btn:hover{background:#111;color:var(--gold);border-color:var(--gold)}
-
     .btn-primary{background:var(--gold);color:#111;padding:12px 18px;border-radius:999px;box-shadow:0 8px 22px rgba(255,215,0,.38);border:1px solid var(--gold-2);font-weight:700}
     .btn-primary:hover{background:#111;color:var(--gold);border-color:var(--gold)}
 
+    /* Icône menu */
     .hamburger{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:10px;border:1.5px solid var(--gold);background:#111;cursor:pointer;box-shadow:0 6px 16px rgba(255,215,0,.25)}
     .hamburger svg{width:20px;height:20px;fill:var(--gold)}
     .hamburger:hover{background:var(--gold)}
     .hamburger:hover svg{fill:#111}
 
+    /* Menu déroulant */
     .quick-nav{position:absolute;top:62px;left:16px;background:#111;border:1px solid rgba(255,215,0,.45);box-shadow:var(--shadow);border-radius:14px;overflow:hidden;opacity:0;transform:translateY(-6px) scale(.98);pointer-events:none;transition:opacity .2s ease, transform .2s ease;z-index:200}
     .quick-nav.open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;animation:dropdownIn .18s ease-out}
     .quick-nav a{display:block;padding:10px 14px;border-bottom:1px solid rgba(255,215,0,.2);font-weight:600;color:#fff}
     .quick-nav a:last-child{border-bottom:none}
     .quick-nav a:hover{background:rgba(255,215,0,.1)}
 
-    .banner{
-      position:relative;
-      width:100%;
-      height:clamp(300px, 50vh, 520px);
-      background:#000 url('banniere.jpg') center/cover no-repeat;
-      background-size:180%; /* zoom permanent */
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
-    }
+    /* Bannière (toujours zoomée raisonnablement) */
+    .banner{position:relative;width:100%;height:clamp(300px,50vh,520px);background:#000 url('banniere.jpg') center/cover no-repeat;background-size:140%;display:flex;align-items:center;justify-content:center;overflow:hidden}
     .banner::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.4), rgba(0,0,0,.6));pointer-events:none}
 
-    @media (max-width:640px){
-      .banner{
-        height:320px;
-        background-size:220%; /* zoom encore plus fort sur mobile */
-        background-position:center top;
-      }
-    }
+    /* Titrailles */
+    h2,h3,h4{color:var(--gold);font-family:"Playfair Display", serif;font-weight:700;letter-spacing:.5px;margin:.2rem 0 .6rem}
 
-    .hero{padding:64px 0;text-align:center}
+    /* Hero */
+    .hero{padding:56px 0 52px;text-align:center}
     .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,215,0,.5);border-radius:999px;padding:6px 12px;font-size:14px;color:var(--gold);background:rgba(255,215,0,.1)}
-    .lede{color:#e0e0e0;font-size:18px;max-width:60ch;margin:18px auto;line-height:1.6}
-    .cta-row{margin-top:22px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+    .lede{color:#e0e0e0;font-size:18px;max-width:60ch;margin:16px auto;line-height:1.6}
+    .cta-row{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
 
-    .divider{height:14px;margin:48px 0;background:radial-gradient(circle at 50% 100%, var(--gold) 12px, transparent 13px),linear-gradient(90deg, transparent 12px, var(--gold) 12px, var(--gold) calc(100% - 12px), transparent calc(100% - 12px));background-size:26px 13px, 100% 2px;background-repeat:no-repeat;background-position:center top, center bottom}
+    .divider{height:14px;margin:40px 0;background:radial-gradient(circle at 50% 100%, var(--gold) 12px, transparent 13px),linear-gradient(90deg, transparent 12px, var(--gold) 12px, var(--gold) calc(100% - 12px), transparent calc(100% - 12px));background-size:26px 13px, 100% 2px;background-repeat:no-repeat;background-position:center top, center bottom}
 
+    /* À propos + Infos (cartes identiques) */
     .about{display:grid;grid-template-columns:1.2fr 1fr;gap:26px;align-items:start}
     .about-card{border:2px solid var(--gold);border-radius:20px;padding:22px;background:#fff;color:#222;box-shadow:0 0 0 2px rgba(255,215,0,.15), 0 14px 30px rgba(0,0,0,.25);position:relative;overflow:hidden}
-    .about-card.highlight{background:linear-gradient(180deg, rgba(255,215,0,.1), #fff)}
-    .about-card.highlight p{font-size:18px;line-height:1.8;color:#1b1b1b}
-    .about-card.highlight h2{margin-top:0;margin-bottom:10px}
+    .hours-title{font-family:"Playfair Display",serif;color:var(--gold);margin:0 0 8px;font-size:22px}
+    .hours-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .hours-item{display:flex;justify-content:space-between;padding:10px 12px;border:1px dashed rgba(255,215,0,.6);border-radius:12px;font-weight:600}
 
-    .gallery{margin-top:50px}
-    .gallery h3{font-size:28px;color:var(--gold);text-align:center;margin-bottom:24px}
+    /* Galerie */
+    .gallery{margin-top:46px}
+    .gallery h3{text-align:center}
     .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
     .gallery-grid img{width:100%;height:220px;object-fit:cover;border-radius:16px;box-shadow:0 0 0 2px rgba(255,215,0,.15), 0 10px 22px rgba(0,0,0,.25);transition:transform .25s ease, box-shadow .25s ease, filter .25s ease}
     .gallery-grid img:hover,.gallery-grid img:focus-visible{transform:scale(1.03);box-shadow:0 0 0 2px rgba(255,215,0,.45), 0 16px 34px rgba(0,0,0,.3);filter:saturate(1.1)}
 
-    .hours-card{border:2px solid var(--gold);background:#fff;color:#222;box-shadow:0 0 0 2px rgba(255,215,0,.2), 0 12px 26px rgba(0,0,0,.25)}
-    .hours-title{margin:0 0 8px;font-size:22px;color:var(--gold)}
-    .hours-list{list-style:none;padding-left:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
-    .hours-item{display:flex;justify-content:space-between;padding:10px 12px;border:1px dashed rgba(255,215,0,.6);border-radius:12px;font-weight:600}
-
+    /* Avis */
     .reviews{margin-top:36px}
     .review-list{display:grid;gap:14px;margin:16px 0}
     .review{border:1px solid rgba(255,215,0,.4);border-radius:16px;padding:14px 16px;background:#fff;color:#222;box-shadow:0 0 0 2px rgba(255,215,0,.15), 0 10px 22px rgba(0,0,0,.2)}
     .stars{display:inline-block;font-size:16px;color:var(--gold);margin-right:8px;letter-spacing:2px}
-    .small{font-size:14px;color:#7a6a2f}
 
-    footer{margin-top:60px;border-top:1px solid rgba(255,215,0,.3);padding:26px 0 34px;color:#aaa;text-align:center}
+    footer{margin-top:56px;border-top:1px solid rgba(255,215,0,.3);padding:26px 0 34px;color:#aaa;text-align:center}
     .footer-grid{display:grid;grid-template-columns:1fr;gap:10px;justify-items:center}
 
     @keyframes dropdownIn{from{opacity:0;transform:translateY(-8px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
-    @media (prefers-reduced-motion: reduce){
-      .quick-nav{transition:none}
-      .quick-nav.open{animation:none}
-      .gallery-grid img{transition:none}
-    }
+    @media (prefers-reduced-motion: reduce){.quick-nav{transition:none}.quick-nav.open{animation:none}.gallery-grid img{transition:none}}
 
+    /* Mobile */
     @media (max-width:900px){.about{grid-template-columns:1fr}.hours-list{grid-template-columns:1fr}.quick-nav{left:12px;right:12px}}
-    @media (max-width:640px){.brand-logo{width:32px;height:32px}.brand-title{font-size:18px}.hero{padding:42px 0}.lede{font-size:16px;margin:14px auto}.cta-row{gap:10px}.btn-primary{width:100%;padding:14px 20px}.about{gap:16px}.gallery-grid{grid-template-columns:1fr}}
+    @media (max-width:640px){.brand-logo{width:32px;height:32px}.brand-title{font-size:18px}.hero{padding:40px 0}.lede{font-size:16px;margin:12px auto}.btn-primary{width:100%;padding:14px 20px}.about{gap:16px}.gallery-grid{grid-template-columns:1fr}.banner{height:320px;background-size:180%;background-position:center top}}
   </style>
 </head>
 <body>
   <header>
     <div class="container nav">
       <div style="display:flex;align-items:center;gap:10px">
-        <!-- Icône menu (gauche) -->
+        <!-- Menu (gauche) -->
         <button id="menuBtn" class="hamburger" aria-label="Ouvrir le menu rapide" aria-expanded="false" aria-controls="quickNav">
           <svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
         </button>
         <div class="brand">
           <div class="brand-logo" aria-hidden="true">
-            <svg viewBox="0 0 24 24" role="img" aria-label="Apsara">
-              <path d="M12 2c1.2 0 2 .8 2 2s-1 2-2 2-2-.8-2-2 1-2 2-2zm-5.5 9.2c1.7-1.4 3.7-2.2 5.5-2.2s3.8.8 5.5 2.2c.7.6.8 1.6.2 2.3l-.1.1c-.5.6-1.4.7-2 .2-1.1-.8-2.3-1.3-3.6-1.3s-2.5.5-3.6 1.3c-.6.4-1.5.3-2-.2-.7-.6-.7-1.7.1-2.4zM7 18.5c2-1.6 4.1-2.5 5-2.5s3 .9 5 2.5c.6.5.7 1.4.3 2.1-.4.7-1.2 1-2 .7C13.7 20.3 12.6 20 12 20s-1.7.3-3.3 1.3c-.8.5-1.7.1-2-.7-.4-.8-.3-1.6.3-2.1z"/>
-            </svg>
+            <svg viewBox="0 0 24 24" role="img" aria-label="Apsara"><path d="M12 2c1.2 0 2 .8 2 2s-1 2-2 2-2-.8-2-2 1-2 2-2zM6.5 11.2c1.7-1.4 3.7-2.2 5.5-2.2s3.8.8 5.5 2.2c.7.6.8 1.6.2 2.3l-.1.1c-.5.6-1.4.7-2 .2-1.1-.8-2.3-1.3-3.6-1.3s-2.5.5-3.6 1.3c-.6.4-1.5.3-2-.2-.7-.6-.7-1.7.1-2.4zM7 18.5c2-1.6 4.1-2.5 5-2.5s3 .9 5 2.5c.6.5.7 1.4.3 2.1-.4.7-1.2 1-2 .7C13.7 20.3 12.6 20 12 20s-1.7.3-3.3 1.3c-.8.5-1.7.1-2-.7-.4-.8-.3-1.6.3-2.1z"/></svg>
           </div>
           <div class="brand-title">Mom's <span>Restaurant</span></div>
         </div>
       </div>
-
       <div class="nav-right">
         <button id="langToggle" class="btn" type="button" aria-label="Changer de langue">EN</button>
       </div>
-
       <!-- Menu déroulant -->
       <nav id="quickNav" class="quick-nav" aria-label="Navigation rapide">
         <a href="#hist" data-i18n="navHist">L'histoire de Mom</a>
@@ -154,9 +135,8 @@
     </div>
   </header>
 
-  <div class="banner">
-    <h1 id="banner-title">Mom's Restaurant</h1>
-  </div>
+  <!-- Bannière purement visuelle -->
+  <div class="banner" aria-label="Bannière Mom's Restaurant"></div>
 
   <main class="container">
     <section class="hero">
@@ -171,11 +151,13 @@
     <div class="divider"></div>
 
     <section id="hist" class="about">
-      <div class="about-card highlight">
-        <h2 data-i18n="histTitle">L'histoire de Mom</h2>
+      <!-- Histoire (même style que infos) -->
+      <div class="about-card">
+        <h3 class="hours-title" data-i18n="histTitle">L'histoire de Mom</h3>
         <p data-i18n="histText">Dans la tradition khmère, la cuisine est un héritage. Chez Mom's, on retrouve les parfums de la maison : la citronnelle, le galanga, le lait de coco et le poivre de Kampot. Nos recettes respectent les équilibres sucré-salé-acidulé qui font l'âme du Cambodge.</p>
       </div>
-      <div id="infos" class="about-card hours-card">
+      <!-- Infos pratiques + horaires -->
+      <div id="infos" class="about-card">
         <h3 class="hours-title" data-i18n="infoTitle">Informations pratiques</h3>
         <ul style="margin:0 0 12px 18px">
           <li><strong data-i18n="lblAddress">Adresse :</strong> 3 rue Planchat, 75020 Paris</li>
@@ -184,11 +166,11 @@
         </ul>
         <h4 id="horaires" class="hours-title" data-i18n="hoursTitle">Horaires d'ouverture</h4>
         <ul id="hoursList" class="hours-list"></ul>
-        <div class="small" style="margin-top:8px" id="hoursNote" data-i18n="hoursNote">Les horaires peuvent varier les jours fériés.</div>
+        <div class="small" id="hoursNote" style="margin-top:8px" data-i18n="hoursNote">Les horaires peuvent varier les jours fériés.</div>
       </div>
     </section>
 
-    <!-- Galerie photos -->
+    <!-- Galerie -->
     <section id="galerie" class="gallery">
       <h3 data-i18n="galleryTitle">Quelques spécialités à découvrir</h3>
       <div class="gallery-grid">
@@ -198,6 +180,7 @@
       </div>
     </section>
 
+    <!-- Avis -->
     <section id="avis" class="reviews">
       <h3 data-i18n="reviewsTitle">Avis des clients</h3>
       <div class="review-list">
@@ -243,12 +226,21 @@
       const open = quickNav.classList.toggle('open');
       menuBtn.setAttribute('aria-expanded', String(open));
     });
-    document.addEventListener('click', (e)=>{
-      if(!quickNav.contains(e.target) && !menuBtn.contains(e.target)) closeQuick();
-    });
+    document.addEventListener('click', (e)=>{ if(!quickNav.contains(e.target) && !menuBtn.contains(e.target)) closeQuick(); });
     document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeQuick(); });
-    // Fermer après clic sur un lien
     quickNav.querySelectorAll('a').forEach(a=> a.addEventListener('click', closeQuick));
+
+    // Parallaxe douce (désactivée si prefers-reduced-motion)
+    (function(){
+      const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const banner = document.querySelector('.banner');
+      if(!banner || mq.matches) return;
+      const onScroll = ()=>{
+        const y = window.scrollY * 0.25; // intensité douce
+        banner.style.backgroundPosition = `center calc(50% + ${y}px)`;
+      };
+      window.addEventListener('scroll', onScroll, {passive:true});
+    })();
 
     // ===== I18N (FR/EN) =====
     const i18n = {
@@ -345,15 +337,16 @@
       localStorage.setItem('lang', lang);
     }
 
-    // Init language from storage or default FR
+    // Init
     const saved = localStorage.getItem('lang') || 'fr';
     setLang(saved);
-
-    // Toggle language
     document.getElementById('langToggle').addEventListener('click', ()=>{
       const current = localStorage.getItem('lang') || 'fr';
       setLang(current === 'fr' ? 'en' : 'fr');
     });
+
+    // Année footer
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
