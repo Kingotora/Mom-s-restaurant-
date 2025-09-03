@@ -60,7 +60,7 @@
     .quick-nav a:hover{background:rgba(255,215,0,.1)}
 
     /* Bannière (toujours zoomée raisonnablement) */
-    .banner{position:relative;width:100%;height:clamp(300px,46dvh,520px);background:#000 url('banniere.jpg') center top / cover no-repeat;background-position:center top;background-size:160%;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .banner{position:relative;width:100%;min-height:320px;background:#000 url('banniere.jpg') center 35% / cover no-repeat;background-size:160%;display:flex;align-items:center;justify-content:center;overflow:hidden}
     .banner::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.12), rgba(0,0,0,.28));backdrop-filter:brightness(1.25) contrast(1.08) saturate(1.08);pointer-events:none}
 
     /* Titrailles */
@@ -85,7 +85,7 @@
     .gallery{margin-top:46px}
     .gallery h3{text-align:center}
     .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
-    .gallery-grid img{width:100%;height:220px;object-fit:cover;border-radius:16px;box-shadow:0 0 0 2px rgba(255,215,0,.15), 0 10px 22px rgba(0,0,0,.25);transition:transform .25s ease, box-shadow .25s ease, filter .25s ease}
+    .gallery-grid img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px;box-shadow:0 0 0 2px rgba(255,215,0,.15), 0 10px 22px rgba(0,0,0,.25);transition:transform .25s ease, box-shadow .25s ease, filter .25s ease}
     .gallery-grid img:hover,.gallery-grid img:focus-visible{transform:scale(1.03);box-shadow:0 0 0 2px rgba(255,215,0,.45), 0 16px 34px rgba(0,0,0,.3);filter:saturate(1.1)}
 
     /* Avis */
@@ -98,11 +98,11 @@
     .footer-grid{display:grid;grid-template-columns:1fr;gap:10px;justify-items:center}
 
     @keyframes dropdownIn{from{opacity:0;transform:translateY(-8px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
-    @media (prefers-reduced-motion: reduce){.quick-nav{transition:none}.quick-nav.open{animation:none}.gallery-grid img{transition:none}}
+    @media (prefers-reduced-motion: reduce){.quick-nav{transition:none}.quick-nav.open{animation:none}.gallery-grid img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px;box-shadow:0 0 0 2px rgba(255,215,0,.15), 0 10px 22px rgba(0,0,0,.25);transition:transform .25s ease, box-shadow .25s ease, filter .25s ease}}
 
     /* Mobile */
     @media (max-width:900px){.about{grid-template-columns:1fr}.hours-list{grid-template-columns:1fr}.quick-nav{left:12px;right:12px}}
-    @media (max-width:640px){.brand-logo{width:32px;height:32px}.brand-title{font-size:18px}.hero{padding:40px 0}.lede{font-size:16px;margin:12px auto}.btn-primary{width:100%;padding:14px 20px}.about{gap:16px}.gallery-grid{grid-template-columns:1fr}.banner{position:relative;width:100%;height:clamp(300px,46dvh,520px);background:#000 url('banniere.jpg') center top / cover no-repeat;background-position:center top;background-size:160%;display:flex;align-items:center;justify-content:center;overflow:hidden}}
+    @media (max-width:640px){.brand-logo{width:32px;height:32px}.brand-title{font-size:18px}.hero{padding:40px 0}.lede{font-size:16px;margin:12px auto}.btn-primary{width:100%;padding:14px 20px}.about{gap:16px}.gallery-grid{grid-template-columns:1fr}.banner{position:relative;width:100%;min-height:320px;background:#000 url('banniere.jpg') center 35% / cover no-repeat;background-size:160%;display:flex;align-items:center;justify-content:center;overflow:hidden}}
   </style>
 </head>
 <body>
@@ -174,9 +174,9 @@
     <section id="galerie" class="gallery">
       <h3 data-i18n="galleryTitle">Quelques spécialités à découvrir</h3>
       <div class="gallery-grid">
-        <img src="plat1.jpg" alt="Plat cambodgien 1">
-        <img src="plat2.jpg" alt="Plat cambodgien 2">
-        <img src="plat3.jpg" alt="Plat cambodgien 3">
+        <img src="plat1.jpg" alt="Plat cambodgien 1" loading="lazy">
+        <img src="plat2.jpg" alt="Plat cambodgien 2" loading="lazy">
+        <img src="plat3.jpg" alt="Plat cambodgien 3" loading="lazy">
       </div>
     </section>
 
@@ -348,5 +348,24 @@
     // Année footer
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
+<script>
+  (function(){
+    const banner = document.querySelector('.banner');
+    if(!banner) return;
+    function resizeBanner(){
+      banner.style.height = window.innerHeight + 'px';
+      const ratio = window.innerHeight / Math.max(window.innerWidth, 1);
+      let base = (window.matchMedia('(max-width:640px)').matches) ? 45 : 35;
+      if (ratio > 1.7) base += 8;
+      else if (ratio > 1.4) base += 5;
+      else if (ratio > 1.2) base += 3;
+      banner.style.backgroundPosition = `center ${base}%`;
+    }
+    window.addEventListener('load', resizeBanner);
+    window.addEventListener('resize', resizeBanner);
+  })();
+</script>
+
 </body>
 </html>
