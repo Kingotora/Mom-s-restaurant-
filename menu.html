@@ -94,13 +94,29 @@ h2{color:var(--gold); font-weight:700; border-bottom:2px solid rgba(212,175,55,.
 .menu-list li{display:block; padding:2px 0; border:none}
 .menu-list .price{display:none}
 
+
+/* === Mobile dropdown nav === */
+header{position:sticky;top:0;z-index:100}
+.hamburger{display:none;border:1.5px solid rgba(218,165,32,.6);background:#111;color:#f5f5f5;border-radius:10px;padding:6px 10px;cursor:pointer;box-shadow:0 6px 16px rgba(218,165,32,.25)}
+.dropdown{display:none;position:absolute;left:12px;right:12px;top:100%;background:#111;border:1px solid rgba(218,165,32,.5);border-radius:12px;box-shadow:0 12px 28px rgba(0,0,0,.35)}
+.dropdown a{display:block;padding:10px 14px;border-bottom:1px solid rgba(218,165,32,.2)}
+.dropdown a:last-child{border-bottom:none}
+.dropdown.open{display:block;animation:fadeIn .15s ease-out}
+@media (max-width:750px){
+  .top-nav{display:none}
+  .hamburger{display:inline-block}
+}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+
 </style>
 </head>
 <body>
   <header>
     <div class="container nav">
       <div class="brand-title">MOM'S RESTAURANT</div>
+      <button id="menuBtn" class="hamburger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileNav">☰</button>
       <nav class="top-nav">
+        <a class="btn" href="index.html" data-i18n="navHome">Accueil</a>
         <a class="btn" href="#entrees" data-i18n="navEntrees">Entrées</a>
         <a class="btn" href="#specialites" data-i18n="navSpec">Spécialités</a>
         <a class="btn" href="#bobuns" data-i18n="navBobuns">Bo-Buns</a>
@@ -112,17 +128,24 @@ h2{color:var(--gold); font-weight:700; border-bottom:2px solid rgba(212,175,55,.
         <a class="btn" href="#boissons" data-i18n="navBoissons">Boissons</a>
         <a class="btn" href="#menus" data-i18n="navMenus">Menus</a>
       </nav>
+      <div id="mobileNav" class="dropdown" aria-label="Navigation mobile">
+        <a class="btn" href="index.html" data-i18n="navHome">Accueil</a>
+        <a class="btn" href="#entrees" data-i18n="navEntrees">Entrées</a>
+        <a class="btn" href="#specialites" data-i18n="navSpec">Spécialités</a>
+        <a class="btn" href="#bobuns" data-i18n="navBobuns">Bo-Buns</a>
+        <a class="btn" href="#salades" data-i18n="navSalades">Salades</a>
+        <a class="btn" href="#plats" data-i18n="navPlats">Plats sautés</a>
+        <a class="btn" href="#grillades" data-i18n="navGrillades">Grillades</a>
+        <a class="btn" href="#soupes" data-i18n="navSoupes">Soupes</a>
+        <a class="btn" href="#desserts" data-i18n="navDesserts">Desserts</a>
+        <a class="btn" href="#boissons" data-i18n="navBoissons">Boissons</a>
+        <a class="btn" href="#menus" data-i18n="navMenus">Menus</a>
+      </div>
       <button id="langToggle" class="btn" type="button" aria-label="Changer de langue">EN</button>
     </div>
   </header>
 
   <main class="container">
-    <section class="hero">
-      <h1 data-i18n="menuTitle">Menu</h1>
-      <p data-i18n="menuSub">Photos, descriptions & prix — à jour.</p>
-      <!-- ✅ Filtres supprimés -->
-    </section>
-
     <!-- Entrées -->
     
     <!-- Spécialités Khmer -->
@@ -718,7 +741,7 @@ h2{color:var(--gold); font-weight:700; border-bottom:2px solid rgba(212,175,55,.
         sPlats: 'Plats',
         sDesserts: 'Desserts',
         sBoissons: 'Boissons',
-        backHome: '← Retour à l\'accueil'
+        backHome: '← Retour à l\'accueil',
         'navSpec': 'Spécialités',
         'navBobuns': 'Bo-Buns',
         'navSalades': 'Salades',
@@ -828,5 +851,28 @@ h2{color:var(--gold); font-weight:700; border-bottom:2px solid rgba(212,175,55,.
       }
     })();
   </script>
+
+<script>
+(function(){
+  var btn = document.getElementById('menuBtn');
+  var dd  = document.getElementById('mobileNav');
+  if(btn && dd){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var open = dd.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', function(e){
+      if(dd.classList.contains('open') && !dd.contains(e.target) && e.target !== btn){
+        dd.classList.remove('open'); btn.setAttribute('aria-expanded','false');
+      }
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key==='Escape'){ dd.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+    });
+  }
+})();
+</script>
+
 </body>
 </html>
