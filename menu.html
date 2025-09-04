@@ -1040,6 +1040,13 @@ html{ scroll-padding-top: var(--header-h); }
     document.addEventListener('keydown', function(e){
       if(e.key==='Escape'){ dd.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
     });
+    // Auto-close on link click inside dropdown
+    dd.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        dd.classList.remove('open');
+        btn.setAttribute('aria-expanded','false');
+      });
+    });
   }
 })();
 </script>

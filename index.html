@@ -133,9 +133,7 @@ html{ scroll-padding-top: var(--header-h); }
     <div class="container nav">
       <div style="display:flex;align-items:center;gap:10px">
         <!-- Menu (gauche) -->
-        <button id="menuBtn" class="hamburger" aria-label="Ouvrir le menu rapide" aria-expanded="false" aria-controls="quickNav">
-          <svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
-        </button>
+        
         <div class="brand">
           <div class="brand-title">Mom's <span>Restaurant</span></div>
         </div>
@@ -144,14 +142,7 @@ html{ scroll-padding-top: var(--header-h); }
         <button id="langToggle" class="btn" type="button" aria-label="Changer de langue">EN</button>
       </div>
       <!-- Menu déroulant -->
-      <nav id="quickNav" class="quick-nav" aria-label="Navigation rapide">
-        <a href="#hist" data-i18n="navHist">L'histoire de Mom</a>
-        <a href="#infos" data-i18n="navInfos">Infos pratiques</a>
-        <a href="#horaires" data-i18n="navHours">Horaires</a>
-        <a href="#galerie" data-i18n="navGallery">Photos de plats</a>
-        <a href="#avis" data-i18n="navReviews">Avis clients</a>
-        <a href="menu.html" data-i18n="btnMenu">Menu du restaurant</a>
-      </nav>
+      
     </div>
   </header>
 
@@ -243,22 +234,6 @@ html{ scroll-padding-top: var(--header-h); }
   <script>
     // Année dynamique
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Menu déroulant
-    const menuBtn = document.getElementById('menuBtn');
-    const quickNav = document.getElementById('quickNav');
-    function closeQuick(){
-      quickNav.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded','false');
-    }
-    menuBtn.addEventListener('click', (e)=>{
-      e.stopPropagation();
-      const open = quickNav.classList.toggle('open');
-      menuBtn.setAttribute('aria-expanded', String(open));
-    });
-    document.addEventListener('click', (e)=>{ if(!quickNav.contains(e.target) && !menuBtn.contains(e.target)) closeQuick(); });
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeQuick(); });
-    quickNav.querySelectorAll('a').forEach(a=> a.addEventListener('click', closeQuick));
 
     // Parallaxe douce (désactivée si prefers-reduced-motion)
     (function(){
