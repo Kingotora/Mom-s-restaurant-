@@ -79,7 +79,7 @@
     .about-card{border:2px solid var(--gold);border-radius:20px;padding:22px;background:#ececec;color:#222;box-shadow:0 0 0 2px rgba(255,215,0,.15), 0 14px 30px rgba(0,0,0,.25);position:relative;overflow:hidden}}
     .hours-title{font-family:"Playfair Display",serif;color:var(--gold);margin:0 0 8px;font-size:22px}
     .hours-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
-    .hours-item{display:flex;justify-content:space-between;padding:10px 12px;border:1px dashed rgba(255,215,0,.6);border-radius:12px;font-weight:600}
+    .hours-item{justify-content:space-between;padding:10px 12px;border:1px dashed rgba(255,215,0,.6);border-radius:12px;font-weight:600}
 
     /* Galerie */
     .gallery{margin-top:46px}
@@ -103,7 +103,30 @@
     /* Mobile */
     @media (max-width:900px){.about{grid-template-columns:1fr}.hours-list{grid-template-columns:1fr}.quick-nav{left:12px;right:12px}}
     @media (max-width:640px){ h2,h3,h4{font-size:20px}.brand-logo{width:32px;height:32px.banner{height:320px;background-size:200%;background-position:center 45%}}.brand-title{font-family:"Playfair Display", serif;font-weight:700;letter-spacing:.2px;font-size:32px;color:var(--gold);text-transform:uppercase}.hero{padding:40px 0}.lede{font-size:16px;margin:12px auto}.btn-primary{width:100%;padding:14px 20px}.about{gap:16px}.gallery-grid{grid-template-columns:1fr}.banner{position:relative;width:100%;height:clamp(300px,50vh,520px);background:#000 url('banniere.jpg') center 40% / cover no-repeat;background-size:160%;display:flex;align-items:center;justify-content:center;overflow:hidden}}
-  </style>
+  
+/* === Anchor offset under sticky header === */
+:root{ --header-h: 84px; }
+html{ scroll-padding-top: var(--header-h); }
+[id]{ scroll-margin-top: var(--header-h); }
+
+
+/* === Hours: clearer digits + aligned columns === */
+.hours-item{
+  display:grid;
+  grid-template-columns: 130px 1fr; /* fixed day column so times align (incl. Tuesday) */
+  align-items:center;
+  gap: 8px;
+}
+.hours-item span:last-child{
+  font-family: Inter, Arial, sans-serif;
+  font-variant-numeric: tabular-nums; /* monospaced numerals for perfect alignment */
+  letter-spacing: .2px;
+}
+@media (max-width: 640px){
+  .hours-item{ grid-template-columns: 120px 1fr; }
+}
+
+</style>
 </head>
 <body>
   <header>
@@ -127,7 +150,7 @@
         <a href="#horaires" data-i18n="navHours">Horaires</a>
         <a href="#galerie" data-i18n="navGallery">Photos de plats</a>
         <a href="#avis" data-i18n="navReviews">Avis clients</a>
-        <a href="menu.html" target="_blank" rel="noopener" data-i18n="btnMenu">Menu du restaurant</a>
+        <a href="menu.html" data-i18n="btnMenu">Menu du restaurant</a>
       </nav>
     </div>
   </header>
@@ -140,7 +163,7 @@
       <div class="badge" data-i18n="badge">Cuisine cambodgienne authentique</div>
       <p class="lede" data-i18n="lede">Mom's Restaurant vous accueille au <strong>3 rue Planchat, 75020 Paris</strong>, pour une cuisine familiale inspirée des marchés de Phnom Penh et des traditions khmères.</p>
       <div class="cta-row">
-        <a class="btn-primary" href="menu.html" target="_blank" data-i18n="btnMenu">Cliquez ici pour voir le menu du restaurant</a>
+        <a class="btn-primary" href="menu.html" data-i18n="btnMenu">Cliquez ici pour voir le menu du restaurant</a>
         <a class="btn-primary" href="https://maps.google.com/?q=Mom's%20Restaurant%2C%203%20rue%20Planchat%2C%2075020%20Paris" target="_blank" rel="noopener" data-i18n="btnMap">Nous trouver</a>
       </div>
     </section>
