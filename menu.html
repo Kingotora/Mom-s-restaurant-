@@ -144,6 +144,14 @@ header{position:sticky;top:0;z-index:100}
   #boissons .drinks .price{ font-size: 14px; }
 }
 
+
+/* Two-line price blocks for wines */
+#boissons .price-block{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+#boissons .price-block span{line-height:1.1}
+@media (max-width:420px){
+  #boissons .price-block span{font-size:13px}
+}
+
 </style>
 </head>
 <body>
@@ -598,12 +606,14 @@ header{position:sticky;top:0;z-index:100}
     <!-- Boissons -->
     
     <!-- Boissons (texte uniquement) -->
+    
+    <!-- Boissons (texte uniquement, i18n + vins sur 2 lignes) -->
     <section class="section" id="boissons">
       <h2 data-i18n="sBoissons">Boissons</h2>
       <div class="card" style="background:#f6f6f6;color:#222;border-radius:12px;border:2px solid rgba(218,165,32,.35);box-shadow:0 0 0 2px rgba(218,165,32,.15), 0 12px 26px rgba(0,0,0,.15);">
         <div class="card-body" style="padding:16px 18px">
-          <h3 style="margin:4px 0 6px;color:#b8860b;">CANETTES</h3>
-          <ul class="drinks" style="margin:0 0 12px 18px;line-height:1.5">
+          <h3 data-i18n="drinksCanettes" style="margin:4px 0 6px;color:#b8860b;">CANETTES</h3>
+          <ul class="drinks">
             <li><span class="lbl">Coca‑Cola / Zero (33 cl)</span><span class="price">3,50€</span></li>
             <li><span class="lbl">Perrier (33 cl)</span><span class="price">3,50€</span></li>
             <li><span class="lbl">Ice tea (33 cl)</span><span class="price">3,50€</span></li>
@@ -613,40 +623,50 @@ header{position:sticky;top:0;z-index:100}
             <li><span class="lbl">Evian (50 cl)</span><span class="price">3,50€</span></li>
           </ul>
 
-          <h3 style="margin:10px 0 6px;color:#b8860b;">EXOTIQUES</h3>
-          <ul class="drinks" style="margin:0 0 12px 18px;line-height:1.5">
-            <li><span class="lbl">Jus de lychées (25 cl)</span><span class="price">3,50€</span></li>
-            <li><span class="lbl">Jus de coco (25 cl)</span><span class="price">3,50€</span></li>
-            <li><span class="lbl">Jus de mangue (25 cl)</span><span class="price">3,50€</span></li>
+          <h3 data-i18n="drinksExotiques" style="margin:10px 0 6px;color:#b8860b;">EXOTIQUES</h3>
+          <ul class="drinks">
+            <li><span class="lbl" data-i18n="drinkLychee">Jus de lychées (25 cl)</span><span class="price">3,50€</span></li>
+            <li><span class="lbl" data-i18n="drinkCoconut">Jus de coco (25 cl)</span><span class="price">3,50€</span></li>
+            <li><span class="lbl" data-i18n="drinkMango">Jus de mangue (25 cl)</span><span class="price">3,50€</span></li>
           </ul>
 
-          <h3 style="margin:10px 0 6px;color:#b8860b;">BOISSONS CHAUDES</h3>
-          <ul class="drinks" style="margin:0 0 12px 18px;line-height:1.5">
-            <li><span class="lbl">Café expresso</span><span class="price">2,90€</span></li>
-            <li><span class="lbl">Thé au jasmin</span><span class="price">3,00€</span></li>
-            <li><span class="lbl">Thé vert</span><span class="price">3,00€</span></li>
-            <li><span class="lbl">Thé vert à la menthe</span><span class="price">3,00€</span></li>
-            <li><span class="lbl">Thé vert au citron</span><span class="price">3,00€</span></li>
-            <li><span class="lbl">Thé vert au gingembre</span><span class="price">3,00€</span></li>
+          <h3 data-i18n="drinksChaudes" style="margin:10px 0 6px;color:#b8860b;">BOISSONS CHAUDES</h3>
+          <ul class="drinks">
+            <li><span class="lbl" data-i18n="drinkEspresso">Café expresso</span><span class="price">2,90€</span></li>
+            <li><span class="lbl" data-i18n="drinkJasmineTea">Thé au jasmin</span><span class="price">3,00€</span></li>
+            <li><span class="lbl" data-i18n="drinkGreenTea">Thé vert</span><span class="price">3,00€</span></li>
+            <li><span class="lbl" data-i18n="drinkMintTea">Thé vert à la menthe</span><span class="price">3,00€</span></li>
+            <li><span class="lbl" data-i18n="drinkLemonTea">Thé vert au citron</span><span class="price">3,00€</span></li>
+            <li><span class="lbl" data-i18n="drinkGingerTea">Thé vert au gingembre</span><span class="price">3,00€</span></li>
           </ul>
 
-          <h3 style="margin:10px 0 6px;color:#b8860b;">BIÈRES</h3>
-          <ul class="drinks" style="margin:0 0 12px 18px;line-height:1.5">
-            <li><span class="lbl">Bière Angkor (Cambodgienne)</span><span class="price">5,20€</span></li>
-            <li><span class="lbl">Bière Tsing Tao (Chinoise)</span><span class="price">4,90€</span></li>
-            <li><span class="lbl">Bière Singha (Thaïlandaise)</span><span class="price">4,90€</span></li>
-            <li><span class="lbl">Bière Saigon (Vietnamienne)</span><span class="price">4,90€</span></li>
+          <h3 data-i18n="drinksBieres" style="margin:10px 0 6px;color:#b8860b;">BIÈRES</h3>
+          <ul class="drinks">
+            <li><span class="lbl" data-i18n="beerAngkor">Bière Angkor (Cambodgienne)</span><span class="price">5,20€</span></li>
+            <li><span class="lbl" data-i18n="beerTsingTao">Bière Tsing Tao (Chinoise)</span><span class="price">4,90€</span></li>
+            <li><span class="lbl" data-i18n="beerSingha">Bière Singha (Thaïlandaise)</span><span class="price">4,90€</span></li>
+            <li><span class="lbl" data-i18n="beerSaigon">Bière Saigon (Vietnamienne)</span><span class="price">4,90€</span></li>
           </ul>
 
-          <h3 style="margin:10px 0 6px;color:#b8860b;">VINS EN PICHET</h3>
-          <ul class="drinks" style="margin:0 0 4px 18px;line-height:1.6">
-            <li><span class="lbl">Rouge</span><span class="price">(12 cl) 4,20€ · (25 cl) 7,20€ · (50 cl) 11,20€</span></li>
-            <li><span class="lbl">Rosé</span><span class="price">(12 cl) 4,20€ · (25 cl) 7,20€ · (50 cl) 11,20€</span></li>
-            <li><span class="lbl">Blanche</span><span class="price">(12 cl) 4,20€ · (25 cl) 7,20€ · (50 cl) 11,20€</span></li>
+          <h3 data-i18n="drinksVins" style="margin:10px 0 6px;color:#b8860b;">VINS EN PICHET</h3>
+          <ul class="drinks">
+            <li>
+              <span class="lbl" data-i18n="wineRed">Rouge</span>
+              <span class="price price-block"><span>(12 cl) 4,20€ · (25 cl) 7,20€</span><span>(50 cl) 11,20€</span></span>
+            </li>
+            <li>
+              <span class="lbl" data-i18n="wineRose">Rosé</span>
+              <span class="price price-block"><span>(12 cl) 4,20€ · (25 cl) 7,20€</span><span>(50 cl) 11,20€</span></span>
+            </li>
+            <li>
+              <span class="lbl" data-i18n="wineWhite">Blanc</span>
+              <span class="price price-block"><span>(12 cl) 4,20€ · (25 cl) 7,20€</span><span>(50 cl) 11,20€</span></span>
+            </li>
           </ul>
         </div>
       </div>
     </section>
+
 
 <section class="section" id="menus">
       <h2 data-i18n="sMenus">Menus</h2>
@@ -844,6 +864,27 @@ header{position:sticky;top:0;z-index:100}
         m21p10: 'Phở (soupe de bœuf)',
         m21p11: 'Soupe Kuyteav Phnom Penh',
         m21dList: 'Banane tapioca au lait de coco · Tarte au soja et œuf au lait de coco · Perles de coco · Nougats mous · Lychee au sirop · Gingembre confit · Boisson soft · Café ou thé',
+        drinksCanettes: 'CANETTES',
+        drinksExotiques: 'EXOTIQUES',
+        drinksChaudes: 'BOISSONS CHAUDES',
+        drinksBieres: 'BIÈRES',
+        drinksVins: 'VINS EN PICHET',
+        drinkLychee: 'Jus de lychées (25 cl)',
+        drinkCoconut: 'Jus de coco (25 cl)',
+        drinkMango: 'Jus de mangue (25 cl)',
+        drinkEspresso: 'Café expresso',
+        drinkJasmineTea: 'Thé au jasmin',
+        drinkGreenTea: 'Thé vert',
+        drinkMintTea: 'Thé vert à la menthe',
+        drinkLemonTea: 'Thé vert au citron',
+        drinkGingerTea: 'Thé vert au gingembre',
+        beerAngkor: 'Bière Angkor (Cambodgienne)',
+        beerTsingTao: 'Bière Tsing Tao (Chinoise)',
+        beerSingha: 'Bière Singha (Thaïlandaise)',
+        beerSaigon: 'Bière Saigon (Vietnamienne)',
+        wineRed: 'Rouge',
+        wineRose: 'Rosé',
+        wineWhite: 'Blanc',
       },
       en: {
         htmlLang: 'en',
