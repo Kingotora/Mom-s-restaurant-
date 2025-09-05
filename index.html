@@ -126,6 +126,14 @@ html{ scroll-padding-top: var(--header-h); }
   .hours-item{ grid-template-columns: 120px 1fr; }
 }
 
+
+  .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+  .gallery-item{position:relative;border-radius:16px;overflow:hidden;box-shadow:0 0 0 2px rgba(255,215,0,.15), 0 10px 22px rgba(0,0,0,.25)}
+  .gallery-item img{width:100%;height:220px;object-fit:cover;transition:transform .25s ease, box-shadow .25s ease, filter .25s ease}
+  .gallery-item:hover img{transform:scale(1.03);filter:saturate(1.1)}
+  .caption{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.65);color:var(--gold);font-weight:700;
+    font-size:15px;padding:6px 10px;text-align:center;font-family:"Playfair Display",serif;}
+
 </style>
 </head>
 <body>
@@ -184,12 +192,22 @@ html{ scroll-padding-top: var(--header-h); }
     <!-- Galerie -->
     <section id="galerie" class="gallery">
       <h3 data-i18n="galleryTitle">Quelques spécialités à découvrir</h3>
-      <div class="gallery-grid">
-        <img src="plat1.jpg" alt="Boeuf Loc Lac">
-        <img src="plat2.jpg" alt="Bo Bun">
-        <img src="plat3.jpg" alt="Boeuf sauté au saté">
-      </div>
-    </section>
+      
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="plat1.jpg" alt="Boeuf Loc Lac">
+      <div class="caption">Bœuf Loc Lac</div>
+    </div>
+    <div class="gallery-item">
+      <img src="plat2.jpg" alt="Bo Bun">
+      <div class="caption">Bo Bun</div>
+    </div>
+    <div class="gallery-item">
+      <img src="plat3.jpg" alt="Boeuf sauté au saté">
+      <div class="caption">Bœuf sauté au saté</div>
+    </div>
+  </div>
+</section>
 
     <!-- Avis -->
     <section id="avis" class="reviews">
