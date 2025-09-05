@@ -140,6 +140,12 @@ html{ scroll-padding-top: var(--header-h); }
   .banner{background-position:center 35%;}
 }
 
+
+/* Subtle parallax hint for desktop */
+@media (min-width: 641px){
+  .banner{ will-change: background-position; }
+}
+
 </style>
 </head>
 <body>
@@ -377,5 +383,28 @@ html{ scroll-padding-top: var(--header-h); }
     // Année footer
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
+<script>
+// Parallaxe douce (desktop uniquement, désactivée si "réduire les animations")
+(function(){
+  var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var isDesktop = window.matchMedia('(min-width: 641px)');
+  var banner = document.querySelector('.banner');
+  if(!banner || mq.matches || !isDesktop.matches) return;
+
+  function onScroll(){
+    // facteur doux: 0.15 → léger déplacement vertical
+    var y = Math.round(window.scrollY * 0.15);
+    banner.style.backgroundPosition = 'center calc(35% + ' + y + 'px)';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  // recalcule si on passe mobile<->desktop
+  isDesktop.addEventListener ? isDesktop.addEventListener('change', function(e){
+    if(!e.matches){ window.removeEventListener('scroll', onScroll); }
+    else{ window.addEventListener('scroll', onScroll, {passive:true}); }
+  }) : null;
+})();
+</script>
+
 </body>
 </html>
