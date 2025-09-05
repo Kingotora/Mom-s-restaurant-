@@ -173,6 +173,15 @@ html{ scroll-padding-top: var(--header-h); }
   }
 }
 
+
+/* === Desktop-only banner override (less zoom, better framing) === */
+@media (min-width: 1024px){
+  .banner{
+    background-size: 100% !important;   /* less zoom */
+    background-position: center 45% !important; /* recentered */
+  }
+}
+
 </style>
 </head>
 <body>
