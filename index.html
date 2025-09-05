@@ -146,6 +146,33 @@ html{ scroll-padding-top: var(--header-h); }
   .banner{ will-change: background-position; }
 }
 
+
+/* === Desktop banner cadrage affiné === */
+:root{
+  --banner-pos-desktop-sm: 44%;
+  --banner-zoom-desktop-sm: 130%;
+  --banner-pos-desktop-lg: 46%;
+  --banner-zoom-desktop-lg: 120%;
+}
+
+/* tablettes/desktop petits écrans */
+@media (min-width: 641px) and (max-width: 1023px){
+  .banner{
+    height: clamp(340px, 48vh, 520px);
+    background-size: var(--banner-zoom-desktop-sm) auto;
+    background-position: center var(--banner-pos-desktop-sm);
+  }
+}
+
+/* desktop >= 1024px */
+@media (min-width: 1024px){
+  .banner{
+    height: clamp(360px, 52vh, 580px);
+    background-size: var(--banner-zoom-desktop-lg) auto;
+    background-position: center var(--banner-pos-desktop-lg);
+  }
+}
+
 </style>
 </head>
 <body>
@@ -384,27 +411,41 @@ html{ scroll-padding-top: var(--header-h); }
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
+
 <script>
-// Parallaxe douce (desktop uniquement, désactivée si "réduire les animations")
+// Parallaxe douce (desktop uniquement) — respecte le cadrage CSS de base
 (function(){
   var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
   var isDesktop = window.matchMedia('(min-width: 641px)');
   var banner = document.querySelector('.banner');
   if(!banner || mq.matches || !isDesktop.matches) return;
 
+  function getBase(){
+    var bp = getComputedStyle(banner).backgroundPosition.split(' ');
+    var y = bp[1] || '50%';
+    return { isPct: /%$/.test(y), val: parseFloat(y) };
+  }
+  var base = getBase();
+
   function onScroll(){
-    // facteur doux: 0.15 → léger déplacement vertical
-    var y = Math.round(window.scrollY * 0.15);
-    banner.style.backgroundPosition = 'center calc(35% + ' + y + 'px)';
+    var ypx = Math.round(window.scrollY * 0.12); // intensité douce
+    if(base.isPct){
+      banner.style.backgroundPosition = 'center calc(' + base.val + '% + ' + ypx + 'px)';
+    }else{
+      banner.style.backgroundPosition = 'center calc(' + base.val + 'px + ' + ypx + 'px)';
+    }
   }
   window.addEventListener('scroll', onScroll, {passive:true});
-  // recalcule si on passe mobile<->desktop
-  isDesktop.addEventListener ? isDesktop.addEventListener('change', function(e){
-    if(!e.matches){ window.removeEventListener('scroll', onScroll); }
-    else{ window.addEventListener('scroll', onScroll, {passive:true}); }
-  }) : null;
+  // Recalcule le point de base si la MQ change (redimensionnement)
+  if(isDesktop.addEventListener){
+    isDesktop.addEventListener('change', function(e){
+      if(e.matches){ base = getBase(); window.addEventListener('scroll', onScroll, {passive:true}); }
+      else{ window.removeEventListener('scroll', onScroll); }
+    });
+  }
 })();
 </script>
+
 
 </body>
 </html>
