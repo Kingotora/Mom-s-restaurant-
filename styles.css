@@ -150,8 +150,7 @@ header {
 /* Navigation Links (Desktop) */
 .top-nav {
     display: none;
-    gap: 5px;
-    flex-wrap: wrap;
+    align-items: center;
 }
 
 @media (min-width: 900px) {
@@ -160,29 +159,67 @@ header {
     }
 }
 
-.top-nav .btn {
+/* Desktop Categories Dropdown */
+.cat-dropdown {
+    position: relative;
+    margin-left: 20px;
+}
+
+.cat-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
     background: transparent;
-    border: 1px solid transparent;
-    color: var(--ink);
-    padding: 8px 14px;
-    font-weight: 500;
-    font-size: 15px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: none;
-}
-
-.top-nav .btn:hover {
-    border-color: var(--gold);
+    border: 1px solid var(--gold);
     color: var(--gold);
-    transform: translateY(-2px);
-    background: rgba(212, 175, 55, 0.1);
+    border-radius: 999px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
 }
 
-.top-nav .btn.active {
+.cat-btn:hover,
+.cat-btn.active {
     background: var(--gold);
     color: #111;
-    font-weight: 700;
+}
+
+.cat-menu {
+    position: absolute;
+    top: 120%;
+    right: 0;
+    width: 260px;
+    background: #111;
+    border: 1px solid var(--gold);
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.2s ease;
+    z-index: 200;
+}
+
+.cat-dropdown:hover .cat-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.cat-menu a {
+    display: block;
+    padding: 10px 16px;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 8px;
+    margin-bottom: 2px;
+}
+
+.cat-menu a:hover {
+    background: rgba(212, 175, 55, 0.15);
+    color: var(--gold);
 }
 
 /* Mobile Hamburger */
@@ -299,26 +336,30 @@ header {
 }
 
 /* === HERO SECTION (Home) === */
+/* Banner with Parallax Fix */
 .banner {
     position: relative;
     width: 100%;
-    height: clamp(300px, 50vh, 550px);
-    background: #000 url('photos/banniere.jpg') center 40% / cover no-repeat;
+    height: 50vh;
+    min-height: 400px;
+    background-image: url('photos/banniere.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    /* Mobile default */
     background-attachment: scroll;
-    /* Default mobile */
 }
 
 @media (min-width: 900px) {
     .banner {
-        /* Fix for desktop: less zoomed, better positioning */
-        background-position: center 30%;
         height: 60vh;
+        /* Desktop Parallax */
         background-attachment: fixed;
-        /* Parallax feel */
+        background-position: center -50px;
     }
 }
 

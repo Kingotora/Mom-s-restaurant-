@@ -25,23 +25,35 @@
       </div>
 
       <button id="menuBtn" class="hamburger" aria-label="Menu">☰</button>
-      <button id="langToggle" class="btn" type="button" style="margin-left:auto; order: 2;">EN</button>
 
-      <!-- Desktop Nav -->
+      <!-- Desktop Nav & Categories Dropdown -->
       <nav class="top-nav">
         <a class="btn" href="index.html" data-i18n="navHome">Accueil</a>
-        <a class="btn" href="#entrees" data-i18n="navEntrees">Entrées</a>
-        <a class="btn" href="#specialites" data-i18n="navSpec">Spécialités</a>
-        <a class="btn" href="#bobuns" data-i18n="navBobuns">Bo-Buns</a>
-        <a class="btn" href="#salades" data-i18n="navSalades">Salades</a>
-        <a class="btn" href="#plats" data-i18n="navPlats">Plats</a>
-        <a class="btn" href="#grillades" data-i18n="navGrillades">Grillades</a>
-        <a class="btn" href="#soupes" data-i18n="navSoupes">Soupes</a>
-        <a class="btn" href="#desserts" data-i18n="navDesserts">Desserts</a>
-        <a class="btn" href="#menus" data-i18n="navMenus">Menus</a>
+
+        <!-- Categories Dropdown Button (Desktop Only) -->
+        <div class="cat-dropdown">
+          <button class="cat-btn">
+            <span data-i18n="menuTitle">LA CARTE</span>
+            <span style="font-size:10px;">▼</span>
+          </button>
+          <div class="cat-menu">
+            <a href="#entrees" data-i18n="navEntrees">Entrées</a>
+            <a href="#specialites" data-i18n="navSpec">Spécialités</a>
+            <a href="#bobuns" data-i18n="navBobuns">Bo-Buns</a>
+            <a href="#salades" data-i18n="navSalades">Salades</a>
+            <a href="#plats" data-i18n="navPlats">Plats sautés</a>
+            <a href="#grillades" data-i18n="navGrillades">Grillades</a>
+            <a href="#soupes" data-i18n="navSoupes">Soupes</a>
+            <a href="#desserts" data-i18n="navDesserts">Desserts</a>
+            <a href="#boissons" data-i18n="navBoissons">Boissons</a>
+            <a href="#menus" data-i18n="navMenus">Menus du Soir</a>
+          </div>
+        </div>
       </nav>
 
-      <!-- Mobile Nav -->
+      <button id="langToggle" class="btn" type="button" style="margin-left:auto; order: 2;">EN</button>
+
+      <!-- Mobile Nav Content -->
       <div id="mobileNav" class="dropdown">
         <a href="index.html" data-i18n="navHome">Accueil</a>
         <a href="#entrees" data-i18n="navEntrees">Entrées</a>
@@ -53,7 +65,7 @@
         <a href="#soupes" data-i18n="navSoupes">Soupes</a>
         <a href="#desserts" data-i18n="navDesserts">Desserts</a>
         <a href="#boissons" data-i18n="navBoissons">Boissons</a>
-        <a href="#menus" data-i18n="navMenus">Menus</a>
+        <a href="#menus" data-i18n="navMenus">Menus du Soir</a>
       </div>
     </div>
   </header>
@@ -107,10 +119,31 @@
           </div>
         </article>
         <article class="card">
+          <img src="photos/menu-entree-7.jpg" alt="Bouchées crevettes" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Bouchées aux crevettes (3p)</span><span class="price">4,50€</span></h3>
+            <p class="desc">Steamed Shrimp Bites</p>
+          </div>
+        </article>
+        <article class="card">
           <img src="photos/menu-entree-8.jpg" alt="Raviolis vapeur" loading="lazy">
           <div class="card-body">
             <h3 class="card-title"><span>Raviolis crevettes vapeur (3p)</span><span class="price">4,50€</span></h3>
             <p class="desc">Steamed Shrimp Dumplings</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="photos/menu-entree-9.jpg" alt="Rouleau de printemps" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Rouleau de printemps (1p)</span><span class="price">4,20€</span></h3>
+            <p class="desc">Fresh shrimp / beef / chicken spring roll</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="photos/menu-entree-10.jpg" alt="Saucisse citronnelle" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Saucisse à la citronnelle (1p)</span><span class="price">4,50€</span></h3>
+            <p class="desc">Lemongrass sausage</p>
           </div>
         </article>
       </div>
@@ -148,6 +181,13 @@
             <p class="desc">Khmer Beef Loc-Lac (Egg +1€)</p>
           </div>
         </article>
+        <article class="card">
+          <img src="photos/menu-special-5.jpg" alt="Riz jaune" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Riz jaune sauté aux œufs</span><span class="price">10,50€</span></h3>
+            <p class="desc">Egg fried rice served with vegetables</p>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -177,10 +217,38 @@
           </div>
         </article>
         <article class="card">
+          <img src="photos/menu-bobun-4.jpg" alt="Bo-Bun Crevettes" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Bo-Bun Crevettes</span><span class="price">13,50€</span></h3>
+            <p class="desc">Shrimp Bo-bun with shrimp egg rolls</p>
+          </div>
+        </article>
+        <article class="card">
           <img src="photos/menu-bobun-5.jpg" alt="Bo-Bun Royal" loading="lazy">
           <div class="card-body">
-            <h3 class="card-title"><span>Bo-Bun Royal</span><span class="price">13,50€</span></h3>
+            <h3 class="card-title"><span>Bo-Bun Royal (Poulet/Bœuf)</span><span class="price">13,50€</span></h3>
             <p class="desc">With lemongrass sausage and egg rolls</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SALADES -->
+    <section class="section reveal" id="salades">
+      <h2 data-i18n="sSalades">Salades</h2>
+      <div class="grid">
+        <article class="card">
+          <img src="photos/menu-salade-1.jpg" alt="Salade mixte" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Salade mixte (poulet/crevette)</span><span class="price">8,50€</span></h3>
+            <p class="desc">Salad with chicken and shrimp</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="photos/menu-salade-2.jpg" alt="Salade Royale" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Salade Royale</span><span class="price">10,50€</span></h3>
+            <p class="desc">With lemongrass sausage, chicken and shrimp</p>
           </div>
         </article>
       </div>
@@ -194,7 +262,28 @@
           <img src="photos/menu-saute-1.jpg" alt="Bœuf gingembre" loading="lazy">
           <div class="card-body">
             <h3 class="card-title"><span>Bœuf gingembre</span><span class="price">11,50€</span></h3>
-            <p class="desc">Served with rice and vegetables</p>
+            <p class="desc">Ginger beef (rice included)</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="photos/menu-saute-2.jpg" alt="Bœuf saté" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Bœuf saté</span><span class="price">11,50€</span></h3>
+            <p class="desc">Satay beef (rice included)</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="photos/menu-saute-3.jpg" alt="Légumes sautés" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Légumes sautés</span><span class="price">10,50€</span></h3>
+            <p class="desc">Stir fried vegetables (rice included)</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="photos/menu-saute-4.jpg" alt="Crevettes saté" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Crevettes sautées au saté</span><span class="price">13,50€</span></h3>
+            <p class="desc">Satay shrimp (rice included)</p>
           </div>
         </article>
         <article class="card">
@@ -202,6 +291,153 @@
           <div class="card-body">
             <h3 class="card-title"><span>Poulet citronnelle</span><span class="price">11,50€</span></h3>
             <p class="desc">Lemongrass Chicken</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="photos/menu-saute-6.jpg" alt="Poulet curry" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Poulet au curry</span><span class="price">11,50€</span></h3>
+            <p class="desc">Curry Chicken</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- GRILLADES -->
+    <section class="section reveal" id="grillades">
+      <h2 data-i18n="sGrillades">Grillades</h2>
+      <div class="grid">
+        <article class="card">
+          <img src="photos/menu-grill-1.jpg" alt="Porc laqué" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Porc laqué grillé</span><span class="price">11,50€</span></h3>
+            <p class="desc">Lacquered bbq pork</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="photos/menu-grill-2.jpg" alt="Travers de porc" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Travers de porc grillé</span><span class="price">11,50€</span></h3>
+            <p class="desc">Grilled pork ribs</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="photos/menu-grill-3.jpg" alt="Cuisse poulet" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Cuisse de poulet grillé</span><span class="price">11,50€</span></h3>
+            <p class="desc">Lemongrass grilled chicken</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="photos/menu-grill-4.jpg" alt="Saucisses" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>2 Saucisses citronnelle</span><span class="price">11,50€</span></h3>
+            <p class="desc">2 Lemongrass sausages</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="photos/menu-grill-5.jpg" alt="Canard laqué" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Canard laqué</span><span class="price">13,50€</span></h3>
+            <p class="desc">Peking duck</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SOUPES -->
+    <section class="section reveal" id="soupes">
+      <h2 data-i18n="sSoupes">Soupes</h2>
+      <div class="grid">
+        <article class="card">
+          <img src="photos/menu-soup-1.jpg" alt="Kuy teav" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Kuy teav Phnom Penh</span><span class="price">13,50€</span></h3>
+            <p class="desc">Rice noodles soup with chicken, shrimp, fish balls</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="photos/menu-soup-2.jpg" alt="Pho" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Phò (soupe de bœuf)</span><span class="price">13,50€</span></h3>
+            <p class="desc">Beef soup</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="photos/menu-soup-3.jpg" alt="Soupe canard" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Soupe nouilles canard</span><span class="price">13,50€</span></h3>
+            <p class="desc">Peking Duck Noodle Soup</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="photos/menu-soup-4.jpg" alt="Soupe porc" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Soupe nouilles porc</span><span class="price">12,50€</span></h3>
+            <p class="desc">Lacquered pork Noodle Soup</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="photos/menu-soup-6.jpg" alt="Soupe raviolis" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Soupe raviolis crevettes</span><span class="price">12,50€</span></h3>
+            <p class="desc">Shrimp Dumplings Noodle Soup</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- DESSERTS -->
+    <section class="section reveal" id="desserts">
+      <h2 data-i18n="sDesserts">Desserts</h2>
+      <div class="grid">
+        <article class="card">
+          <img src="photos/dessert-1.jpg" alt="Banane tapioca" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Banane tapioca</span><span class="price">4,50€</span></h3>
+            <p class="desc">With coconut milk</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="photos/dessert-2.jpg" alt="Perles coco" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Perles de coco</span><span class="price">3,90€</span></h3>
+            <p class="desc">With coconut milk</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="photos/dessert-3.jpg" alt="Lychee" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Lychee au sirop</span><span class="price">3,90€</span></h3>
+            <p class="desc">Lychee with syrup</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="photos/dessert-4.jpg" alt="Tarte soja" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Tarte soja et œufs</span><span class="price">4,50€</span></h3>
+            <p class="desc">Soy and egg tart</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="photos/dessert-5.jpg" alt="Gingembre" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Gingembre confit</span><span class="price">3,90€</span></h3>
+            <p class="desc">Candied ginger</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="photos/dessert-6.jpg" alt="Nougats" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>Nougats mous</span><span class="price">3,90€</span></h3>
+            <p class="desc">Soft nougat</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="photos/dessert-7.jpg" alt="Glace" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title"><span>2 boules de glace</span><span class="price">3,90€</span></h3>
+            <p class="desc">Ice cream (Vanilla/Choco)</p>
           </div>
         </article>
       </div>
@@ -212,25 +448,33 @@
       <h2 data-i18n="sBoissons">Boissons</h2>
       <div class="card" style="background:#f9f9f9;">
         <div class="card-body">
-          <h4 data-i18n="drinksCanettes">CANETTES</h4>
+          <h4 data-i18n="drinksCanettes">CANETTES (3,50€)</h4>
           <ul class="drinks">
-            <li><span class="lbl">Coca‑Cola / Zero</span><span class="price">3,50€</span></li>
-            <li><span class="lbl">Ice Tea / Fanta / Orangina</span><span class="price">3,50€</span></li>
-            <li><span class="lbl">Evian (50cl)</span><span class="price">3,50€</span></li>
+            <li><span class="lbl">Coca‑Cola / Zero · Perrier · Ice Tea · Fanta · Orangina · Evian</span></li>
           </ul>
 
-          <h4 data-i18n="drinksExotiques" style="margin-top:20px">JUS EXOTIQUES</h4>
+          <h4 data-i18n="drinksExotiques" style="margin-top:20px">JUS EXOTIQUES (3,50€)</h4>
           <ul class="drinks">
-            <li><span class="lbl" data-i18n="drinkCoconut">Jus de coco</span><span class="price">3,50€</span></li>
-            <li><span class="lbl" data-i18n="drinkLychee">Jus de lychee</span><span class="price">3,50€</span></li>
-            <li><span class="lbl" data-i18n="drinkMango">Jus de mangue</span><span class="price">3,50€</span></li>
+            <li><span class="lbl">Jus de coco · Jus de lychee · Jus de mangue</span></li>
+          </ul>
+
+          <h4 data-i18n="drinksChaudes" style="margin-top:20px">BOISSONS CHAUDES</h4>
+          <ul class="drinks">
+            <li><span class="lbl">Café expresso</span><span class="price">2,90€</span></li>
+            <li><span class="lbl">Thés (Jasmin, Vert, Menthe, Citron, Gingembre)</span><span class="price">3,00€</span>
+            </li>
           </ul>
 
           <h4 data-i18n="drinksBieres" style="margin-top:20px">BIÈRES</h4>
           <ul class="drinks">
-            <li><span class="lbl" data-i18n="beerAngkor">Bière Angkor</span><span class="price">5,20€</span></li>
-            <li><span class="lbl" data-i18n="beerTsingTao">Bière Tsing Tao</span><span class="price">4,90€</span></li>
-            <li><span class="lbl" data-i18n="beerSaigon">Bière Saigon</span><span class="price">4,90€</span></li>
+            <li><span class="lbl" data-i18n="beerAngkor">Bière Angkor / Tsing Tao / Saigon / Singha</span><span
+                class="price">env. 5€</span></li>
+          </ul>
+
+          <h4 data-i18n="drinksVins" style="margin-top:20px">VINS EN PICHET</h4>
+          <ul class="drinks">
+            <li><span class="lbl">Rouge / Rosé / Blanc</span><span class="price">(12cl) 4,20€ · (25cl) 7,20€ · (50cl)
+                11,20€</span></li>
           </ul>
         </div>
       </div>
@@ -248,15 +492,16 @@
               <span class="badge-price">17€</span>
             </div>
 
-            <h4 style="font-size:14px; opacity:0.7;" data-i18n="entree">ENTRÉE</h4>
+            <h4 style="font-size:14px; opacity:0.7;" data-i18n="entree">ENTRÉE (AU CHOIX)</h4>
             <ul class="menu-list">
-              <li>Nems (3p), Samoussa (1p)</li>
+              <li>Nems (3p) · Samoussa (1p)</li>
             </ul>
 
-            <h4 style="font-size:14px; opacity:0.7; margin-top:10px;" data-i18n="plat">PLAT</h4>
+            <h4 style="font-size:14px; opacity:0.7; margin-top:10px;" data-i18n="plat">PLAT (AU CHOIX)</h4>
             <ul class="menu-list">
               <li>Bo-Bun (Bœuf/Poulet/Végé)</li>
-              <li>Soupe de nouilles légumes</li>
+              <li>Salade Mixte · Légumes sautés</li>
+              <li>Soupe nouilles légumes</li>
             </ul>
 
             <h4 style="font-size:14px; opacity:0.7; margin-top:10px;" data-i18n="dessert">DESSERT</h4>
@@ -271,10 +516,43 @@
               <h3 style="margin:0;" data-i18n="menu19Title">Menu 19€</h3>
               <span class="badge-price">19€</span>
             </div>
+            <h4 style="font-size:14px; opacity:0.7;" data-i18n="entree">ENTRÉE</h4>
             <ul class="menu-list">
-              <li><strong>Entrée :</strong> Nems, Raviolis, Samoussa...</li>
-              <li><strong>Plat :</strong> Bo-Bun, Poulet Citronnelle, Bœuf Saté, Porc Laqué...</li>
-              <li><strong>Dessert :</strong> Perles de coco, Nougats, Café...</li>
+              <li>Nems · Raviolis · Samoussa · Bouchées · Saucisse · Brioche</li>
+            </ul>
+            <h4 style="font-size:14px; opacity:0.7; margin-top:10px;" data-i18n="plat">PLAT</h4>
+            <ul class="menu-list">
+              <li>Bo-Bun · Salade Royale · Poulet Citron/Curry</li>
+              <li>Bœuf Saté/Gingembre · Cuisse Poulet · Travers Porc</li>
+              <li>Porc Laqué · Soupes (Canard/Phò/Kuyteav)</li>
+            </ul>
+            <h4 style="font-size:14px; opacity:0.7; margin-top:10px;" data-i18n="dessert">DESSERT</h4>
+            <ul class="menu-list">
+              <li>Perles coco · Nougats · Lychee · Gingembre · Café</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Menu 21€ -->
+        <article class="card menu-card" style="border: 2px solid var(--gold);">
+          <div class="card-body">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+              <h3 style="margin:0;" data-i18n="menu21Title">Menu 21€</h3>
+              <span class="badge-price">21€</span>
+            </div>
+            <h4 style="font-size:14px; opacity:0.7;" data-i18n="entree">ENTRÉE</h4>
+            <ul class="menu-list">
+              <li>Nems · Samoussa · Raviolis · Saucisse · Brioche · Banh-cuan</li>
+            </ul>
+            <h4 style="font-size:14px; opacity:0.7; margin-top:10px;" data-i18n="plat">PLAT</h4>
+            <ul class="menu-list">
+              <li>Mi Kola · Bo-Bun Crevettes · Bo-Bun Royal</li>
+              <li>Kouyteav Kat · Crevettes Saté · Bœuf Loc-Lac</li>
+              <li>Poisson Hamok · Canard Laqué · Soupes</li>
+            </ul>
+            <h4 style="font-size:14px; opacity:0.7; margin-top:10px;" data-i18n="dessert">DESSERT</h4>
+            <ul class="menu-list">
+              <li>Large choix desserts · Café</li>
             </ul>
           </div>
         </article>
