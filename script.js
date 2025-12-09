@@ -7,6 +7,12 @@ const i18n = {
     fr: {
         htmlLang: 'fr',
         // HEADER
+        // Filters
+        filterAll: 'Tout',
+        filterVeggie: 'Végétarien 🌱',
+        filterGF: 'Sans Gluten 🌾',
+        filterSpicy: 'Épicé 🌶️',
+
         navHome: 'Accueil',
         navEntrees: 'Entrées',
         navSpec: 'Spécialités',
@@ -34,6 +40,13 @@ const i18n = {
         hoursTitle: "Horaires d'ouverture",
         hoursNote: 'Les horaires peuvent varier les jours fériés.',
         reviewsTitle: 'Avis des clients',
+        // Reviews (Added missing keys)
+        rev1: '« Une excellente découverte ! Les plats sont authentiques et savoureux. »',
+        rev2: '« Absolument délicieux, les serveuses sont adorables, le service est rapide et les plats frais ! »',
+        rev3: '« Je recommande à 100% ce restaurant ! Tout était parfait : nourriture traditionnelle raffinée. »',
+        rev4: '« Une très belle découverte ! Le poisson amok est incroyable. L\'ambiance est calme. »',
+        rev5: '« Excellent rapport qualité prix. Les nems sont croustillants et faits maison. »',
+
         galleryTitle: 'Quelques spécialités',
         footerRights: 'Tous droits réservés.',
 
@@ -89,24 +102,30 @@ const i18n = {
             ['Mercredi', '19:00–23:00'],
             ['Jeudi', '12:00–15:00, 19:00–23:00'],
             ['Vendredi', '12:00–15:00, 19:00–23:00'],
-            ['Samedi', '12:00–15:00, 19:00–23:00'],
-            ['Dimanche', 'Fermé']
+            ['Samedi', '12:00–15:00, 19:00–23:00']
         ]
     },
     en: {
         htmlLang: 'en',
         // HEADER
+        // Filters
+        filterAll: 'All',
+        filterVeggie: 'Vegetarian 🌱',
+        filterGF: 'Gluten Free 🌾',
+        filterSpicy: 'Spicy 🌶️',
+
         navHome: 'Home',
         navEntrees: 'Starters',
         navSpec: 'Specialties',
         navBobuns: 'Bo-Buns',
         navSalades: 'Salads',
-        navPlats: 'Stir-fry',
-        navGrillades: 'Grill',
+        navPlats: 'Stir-fried',
+        navGrillades: 'Grills',
         navSoupes: 'Soups',
         navDesserts: 'Desserts',
         navBoissons: 'Drinks',
-        navMenus: 'Set Menus',
+        navMenus: 'Menus',
+        menuDropdownTitle: 'THE MENU',
         backHome: "← Back to Home",
 
         // HOME
@@ -126,38 +145,37 @@ const i18n = {
         galleryTitle: 'Specialties',
         footerRights: 'All rights reserved.',
 
+        // Reviews
+        rev1: '"An excellent discovery! The dishes are authentic and tasty."',
+        rev2: '"Lovely service and the Bo-Bun is to die for. I recommend."',
+        rev3: '"The best Cambodian restaurant in the area. Very fair prices."',
+        rev4: '"Very good welcome, the egg rolls are homemade and you can taste it!"',
+        rev5: '"Very warm family restaurant. You feel good there."',
+
         // TITLES SECTIONS
         sEntrees: 'Starters',
         sSpec: 'Chef\'s Specialties',
         sBobuns: 'Bo-Buns',
         sSalades: 'Salads',
         sSaute: 'Stir-fried Dishes',
-        sGrillades: 'Grilled Dishes',
+        sGrillades: 'Grills',
         sSoupes: 'Soups',
         sDesserts: 'Desserts',
         sBoissons: 'Drinks',
-        sMenus: 'Dinner Menus',
+        sMenus: 'Set Menus',
 
         // DRINKS
-        drinksCanettes: 'CANS',
-        drinksExotiques: 'EXOTIC JUICES',
+        drinksCanettes: 'CANS (€3.50)',
+        drinksExotiques: 'EXOTIC JUICES (€3.50)',
         drinksChaudes: 'HOT DRINKS',
         drinksBieres: 'BEERS',
         drinksVins: 'PITCHER WINE',
 
-        drinkLychee: "Lychee juice",
-        drinkCoconut: "Coconut juice",
-        drinkMango: "Mango juice",
-        drinkEspresso: "Espresso",
-        drinkJasmineTea: "Jasmine tea",
-        drinkGreenTea: "Green tea",
-        drinkMintTea: "Mint tea",
-        drinkLemonTea: "Lemon tea",
-        drinkGingerTea: "Ginger tea",
-        beerAngkor: "Angkor Beer (Cambodian)",
-        beerTsingTao: "Tsing Tao Beer (Chinese)",
-        beerSingha: "Singha Beer (Thai)",
-        beerSaigon: "Saigon Beer (Vietnamese)",
+        drinkLychee: 'Lychee juice (25 cl)',
+        drinkCoconut: 'Coconut juice (25 cl)',
+        drinkMango: 'Mango juice (25 cl)',
+        drinkEspresso: 'Espresso',
+        beerAngkor: 'Angkor / Tsing Tao / Saigon / Singha Beer',
         wineRed: "Red",
         wineRose: "Rosé",
         wineWhite: "White",
@@ -188,12 +206,43 @@ const i18n = {
 document.addEventListener('DOMContentLoaded', () => {
     initLanguage();
     initMobileMenu();
-    initSmoothScroll();
     initScrollAnimations();
     initLightbox();
     initFilters();
-    initReservation();
+    initFloatingReviews();
 });
+
+function initFloatingReviews() {
+    const el = document.getElementById('floating-text');
+    if (!el) return;
+
+    // Use specific keys that match the i18n object
+    const reviews = ["rev1", "rev2", "rev3", "rev4", "rev5"];
+    let idx = 0;
+
+    const updateReview = () => {
+        const lang = localStorage.getItem(STORAGE_KEY_LANG) || 'fr';
+        // Ensure i18n object exists and has keys
+        if (!i18n[lang]) return;
+
+        const key = reviews[idx];
+        const text = i18n[lang][key];
+
+        if (text) {
+            // Fade out/in
+            el.style.opacity = 0;
+            setTimeout(() => {
+                el.textContent = text;
+                el.style.opacity = 1;
+            }, 300);
+        }
+
+        idx = (idx + 1) % reviews.length;
+    };
+
+    updateReview(); // Initial
+    setInterval(updateReview, 5000); // Loop
+}
 
 function initScrollAnimations() {
     const observer = new IntersectionObserver((entries) => {
@@ -242,54 +291,59 @@ function initFilters() {
 
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Active State
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
             const filter = btn.getAttribute('data-filter');
 
-            document.querySelectorAll('.grid article').forEach(card => {
-                if (filter === 'all') {
-                    card.style.display = '';
-                } else {
-                    const tags = card.getAttribute('data-tags');
-                    if (tags && tags.includes(filter)) {
-                        card.style.display = '';
-                    } else {
-                        card.style.display = 'none';
-                    }
+            // Handle "All" Logic
+            if (filter === 'all') {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            } else {
+                // Remove "active" from 'all' if another filter is clicked
+                const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
+                if (allBtn) allBtn.classList.remove('active');
+
+                // Toggle click
+                btn.classList.toggle('active');
+
+                // If no filters left active, re-activate "All"
+                const activeBtns = document.querySelectorAll('.filter-btn.active');
+                if (activeBtns.length === 0 && allBtn) {
+                    allBtn.classList.add('active');
                 }
-            });
+            }
+
+            // Apply Filters
+            applyFilters();
         });
     });
 }
 
-function initReservation() {
-    const form = document.getElementById('reservationForm');
-    if (!form) return;
+function applyFilters() {
+    const activeBtns = Array.from(document.querySelectorAll('.filter-btn.active'));
+    // Extract active filters (excluding 'all')
+    const filters = activeBtns
+        .map(b => b.getAttribute('data-filter'))
+        .filter(f => f !== 'all');
 
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
+    document.querySelectorAll('.grid article').forEach(card => {
+        if (filters.length === 0) {
+            // Show all if no specific filters
+            card.style.display = '';
+            card.classList.add('reveal', 'active'); // Ensure animation state
+        } else {
+            const tags = (card.getAttribute('data-tags') || '').split(',');
+            // Check if card has ALL selected filters
+            const isMatch = filters.every(f => tags.includes(f));
 
-        // Mock Send - User needs to add keys
-        const btn = form.querySelector('button[type="submit"]');
-        const originalText = btn.textContent;
-
-        btn.textContent = 'Envoi en cours...';
-        btn.disabled = true;
-
-        // Simulate API call to EmailJS
-        // emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
-        setTimeout(() => {
-            alert('Demande de réservation envoyée ! (Simulation)');
-            form.reset();
-            btn.textContent = originalText;
-            btn.disabled = false;
-        }, 1500);
+            if (isMatch) {
+                card.style.display = '';
+                card.classList.add('reveal', 'active');
+            } else {
+                card.style.display = 'none';
+            }
+        }
     });
 }
-
-// Obsolete Parallax removed since we use <img> tag now
 
 function initLanguage() {
     const saved = localStorage.getItem(STORAGE_KEY_LANG) || DEFAULT_LANG;

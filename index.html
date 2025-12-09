@@ -113,26 +113,6 @@
                             style="color:var(--gold)">06 24 15 64 08</a></li>
                 </ul>
 
-                <!-- Reservation Form -->
-                <form id="reservationForm" class="reservation-form">
-                    <h4 style="margin-top:0; color:var(--gold-ink)">Réserver une table</h4>
-                    <div class="form-group">
-                        <input type="text" placeholder="Nom" required>
-                    </div>
-                    <div class="form-group" style="display:flex; gap:10px;">
-                        <input type="date" required>
-                        <input type="time" required>
-                    </div>
-                    <div class="form-group" style="display:flex; gap:10px;">
-                        <input type="tel" placeholder="Téléphone" required>
-                        <input type="number" placeholder="Pers." min="1" max="10" style="width:80px" required>
-                    </div>
-                    <button type="submit" class="btn-primary" style="width:100%; font-size:14px;">Envoyer la
-                        demande</button>
-                    <small style="display:block; margin-top:8px; font-size:12px; color:#666; font-style:italic;">* Ceci
-                        est une demande, confirmation par SMS/Appel.</small>
-                </form>
-
                 <h4 data-i18n="hoursTitle" style="margin-top:20px;">Horaires d'ouverture</h4>
                 <ul id="hoursList">
                     <!-- Javascript will populate this -->
@@ -166,14 +146,12 @@
             <div class="text-center">
                 <h2 data-i18n="reviewsTitle">Avis des clients</h2>
             </div>
-            <div class="review-list">
-
+            <div class="review-grid">
                 <!-- Review 1 -->
                 <article class="review reveal delay-100">
-                    <p>« Ici vous trouverez le meilleur loc lac de Paris, j'ai rarement mangé une viande de bœuf aussi
-                        tendre et aussi bien marinée... »</p>
+                    <p data-i18n="rev1">« Une excellente découverte ! Les plats sont authentiques et savoureux. »</p>
                     <div style="margin-top:10px; font-weight:600; font-size: 0.9rem;">
-                        <span class="stars">★★★★★</span> Gulay Dundar · <a href="https://goo.gl/maps/example1"
+                        <span class="stars">★★★★★</span> Gulay D. · <a href="https://goo.gl/maps/example1"
                             target="_blank" style="color:var(--gold); text-decoration:underline;">Voir sur Google
                             Maps</a>
                     </div>
@@ -181,8 +159,8 @@
 
                 <!-- Review 2 -->
                 <article class="review reveal delay-200">
-                    <p>« Absolument délicieux, les serveuses sont adorables, le service est rapide et les plats frais et
-                        vraiment savoureux ! »</p>
+                    <p data-i18n="rev2">« Absolument délicieux, les serveuses sont adorables, le service est rapide et
+                        les plats frais ! »</p>
                     <div style="margin-top:10px; font-weight:600; font-size: 0.9rem;">
                         <span class="stars">★★★★★</span> Petit Lu · <a href="https://goo.gl/maps/example2"
                             target="_blank" style="color:var(--gold); text-decoration:underline;">Voir sur Google
@@ -192,8 +170,8 @@
 
                 <!-- Review 3 -->
                 <article class="review reveal delay-300">
-                    <p>« Je recommande à 100% ce restaurant ! Tout était parfait : nourriture traditionnelle raffinée,
-                        portions copieuses. »</p>
+                    <p data-i18n="rev3">« Je recommande à 100% ce restaurant ! Tout était parfait : nourriture
+                        traditionnelle raffinée. »</p>
                     <div style="margin-top:10px; font-weight:600; font-size: 0.9rem;">
                         <span class="stars">★★★★★</span> Rachel M. · <a href="https://goo.gl/maps/example3"
                             target="_blank" style="color:var(--gold); text-decoration:underline;">Voir sur Google
@@ -203,8 +181,8 @@
 
                 <!-- Review 4 -->
                 <article class="review reveal delay-100">
-                    <p>« Une très belle découverte ! Le poisson amok est incroyable. L'ambiance est calme et le
-                        personnel très accueillant. »</p>
+                    <p data-i18n="rev4">« Une très belle découverte ! Le poisson amok est incroyable. L'ambiance est
+                        calme. »</p>
                     <div style="margin-top:10px; font-weight:600; font-size: 0.9rem;">
                         <span class="stars">★★★★★</span> Thomas B. · <a href="https://goo.gl/maps/example4"
                             target="_blank" style="color:var(--gold); text-decoration:underline;">Voir sur Google
@@ -214,15 +192,14 @@
 
                 <!-- Review 5 -->
                 <article class="review reveal delay-200">
-                    <p>« Excellent rapport qualité prix. Les nems sont croustillants et faits maison. Je reviendrai sans
-                        hésiter. »</p>
+                    <p data-i18n="rev5">« Excellent rapport qualité prix. Les nems sont croustillants et faits maison. »
+                    </p>
                     <div style="margin-top:10px; font-weight:600; font-size: 0.9rem;">
                         <span class="stars">★★★★★</span> Sophie L. · <a href="https://goo.gl/maps/example5"
                             target="_blank" style="color:var(--gold); text-decoration:underline;">Voir sur Google
                             Maps</a>
                     </div>
                 </article>
-
             </div>
         </section>
 
