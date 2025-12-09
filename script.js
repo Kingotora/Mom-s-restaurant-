@@ -82,7 +82,7 @@ const i18n = {
         beerAngkor: "Bière Angkor (Cambodgienne)",
         beerTsingTao: "Bière Tsing Tao (Chinoise)",
         beerSingha: "Bière Singha (Thaïlandaise)",
-        beerSaigon: "Bière Saigon (Vietnamienne)",
+        beerSaigon: "Bière Saigon (Vietnam)",
         wineRed: "Rouge",
         wineRose: "Rosé",
         wineWhite: "Blanc",
@@ -145,12 +145,12 @@ const i18n = {
         galleryTitle: 'Specialties',
         footerRights: 'All rights reserved.',
 
-        // Reviews
-        rev1: '"An excellent discovery! The dishes are authentic and tasty."',
-        rev2: '"Lovely service and the Bo-Bun is to die for. I recommend."',
-        rev3: '"The best Cambodian restaurant in the area. Very fair prices."',
-        rev4: '"Very good welcome, the egg rolls are homemade and you can taste it!"',
-        rev5: '"Very warm family restaurant. You feel good there."',
+        // Reviews (Translated)
+        rev1: '"Here you will find the best Loc Lac in Paris. I have rarely eaten such tender and well-marinated beef..."',
+        rev2: '"Absolutely delicious, the waitresses are adorable, the service is fast and the dishes are fresh and truly tasty!"',
+        rev3: '"Small prices for this neighborhood restaurant but very good food and great kindness. Thank you."',
+        rev4: '"I recommend this restaurant 100%! Everything was perfect: refined traditional food, generous portions..."',
+        rev5: '"The food is divine, pity the place is a bit small! A beautiful address to remember in the Avron district."',
 
         // TITLES SECTIONS
         sEntrees: 'Starters',
