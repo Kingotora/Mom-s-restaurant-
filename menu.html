@@ -14,6 +14,18 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
+
+  <!-- SEO Schema Menu -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Menu",
+    "name": "Carte Mom's Restaurant",
+    "url": "https://moms-restaurant.com/menu.html",
+    "mainEntityOfPage": "https://moms-restaurant.com/menu.html",
+    "inLanguage": "fr"
+  }
+  </script>
 </head>
 
 <body>
@@ -72,11 +84,18 @@
 
   <main class="container">
 
+    <!-- Filters -->
+    <div class="filters reveal">
+      <button class="filter-btn active" data-filter="all">Tout</button>
+      <button class="filter-btn" data-filter="veggie">Végétarien 🌱</button>
+      <button class="filter-btn" data-filter="spicy">Épicé 🌶️</button>
+    </div>
+
     <!-- ENTRÉES -->
     <section class="section reveal" id="entrees">
       <h2 data-i18n="sEntrees">Entrées</h2>
       <div class="grid">
-        <article class="card">
+        <article class="card" data-tags="veggie">
           <img src="photos/menu-entree-1.jpg" alt="Nems" loading="lazy">
           <div class="card-body">
             <h3 class="card-title"><span>Nems au porc/poulet/légumes (3p)</span><span class="price">4,20€</span></h3>
@@ -209,10 +228,10 @@
             <p class="desc">Lemongrass or Curry chicken Bo-bun</p>
           </div>
         </article>
-        <article class="card">
+        <article class="card" data-tags="veggie">
           <img src="photos/menu-bobun-3.jpg" alt="Bo-Bun Légumes" loading="lazy">
           <div class="card-body">
-            <h3 class="card-title"><span>Bo-Bun Légumes</span><span class="price">10,50€</span></h3>
+            <h3 class="card-title"><span>Bo-Bun Légumes 🌱</span><span class="price">10,50€</span></h3>
             <p class="desc">Vegetarian Bo-bun</p>
           </div>
         </article>
@@ -265,24 +284,24 @@
             <p class="desc">Ginger beef (rice included)</p>
           </div>
         </article>
-        <article class="card">
+        <article class="card" data-tags="spicy">
           <img src="photos/menu-saute-2.jpg" alt="Bœuf saté" loading="lazy">
           <div class="card-body">
-            <h3 class="card-title"><span>Bœuf saté</span><span class="price">11,50€</span></h3>
+            <h3 class="card-title"><span>Bœuf saté 🌶️</span><span class="price">11,50€</span></h3>
             <p class="desc">Satay beef (rice included)</p>
           </div>
         </article>
-        <article class="card">
+        <article class="card" data-tags="veggie">
           <img src="photos/menu-saute-3.jpg" alt="Légumes sautés" loading="lazy">
           <div class="card-body">
-            <h3 class="card-title"><span>Légumes sautés</span><span class="price">10,50€</span></h3>
+            <h3 class="card-title"><span>Légumes sautés 🌱</span><span class="price">10,50€</span></h3>
             <p class="desc">Stir fried vegetables (rice included)</p>
           </div>
         </article>
-        <article class="card">
+        <article class="card" data-tags="spicy">
           <img src="photos/menu-saute-4.jpg" alt="Crevettes saté" loading="lazy">
           <div class="card-body">
-            <h3 class="card-title"><span>Crevettes sautées au saté</span><span class="price">13,50€</span></h3>
+            <h3 class="card-title"><span>Crevettes sautées au saté 🌶️</span><span class="price">13,50€</span></h3>
             <p class="desc">Satay shrimp (rice included)</p>
           </div>
         </article>
@@ -293,10 +312,10 @@
             <p class="desc">Lemongrass Chicken</p>
           </div>
         </article>
-        <article class="card">
+        <article class="card" data-tags="spicy">
           <img src="photos/menu-saute-6.jpg" alt="Poulet curry" loading="lazy">
           <div class="card-body">
-            <h3 class="card-title"><span>Poulet au curry</span><span class="price">11,50€</span></h3>
+            <h3 class="card-title"><span>Poulet au curry 🌶️</span><span class="price">11,50€</span></h3>
             <p class="desc">Curry Chicken</p>
           </div>
         </article>

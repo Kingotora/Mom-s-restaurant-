@@ -189,8 +189,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initLanguage();
     initMobileMenu();
     initSmoothScroll();
-    initParallax();
     initScrollAnimations();
+    initLightbox();
+    initFilters();
+    initReservation();
 });
 
 function initScrollAnimations() {
@@ -204,6 +206,90 @@ function initScrollAnimations() {
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
+
+function initLightbox() {
+    // Create Lightbox DOM
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML = `
+        <button class="lightbox-close">&times;</button>
+        <img src="" alt="Full view">
+    `;
+    document.body.appendChild(lightbox);
+
+    const imgEl = lightbox.querySelector('img');
+
+    // Add Click Listeners to all gallery/menu images
+    function openLightbox(src) {
+        imgEl.src = src;
+        lightbox.classList.add('active');
+    }
+
+    document.querySelectorAll('.gallery-item img, .card img').forEach(img => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', () => openLightbox(img.src));
+    });
+
+    // Close Logic
+    lightbox.addEventListener('click', (e) => {
+        if (e.target !== imgEl) lightbox.classList.remove('active');
+    });
+}
+
+function initFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    if (!filterBtns.length) return;
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Active State
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filter = btn.getAttribute('data-filter');
+
+            document.querySelectorAll('.grid article').forEach(card => {
+                if (filter === 'all') {
+                    card.style.display = '';
+                } else {
+                    const tags = card.getAttribute('data-tags');
+                    if (tags && tags.includes(filter)) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        });
+    });
+}
+
+function initReservation() {
+    const form = document.getElementById('reservationForm');
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Mock Send - User needs to add keys
+        const btn = form.querySelector('button[type="submit"]');
+        const originalText = btn.textContent;
+
+        btn.textContent = 'Envoi en cours...';
+        btn.disabled = true;
+
+        // Simulate API call to EmailJS
+        // emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+        setTimeout(() => {
+            alert('Demande de réservation envoyée ! (Simulation)');
+            form.reset();
+            btn.textContent = originalText;
+            btn.disabled = false;
+        }, 1500);
+    });
+}
+
+// Obsolete Parallax removed since we use <img> tag now
 
 function initLanguage() {
     const saved = localStorage.getItem(STORAGE_KEY_LANG) || DEFAULT_LANG;

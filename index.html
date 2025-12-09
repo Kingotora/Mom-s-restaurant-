@@ -17,8 +17,43 @@
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600;700&display=swap"
         rel="stylesheet">
 
+
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- EmailJS SDK (Placeholder) -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("YOUR_PUBLIC_KEY"); // À remplacer par votre clé publique EmailJS
+        })();
+    </script>
+
+    <!-- SEO Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Mom's Restaurant",
+      "image": "https://moms-restaurant.com/photos/banniere.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "3 rue Planchat",
+        "addressLocality": "Paris",
+        "postalCode": "75020",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 48.8502,
+        "longitude": 2.4005
+      },
+      "url": "https://moms-restaurant.com",
+      "telephone": "+33624156408",
+      "servesCuisine": "Cambodian",
+      "priceRange": "$$"
+    }
+    </script>
 </head>
 
 <body>
@@ -34,8 +69,10 @@
         </div>
     </header>
 
-    <!-- Visual Banner -->
-    <div class="banner" aria-label="Bannière Mom's Restaurant"></div>
+    <!-- Visual Banner (Fixed Image) -->
+    <div class="banner" aria-label="Bannière Mom's Restaurant">
+        <img src="photos/banniere.jpg" alt="Mom's Restaurant Banner" class="banner-img">
+    </div>
 
     <main class="container">
 
@@ -75,7 +112,28 @@
                     <li><strong data-i18n="lblPhone">Tél :</strong> <a href="tel:+33624156408"
                             style="color:var(--gold)">06 24 15 64 08</a></li>
                 </ul>
-                <h4 data-i18n="hoursTitle">Horaires d'ouverture</h4>
+
+                <!-- Reservation Form -->
+                <form id="reservationForm" class="reservation-form">
+                    <h4 style="margin-top:0; color:var(--gold-ink)">Réserver une table</h4>
+                    <div class="form-group">
+                        <input type="text" placeholder="Nom" required>
+                    </div>
+                    <div class="form-group" style="display:flex; gap:10px;">
+                        <input type="date" required>
+                        <input type="time" required>
+                    </div>
+                    <div class="form-group" style="display:flex; gap:10px;">
+                        <input type="tel" placeholder="Téléphone" required>
+                        <input type="number" placeholder="Pers." min="1" max="10" style="width:80px" required>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width:100%; font-size:14px;">Envoyer la
+                        demande</button>
+                    <small style="display:block; margin-top:8px; font-size:12px; color:#666; font-style:italic;">* Ceci
+                        est une demande, confirmation par SMS/Appel.</small>
+                </form>
+
+                <h4 data-i18n="hoursTitle" style="margin-top:20px;">Horaires d'ouverture</h4>
                 <ul id="hoursList">
                     <!-- Javascript will populate this -->
                 </ul>
