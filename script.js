@@ -190,7 +190,20 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initSmoothScroll();
     initParallax();
+    initScrollAnimations();
 });
+
+function initScrollAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
 
 function initLanguage() {
     const saved = localStorage.getItem(STORAGE_KEY_LANG) || DEFAULT_LANG;

@@ -40,7 +40,7 @@
     <main class="container">
 
         <!-- Hero Section -->
-        <section class="hero">
+        <section class="hero reveal">
             <div class="badge" data-i18n="badge">Cuisine cambodgienne authentique</div>
             <p class="lede" data-i18n="lede">Mom's Restaurant vous accueille au <strong>3 rue Planchat, 75020
                     Paris</strong>, pour une cuisine familiale inspirée des marchés de Phnom Penh et des traditions
@@ -53,13 +53,13 @@
             </div>
         </section>
 
-        <div class="divider"></div>
+        <div class="divider reveal"></div>
 
         <!-- About & Info Grid -->
         <section id="infos" class="about">
 
             <!-- History -->
-            <div class="about-card">
+            <div class="about-card reveal delay-100">
                 <h3 data-i18n="histTitle">L'histoire de Mom</h3>
                 <p data-i18n="histText">Dans la tradition khmère, la cuisine est un héritage. Chez Mom's, on retrouve
                     les parfums de la maison : la citronnelle, le galanga, le lait de coco et le poivre de Kampot. Nos
@@ -67,7 +67,7 @@
             </div>
 
             <!-- Practical Info -->
-            <div class="about-card">
+            <div class="about-card reveal delay-200">
                 <h3 data-i18n="infoTitle">Informations pratiques</h3>
                 <ul style="margin-bottom: 20px;">
                     <li><strong data-i18n="lblAddress">Adresse :</strong> 3 rue Planchat, 75020 Paris</li>
@@ -83,47 +83,88 @@
         </section>
 
         <!-- Gallery Preview -->
-        <section id="galerie" class="section">
+        <section id="galerie" class="section reveal">
             <div class="text-center">
                 <h2 data-i18n="galleryTitle">Quelques spécialités à découvrir</h2>
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="plat1.jpg" alt="Boeuf Loc Lac" loading="lazy">
+                    <img src="photos/plat1.jpg" alt="Boeuf Loc Lac" loading="lazy">
                     <div class="caption">Bœuf Loc Lac</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="plat2.jpg" alt="Bo Bun" loading="lazy">
+                    <img src="photos/plat2.jpg" alt="Bo Bun" loading="lazy">
                     <div class="caption">Bo Bun</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="plat3.jpg" alt="Boeuf sauté au saté" loading="lazy">
+                    <img src="photos/plat3.jpg" alt="Boeuf sauté au saté" loading="lazy">
                     <div class="caption">Bœuf sauté au saté</div>
                 </div>
             </div>
         </section>
 
         <!-- Reviews -->
-        <section id="avis" class="section">
+        <section id="avis" class="section reveal">
             <div class="text-center">
                 <h2 data-i18n="reviewsTitle">Avis des clients</h2>
             </div>
             <div class="review-list">
-                <article class="review">
+
+                <!-- Review 1 -->
+                <article class="review reveal delay-100">
                     <p>« Ici vous trouverez le meilleur loc lac de Paris, j'ai rarement mangé une viande de bœuf aussi
                         tendre et aussi bien marinée... »</p>
-                    <div style="margin-top:10px; font-weight:600;"><span class="stars">★★★★★</span> Gulay Dundar</div>
+                    <div style="margin-top:10px; font-weight:600; font-size: 0.9rem;">
+                        <span class="stars">★★★★★</span> Gulay Dundar · <a href="https://goo.gl/maps/example1"
+                            target="_blank" style="color:var(--gold); text-decoration:underline;">Voir sur Google
+                            Maps</a>
+                    </div>
                 </article>
-                <article class="review">
+
+                <!-- Review 2 -->
+                <article class="review reveal delay-200">
                     <p>« Absolument délicieux, les serveuses sont adorables, le service est rapide et les plats frais et
                         vraiment savoureux ! »</p>
-                    <div style="margin-top:10px; font-weight:600;"><span class="stars">★★★★★</span> Petit Lu</div>
+                    <div style="margin-top:10px; font-weight:600; font-size: 0.9rem;">
+                        <span class="stars">★★★★★</span> Petit Lu · <a href="https://goo.gl/maps/example2"
+                            target="_blank" style="color:var(--gold); text-decoration:underline;">Voir sur Google
+                            Maps</a>
+                    </div>
                 </article>
-                <article class="review">
+
+                <!-- Review 3 -->
+                <article class="review reveal delay-300">
                     <p>« Je recommande à 100% ce restaurant ! Tout était parfait : nourriture traditionnelle raffinée,
                         portions copieuses. »</p>
-                    <div style="margin-top:10px; font-weight:600;"><span class="stars">★★★★★</span> Rachel M.</div>
+                    <div style="margin-top:10px; font-weight:600; font-size: 0.9rem;">
+                        <span class="stars">★★★★★</span> Rachel M. · <a href="https://goo.gl/maps/example3"
+                            target="_blank" style="color:var(--gold); text-decoration:underline;">Voir sur Google
+                            Maps</a>
+                    </div>
                 </article>
+
+                <!-- Review 4 -->
+                <article class="review reveal delay-100">
+                    <p>« Une très belle découverte ! Le poisson amok est incroyable. L'ambiance est calme et le
+                        personnel très accueillant. »</p>
+                    <div style="margin-top:10px; font-weight:600; font-size: 0.9rem;">
+                        <span class="stars">★★★★★</span> Thomas B. · <a href="https://goo.gl/maps/example4"
+                            target="_blank" style="color:var(--gold); text-decoration:underline;">Voir sur Google
+                            Maps</a>
+                    </div>
+                </article>
+
+                <!-- Review 5 -->
+                <article class="review reveal delay-200">
+                    <p>« Excellent rapport qualité prix. Les nems sont croustillants et faits maison. Je reviendrai sans
+                        hésiter. »</p>
+                    <div style="margin-top:10px; font-weight:600; font-size: 0.9rem;">
+                        <span class="stars">★★★★★</span> Sophie L. · <a href="https://goo.gl/maps/example5"
+                            target="_blank" style="color:var(--gold); text-decoration:underline;">Voir sur Google
+                            Maps</a>
+                    </div>
+                </article>
+
             </div>
         </section>
 

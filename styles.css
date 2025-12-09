@@ -150,7 +150,7 @@ header {
 /* Navigation Links (Desktop) */
 .top-nav {
     display: none;
-    gap: 10px;
+    gap: 5px;
     flex-wrap: wrap;
 }
 
@@ -158,6 +158,31 @@ header {
     .top-nav {
         display: flex;
     }
+}
+
+.top-nav .btn {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--ink);
+    padding: 8px 14px;
+    font-weight: 500;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: none;
+}
+
+.top-nav .btn:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: translateY(-2px);
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.top-nav .btn.active {
+    background: var(--gold);
+    color: #111;
+    font-weight: 700;
 }
 
 /* Mobile Hamburger */
@@ -277,12 +302,24 @@ header {
 .banner {
     position: relative;
     width: 100%;
-    height: clamp(300px, 50vh, 520px);
-    background: #000 url('banniere.jpg') center 40% / cover no-repeat;
+    height: clamp(300px, 50vh, 550px);
+    background: #000 url('photos/banniere.jpg') center 40% / cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    background-attachment: scroll;
+    /* Default mobile */
+}
+
+@media (min-width: 900px) {
+    .banner {
+        /* Fix for desktop: less zoomed, better positioning */
+        background-position: center 30%;
+        height: 60vh;
+        background-attachment: fixed;
+        /* Parallax feel */
+    }
 }
 
 .banner::after {
@@ -525,6 +562,30 @@ header {
     padding: 4px 12px;
     border-radius: 999px;
     font-weight: 800;
+}
+
+/* === ANIMATIONS === */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-100 {
+    transition-delay: 0.1s;
+}
+
+.delay-200 {
+    transition-delay: 0.2s;
+}
+
+.delay-300 {
+    transition-delay: 0.3s;
 }
 
 /* === FOOTER === */
