@@ -1,1055 +1,298 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Menu — Mom's Restaurant</title>
-  <link rel="icon" href="/favicon.ico" sizes="any">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --gold:#daa520;
-      --bg: #0a0a0a;
-      --ink:#f5f5f5;
-      --card:#ececec;
-      --muted:#bfbfbf;
-      --shadow:0 10px 25px rgba(0,0,0,.45);
-    }
-    html,body{margin:0;padding:0;background:linear-gradient(180deg,#0a0a0a,#000);color:var(--ink);font-family:"Playfair Display", serif}
-    a{color:inherit;text-decoration:none}
-    .container{width:min(1100px,92%);margin:0 auto}
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet">
 
-    header{position:sticky;top:0;background:rgba(10,10,10,.95);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid rgba(218,165,32,.5);z-index:40}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:12px;flex-wrap:wrap}
-    .brand-title{font-weight:700;letter-spacing:.8px;color:var(--gold);text-transform:uppercase;font-size:24px}
-    .btn{padding:10px 14px;border:1.5px solid var(--gold);border-radius:999px;background:var(--gold);color:#111;font-weight:700;box-shadow:0 6px 16px rgba(218,165,32,.35);cursor:pointer}
-    .btn:hover{background:#111;color:var(--gold)}
-    .btn:focus{outline:2px solid var(--gold)}
-
-    /* Header tabs (anchors) */
-    .top-nav{display:flex;gap:10px;flex-wrap:wrap}
-    .top-nav a{display:inline-block}
-
-    .hero{padding:34px 0 12px}
-    .hero h1{margin:0 0 4px;font-size:36px;color:var(--gold)}
-    .hero p{margin:0;color:#ddd}
-
-    /* Grid cards */
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:16px 0 40px}
-    .card{background:var(--card);color:#222;border-radius:16px;overflow:hidden;border:2px solid rgba(218,165,32,.35);box-shadow:0 0 0 2px rgba(218,165,32,.15), 0 12px 26px rgba(0,0,0,.25)}
-    .card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
-    .card-body{padding:12px 14px}
-    .card-title{display:flex;justify-content:space-between;align-items:center;font-size:18px;font-weight:800;margin:0 0 6px}
-    .price{color:#111;background:linear-gradient(180deg,#ffd770,#e6b84a);border:1px solid rgba(218,165,32,.6);padding:4px 8px;border-radius:999px;font-weight:800}
-    .desc{margin:0;color:#444;font-size:14px;line-height:1.45}
-
-    .section{margin-top:28px}
-    .section h2{font-size:28px;color:var(--gold);margin:4px 0 10px}
-
-    footer{border-top:1px solid rgba(218,165,32,.3);padding:24px 0 40px;color:#aaa;text-align:center;margin-top:10px}
-
-    @media (max-width:640px){
-      .brand-title{font-size:18px}
-      .hero h1{font-size:28px}
-      .top-nav{gap:8px}
-    }
-  
-/* === Harmonisation typographique & alignements === */
-:root{--gold:#d4af37;--gold-strong:#c9a034;--gold-ink:#8b6a14;--ink:#111;--paper:#f6f6f6}
-body{font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif}
-h1,h2,h3{font-family:"Playfair Display", serif; letter-spacing:.3px}
-h2{color:var(--gold); font-weight:700; border-bottom:2px solid rgba(212,175,55,.6); padding-bottom:.35rem; margin:2.2rem 0 1rem}
-.section .card{background:var(--paper); color:var(--ink); border-radius:14px; border:2px solid rgba(212,175,55,.35);
-  box-shadow:0 0 0 2px rgba(212,175,55,.12), 0 14px 28px rgba(0,0,0,.15)}
-.card-body{padding:12px 14px}
-.card-title{display:grid; grid-template-columns:1fr auto; align-items:start; gap:10px; font-weight:700; margin:.2rem 0 .5rem}
-.card-title .price{color:#000; font-weight:800; white-space:nowrap; margin-left:10px}
-.desc{color:#444; line-height:1.45}
-/* Drinks lists alignment */
-.drinks{list-style:none; padding-left:0; margin:0 0 12px 0}
-.drinks li{display:flex; justify-content:space-between; gap:12px; padding:4px 0; border-bottom:1px dashed rgba(212,175,55,.25)}
-.drinks li:last-child{border-bottom:none}
-.drinks .lbl{flex:1; min-width:0}
-.drinks .price{white-space:nowrap; color:#000; font-weight:800}
-/* Section subtitles inside drinks */
-.section#boissons h3{font-family:"Playfair Display", serif; color:var(--gold-strong); margin:14px 0 6px}
-
-
-/* Price badges for Menus */
-.menu-card .badge-price{
-  background: linear-gradient(180deg,#ffd76a,#d4af37 60%,#bf9b30);
-  color:#111;
-  border:1px solid var(--gold-strong);
-  border-radius:999px;
-  padding:4px 10px;
-  font-weight:800;
-  box-shadow:0 6px 16px rgba(212,175,55,.35);
-  white-space:nowrap;
-}
-
-
-/* Clean lists inside Menus (no bullets, no gold separators) */
-.menu-list{list-style:none; padding-left:0; margin:0 0 10px 0}
-.menu-list li{display:block; padding:2px 0; border:none}
-.menu-list .price{display:none}
-
-
-/* === Mobile dropdown nav === */
-header{position:sticky;top:0;z-index:100}
-.hamburger{display:none;border:1.5px solid rgba(218,165,32,.6);background:#111;color:#f5f5f5;border-radius:10px;padding:6px 10px;cursor:pointer;box-shadow:0 6px 16px rgba(218,165,32,.25)}
-.dropdown{display:none;position:absolute;left:12px;right:12px;top:100%;background:#111;border:1px solid rgba(218,165,32,.5);border-radius:12px;box-shadow:0 12px 28px rgba(0,0,0,.35)}
-.dropdown a{display:block;padding:10px 14px;border-bottom:1px solid rgba(218,165,32,.2)}
-.dropdown a:last-child{border-bottom:none}
-.dropdown.open{display:block;animation:fadeIn .15s ease-out}
-@media (max-width:750px){
-  .top-nav{display:none}
-  .hamburger{display:inline-block}
-}
-@keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
-
-
-/* Slimmer dropdown items on mobile */
-@media (max-width: 750px){
-  .dropdown a{
-    background: transparent !important;      /* remove yellow fill */
-    border-color: rgba(218,165,32,.45) !important;
-    color: #f5f5f5 !important;
-    padding: 8px 12px !important;            /* smaller pills */
-    border-radius: 8px !important;
-    font-size: 14px !important;
-    box-shadow: none !important;
-    margin: 6px 10px !important;
-  }
-}
-
-
-/* Robust layout for drinks to avoid overflow on mobile */
-#boissons .drinks{list-style:none; padding-left:0; margin:0 0 12px 0}
-#boissons .drinks li{
-  display:grid;
-  grid-template-columns: 1fr auto;
-  align-items:start;
-  gap: 8px;
-}
-#boissons .drinks .lbl{
-  min-width:0;
-  overflow-wrap:anywhere;
-  word-break:break-word;
-}
-#boissons .drinks .price{
-  white-space:nowrap;
-}
-@media (max-width: 420px){
-  #boissons .drinks .price{ font-size: 14px; }
-}
-
-
-/* Two-line price blocks for wines */
-#boissons .price-block{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
-#boissons .price-block span{line-height:1.1}
-@media (max-width:420px){
-  #boissons .price-block span{font-size:13px}
-}
-
-
-/* Anchor offset so sections are perfectly framed under sticky header */
-:root{ --header-h: 84px; }
-html{ scroll-padding-top: var(--header-h); }
-.section{ scroll-margin-top: var(--header-h); }
-
-</style>
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+
   <header>
     <div class="container nav">
-      <div class="brand-title">MOM'S RESTAURANT</div>
-      <button id="menuBtn" class="hamburger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileNav">☰</button>
+      <div class="brand">
+        <a href="index.html" class="brand-title">MOM'S <span>RESTAURANT</span></a>
+      </div>
+
+      <button id="menuBtn" class="hamburger" aria-label="Menu">☰</button>
+      <button id="langToggle" class="btn" type="button" style="margin-left:auto; order: 2;">EN</button>
+
+      <!-- Desktop Nav -->
       <nav class="top-nav">
         <a class="btn" href="index.html" data-i18n="navHome">Accueil</a>
         <a class="btn" href="#entrees" data-i18n="navEntrees">Entrées</a>
         <a class="btn" href="#specialites" data-i18n="navSpec">Spécialités</a>
         <a class="btn" href="#bobuns" data-i18n="navBobuns">Bo-Buns</a>
         <a class="btn" href="#salades" data-i18n="navSalades">Salades</a>
-        <a class="btn" href="#plats" data-i18n="navPlats">Plats sautés</a>
+        <a class="btn" href="#plats" data-i18n="navPlats">Plats</a>
         <a class="btn" href="#grillades" data-i18n="navGrillades">Grillades</a>
         <a class="btn" href="#soupes" data-i18n="navSoupes">Soupes</a>
         <a class="btn" href="#desserts" data-i18n="navDesserts">Desserts</a>
-        <a class="btn" href="#boissons" data-i18n="navBoissons">Boissons</a>
         <a class="btn" href="#menus" data-i18n="navMenus">Menus</a>
       </nav>
-      <div id="mobileNav" class="dropdown" aria-label="Navigation mobile">
-        <a class="btn" href="index.html" data-i18n="navHome">Accueil</a>
-        <a class="btn" href="#entrees" data-i18n="navEntrees">Entrées</a>
-        <a class="btn" href="#specialites" data-i18n="navSpec">Spécialités</a>
-        <a class="btn" href="#bobuns" data-i18n="navBobuns">Bo-Buns</a>
-        <a class="btn" href="#salades" data-i18n="navSalades">Salades</a>
-        <a class="btn" href="#plats" data-i18n="navPlats">Plats sautés</a>
-        <a class="btn" href="#grillades" data-i18n="navGrillades">Grillades</a>
-        <a class="btn" href="#soupes" data-i18n="navSoupes">Soupes</a>
-        <a class="btn" href="#desserts" data-i18n="navDesserts">Desserts</a>
-        <a class="btn" href="#boissons" data-i18n="navBoissons">Boissons</a>
-        <a class="btn" href="#menus" data-i18n="navMenus">Menus</a>
+
+      <!-- Mobile Nav -->
+      <div id="mobileNav" class="dropdown">
+        <a href="index.html" data-i18n="navHome">Accueil</a>
+        <a href="#entrees" data-i18n="navEntrees">Entrées</a>
+        <a href="#specialites" data-i18n="navSpec">Spécialités</a>
+        <a href="#bobuns" data-i18n="navBobuns">Bo-Buns</a>
+        <a href="#salades" data-i18n="navSalades">Salades</a>
+        <a href="#plats" data-i18n="navPlats">Plats sautés</a>
+        <a href="#grillades" data-i18n="navGrillades">Grillades</a>
+        <a href="#soupes" data-i18n="navSoupes">Soupes</a>
+        <a href="#desserts" data-i18n="navDesserts">Desserts</a>
+        <a href="#boissons" data-i18n="navBoissons">Boissons</a>
+        <a href="#menus" data-i18n="navMenus">Menus</a>
       </div>
-      <button id="langToggle" class="btn" type="button" aria-label="Changer de langue">EN</button>
     </div>
   </header>
 
   <main class="container">
-    <!-- Entrées -->
-    
-    <!-- Spécialités Khmer -->
-    
 
-
+    <!-- ENTRÉES -->
     <section class="section" id="entrees">
       <h2 data-i18n="sEntrees">Entrées</h2>
       <div class="grid">
         <article class="card">
-          <img src="menu-entree-1.jpg" alt="Nems au porc/poulet/légumes (3 pièces)" loading="lazy">
+          <img src="menu-entree-1.jpg" alt="Nems" loading="lazy">
           <div class="card-body">
-            <h3 class="card-title"><span>Nems au porc, au poulet ou aux légumes (3 pièces)</span><span class="price">4,20€</span></h3>
+            <h3 class="card-title"><span>Nems au porc/poulet/légumes (3p)</span><span class="price">4,20€</span></h3>
             <p class="desc">Pork / Chicken / Vegetarian Egg Rolls</p>
           </div>
         </article>
         <article class="card">
-          <img src="menu-entree-2.jpg" alt="Nems aux crevettes (3 pièces)" loading="lazy">
+          <img src="menu-entree-2.jpg" alt="Nems crevettes" loading="lazy">
           <div class="card-body">
-            <h3 class="card-title"><span>Nems aux crevettes (3 pièces)</span><span class="price">4,50€</span></h3>
+            <h3 class="card-title"><span>Nems aux crevettes (3p)</span><span class="price">4,50€</span></h3>
             <p class="desc">Shrimp Egg Rolls</p>
           </div>
         </article>
         <article class="card">
-          <img src="menu-entree-3.jpg" alt="Raviolis frits aux crevettes (3 pièces)" loading="lazy">
+          <img src="menu-entree-3.jpg" alt="Raviolis frits" loading="lazy">
           <div class="card-body">
-            <h3 class="card-title"><span>Raviolis frits aux crevettes (3 pièces)</span><span class="price">4,50€</span></h3>
+            <h3 class="card-title"><span>Raviolis frits crevettes (3p)</span><span class="price">4,50€</span></h3>
             <p class="desc">Fried Shrimp Wontons</p>
           </div>
         </article>
         <article class="card">
-          <img src="menu-entree-4.jpg" alt="Samoussa au bœuf (1 pièce)" loading="lazy">
+          <img src="menu-entree-4.jpg" alt="Samoussa" loading="lazy">
           <div class="card-body">
-            <h3 class="card-title"><span>Samoussa au bœuf (1 pièce)</span><span class="price">4,20€</span></h3>
+            <h3 class="card-title"><span>Samoussa au bœuf (1p)</span><span class="price">4,20€</span></h3>
             <p class="desc">Beef Samosa</p>
           </div>
         </article>
         <article class="card">
-          <img src="menu-entree-5.jpg" alt="Brioche vietnamienne au porc à la vapeur (1 pièce)" loading="lazy">
+          <img src="menu-entree-5.jpg" alt="Brioche porc" loading="lazy">
           <div class="card-body">
-            <h3 class="card-title"><span>Brioche vietnamienne au porc à la vapeur (1 pièce)</span><span class="price">4,50€</span></h3>
+            <h3 class="card-title"><span>Brioche porc vapeur (1p)</span><span class="price">4,50€</span></h3>
             <p class="desc">Vietnamese steamed pork bun</p>
           </div>
         </article>
         <article class="card">
-          <img src="menu-entree-6.jpg" alt="Banh-cuon : Raviolis cambodgiens (3 pièces)" loading="lazy">
+          <img src="menu-entree-6.jpg" alt="Banh-cuon" loading="lazy">
           <div class="card-body">
-            <h3 class="card-title"><span>Banh-cuon : Raviolis cambodgiens aux crevettes, poulet et champignons noirs à la vapeur (3 pièces)</span><span class="price">5,50€</span></h3>
-            <p class="desc">Steamed shrimp and chicken — Vietnamese raviolis</p>
+            <h3 class="card-title"><span>Banh-cuon (3p)</span><span class="price">5,50€</span></h3>
+            <p class="desc">Steamed shrimp and chicken raviolis</p>
           </div>
         </article>
         <article class="card">
-          <img src="menu-entree-7.jpg" alt="Bouchées aux crevettes à la vapeur (3 pièces)" loading="lazy">
+          <img src="menu-entree-8.jpg" alt="Raviolis vapeur" loading="lazy">
           <div class="card-body">
-            <h3 class="card-title"><span>Bouchées aux crevettes à la vapeur (3 pièces)</span><span class="price">4,50€</span></h3>
-            <p class="desc">Steamed Shrimp Bites</p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="menu-entree-8.jpg" alt="Raviolis aux crevettes à la vapeur (3 pièces)" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Raviolis aux crevettes à la vapeur (3 pièces)</span><span class="price">4,50€</span></h3>
+            <h3 class="card-title"><span>Raviolis crevettes vapeur (3p)</span><span class="price">4,50€</span></h3>
             <p class="desc">Steamed Shrimp Dumplings</p>
           </div>
         </article>
-        <article class="card">
-          <img src="menu-entree-9.jpg" alt="Rouleau de printemps (1 pièce)" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Rouleau de printemps aux crevettes, au poulet ou au bœuf (1 pièce)</span><span class="price">4,20€</span></h3>
-            <p class="desc">Fresh shrimp / beef / chicken spring roll</p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="menu-entree-10.jpg" alt="Saucisse à la citronnelle (1 pièce)" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Saucisse à la citronnelle (1 pièce)</span><span class="price">4,50€</span></h3>
-            <p class="desc">Lemongrass sausage</p>
-          </div>
-        </article>
       </div>
-</section>
+    </section>
 
-<section class="section" id="specialites">
+    <!-- SPÉCIALITÉS -->
+    <section class="section" id="specialites">
       <h2 data-i18n="sSpec">Spécialités</h2>
       <div class="grid">
         <article class="card">
           <img src="menu-special-1.jpg" alt="Kouyteav Kat" loading="lazy">
           <div class="card-body">
-            <h3 class="card-title"><span>Kouyteav Kat : Banh-cuan coupés avec crudités et nems aux crevettes</span><span class="price">13,50€</span></h3>
+            <h3 class="card-title"><span>Kouyteav Kat</span><span class="price">13,50€</span></h3>
             <p class="desc">Chopped Banh-cuan with raw vegetables and shrimp egg rolls</p>
           </div>
         </article>
         <article class="card">
           <img src="menu-special-2.jpg" alt="Mi Kola" loading="lazy">
           <div class="card-body">
-            <h3 class="card-title"><span>Mi Kola : Pâtes de riz sautés aux poulet et crevettes émincées, accompagné d’un œuf et pickles de concombre (option végétarienne disponible)</span><span class="price">13,50€</span></h3>
-            <p class="desc">Rice noodles with chicken and shrimp stir fry with an egg and pickled cucumbers (vegetarian option available)</p>
+            <h3 class="card-title"><span>Mi Kola</span><span class="price">13,50€</span></h3>
+            <p class="desc">Rice noodles with chicken and shrimp stir fry (Vegetarian option available)</p>
           </div>
         </article>
         <article class="card">
           <img src="menu-special-3.jpg" alt="Poisson Hamok" loading="lazy">
           <div class="card-body">
-            <h3 class="card-title"><span>Poisson Hamok : filet de cabillaud, pousse de bambou, lait de coco et épices cambodgiennes (servi avec du riz et des légumes)</span><span class="price">13,50€</span></h3>
-            <p class="desc">Fish Hamok (cod fish with bamboo shoot, coconut milk and khmer spices) served with rice and vegetables</p>
+            <h3 class="card-title"><span>Poisson Hamok</span><span class="price">13,50€</span></h3>
+            <p class="desc">Fish Hamok (cod fish, bamboo shoot, coconut milk)</p>
           </div>
         </article>
         <article class="card">
-          <img src="menu-special-4.jpg" alt="Bœuf Loc-Lac façon khmer" loading="lazy">
+          <img src="menu-special-4.jpg" alt="Bœuf Loc-Lac" loading="lazy">
           <div class="card-body">
-            <h3 class="card-title"><span>Bœuf Loc-Lac façon khmer (avec un œuf +1€ en supplément)</span><span class="price">13,50€</span></h3>
-            <p class="desc">Khmer Beef Loc-Lac (supplement of 1€ for an egg)</p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="menu-special-5.jpg" alt="Riz jaune sauté aux œufs et ciboulettes" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Riz jaune sauté aux œufs et ciboulettes — servi avec des légumes</span><span class="price">10,50€</span></h3>
-            <p class="desc">Egg fried rice served with vegetables</p>
+            <h3 class="card-title"><span>Bœuf Loc-Lac façon khmer</span><span class="price">13,50€</span></h3>
+            <p class="desc">Khmer Beef Loc-Lac (Egg +1€)</p>
           </div>
         </article>
       </div>
     </section>
 
-
-    <!-- Bo-Buns -->
+    <!-- BO-BUNS -->
     <section class="section" id="bobuns">
       <h2 data-i18n="sBobuns">Bo-Buns</h2>
       <div class="grid">
         <article class="card">
-          <img src="menu-bobun-1.jpg" alt="Bo-Bun Bœuf au sauté au Gingembre" loading="lazy">
+          <img src="menu-bobun-1.jpg" alt="Bo-Bun Bœuf" loading="lazy">
           <div class="card-body">
-            <h3 class="card-title"><span>Bo-Bun Bœuf au sauté au Gingembre (servi avec des nems au poulet ou au porc)</span><span class="price">11,50€</span></h3>
-            <p class="desc">Beef Bo-bun with chicken or pork egg rolls</p>
+            <h3 class="card-title"><span>Bo-Bun Bœuf</span><span class="price">11,50€</span></h3>
+            <p class="desc">Beef Bo-bun with egg rolls</p>
           </div>
         </article>
         <article class="card">
-          <img src="menu-bobun-2.jpg" alt="Bo-Bun Poulet Citronnelle ou Curry" loading="lazy">
+          <img src="menu-bobun-2.jpg" alt="Bo-Bun Poulet" loading="lazy">
           <div class="card-body">
-            <h3 class="card-title"><span>Bo-Bun Poulet Citronnelle ou Curry (servi avec des nems au poulet)</span><span class="price">11,50€</span></h3>
-            <p class="desc">Lemongrass or Curry chicken Bo-bun with chicken egg rolls</p>
+            <h3 class="card-title"><span>Bo-Bun Poulet Citronnelle/Curry</span><span class="price">11,50€</span></h3>
+            <p class="desc">Lemongrass or Curry chicken Bo-bun</p>
           </div>
         </article>
         <article class="card">
           <img src="menu-bobun-3.jpg" alt="Bo-Bun Légumes" loading="lazy">
           <div class="card-body">
-            <h3 class="card-title"><span>Bo-Bun Légumes (servi avec des nems aux légumes)</span><span class="price">10,50€</span></h3>
-            <p class="desc">Vegetarian Bo-bun with vegetables egg rolls</p>
+            <h3 class="card-title"><span>Bo-Bun Légumes</span><span class="price">10,50€</span></h3>
+            <p class="desc">Vegetarian Bo-bun</p>
           </div>
         </article>
         <article class="card">
-          <img src="menu-bobun-4.jpg" alt="Bo-Bun Crevettes" loading="lazy">
+          <img src="menu-bobun-5.jpg" alt="Bo-Bun Royal" loading="lazy">
           <div class="card-body">
-            <h3 class="card-title"><span>Bo-Bun Crevettes (servi avec des nems aux crevettes)</span><span class="price">13,50€</span></h3>
-            <p class="desc">Shrimp Bo-bun with shrimp egg rolls</p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="menu-bobun-5.jpg" alt="Bo-Bun Royal Poulet ou Bœuf" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Bo-Bun Royal Poulet ou Bœuf (servi avec une saucisse à la citronnelle et des nems au poulet ou au porc)</span><span class="price">13,50€</span></h3>
-            <p class="desc">Beef or Chicken Royal Bo-bun with a lemongrass sausage and chicken or pork egg rolls</p>
+            <h3 class="card-title"><span>Bo-Bun Royal</span><span class="price">13,50€</span></h3>
+            <p class="desc">With lemongrass sausage and egg rolls</p>
           </div>
         </article>
       </div>
     </section>
 
-
-    <!-- Salades -->
-    <section class="section" id="salades">
-      <h2 data-i18n="sSalades">Salades</h2>
-      <div class="grid">
-        <article class="card">
-          <img src="menu-salade-1.jpg" alt="Salade mixte (poulet et crevette)" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Salade mixte (poulet et crevette)</span><span class="price">8,50€</span></h3>
-            <p class="desc">Salad with chicken and shrimp</p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="menu-salade-2.jpg" alt="Salade mixte Royale (saucisse à la citronnelle, poulet et crevette)" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Salade mixte Royale (saucisse à la citronnelle, poulet et crevette)</span><span class="price">10,50€</span></h3>
-            <p class="desc">Royal salad with lemongrass sausage, chicken and shrimp</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-
-
-
-
-
-
-
-
-    <!-- Plats -->
-    
-    <!-- Plats sautés -->
+    <!-- PLATS SAUTÉS -->
     <section class="section" id="plats">
       <h2 data-i18n="sSaute">Plats sautés</h2>
       <div class="grid">
         <article class="card">
-          <img src="menu-saute-1.jpg" alt="Bœuf sauté au gingembre" loading="lazy">
+          <img src="menu-saute-1.jpg" alt="Bœuf gingembre" loading="lazy">
           <div class="card-body">
-            <h3 class="card-title"><span>Bœuf sauté au gingembre</span><span class="price">11,50€</span></h3>
-            <p class="desc">Servi avec du riz et des légumes (ou avec des nouilles +0,50€)<br><em>Ginger beef served with rice and vegetables (or noodles +0.50)</em></p>
+            <h3 class="card-title"><span>Bœuf gingembre</span><span class="price">11,50€</span></h3>
+            <p class="desc">Served with rice and vegetables</p>
           </div>
         </article>
         <article class="card">
-          <img src="menu-saute-2.jpg" alt="Bœuf sauté au saté" loading="lazy">
+          <img src="menu-saute-5.jpg" alt="Poulet citronnelle" loading="lazy">
           <div class="card-body">
-            <h3 class="card-title"><span>Bœuf sauté au saté</span><span class="price">11,50€</span></h3>
-            <p class="desc">Servi avec du riz et des légumes (ou avec des nouilles +0,50€)<br><em>Satay beef served with rice and vegetables (or noodles +0.50)</em></p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="menu-saute-3.jpg" alt="Légumes sautés" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Légumes sautés</span><span class="price">10,50€</span></h3>
-            <p class="desc">Servi avec du riz ou des nouilles<br><em>Stir fried vegetables served with rice or noodles</em></p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="menu-saute-4.jpg" alt="Crevettes sautées au saté" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Crevettes sautées au saté</span><span class="price">13,50€</span></h3>
-            <p class="desc">Servies avec du riz et des légumes (ou avec des nouilles +0,50€)<br><em>Satay shrimp served with rice and vegetables (or noodles +0.50)</em></p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="menu-saute-5.jpg" alt="Poulet sauté à la citronnelle" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Poulet sauté à la citronnelle</span><span class="price">11,50€</span></h3>
-            <p class="desc">Servi avec du riz et des légumes (ou avec des nouilles +0,50€)<br><em>Lemongrass chicken served with rice and vegetables (or noodles +0.50)</em></p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="menu-saute-6.jpg" alt="Poulet au curry" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Poulet au curry</span><span class="price">11,50€</span></h3>
-            <p class="desc">Servi avec du riz et des légumes (ou avec des nouilles +0,50€)<br><em>Curry chicken served with rice and vegetables (or noodles +0.50)</em></p>
+            <h3 class="card-title"><span>Poulet citronnelle</span><span class="price">11,50€</span></h3>
+            <p class="desc">Lemongrass Chicken</p>
           </div>
         </article>
       </div>
     </section>
 
-
-    <!-- Grillades -->
-    <section class="section" id="grillades">
-      <h2 data-i18n="sGrillades">Grillades</h2>
-      <div class="grid">
-        <article class="card">
-          <img src="menu-grill-1.jpg" alt="Porc laqué grillé" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Porc laqué grillé</span><span class="price">11,50€</span></h3>
-            <p class="desc">Servi avec du riz et des légumes (ou avec des nouilles +0,50€)<br><em>Lacquered bbq pork served with rice and vegetables (or noodles +0.50)</em></p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="menu-grill-2.jpg" alt="Travers de porc grillé" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Travers de porc grillé</span><span class="price">11,50€</span></h3>
-            <p class="desc">Servi avec du riz et des légumes (ou avec des nouilles +0,50€)<br><em>Grilled pork ribs served with rice and vegetables (or noodles +0.50)</em></p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="menu-grill-3.jpg" alt="Cuisse de poulet grillé à la citronnelle" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Cuisse de poulet grillé à la citronnelle</span><span class="price">11,50€</span></h3>
-            <p class="desc">Servi avec du riz et des légumes (ou avec des nouilles +0,50€)<br><em>Lemongrass grilled chicken served with rice and vegetables (or noodles +0.50)</em></p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="menu-grill-4.jpg" alt="2 saucisses grillées à la citronnelle" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>2 saucisses grillées à la citronnelle</span><span class="price">11,50€</span></h3>
-            <p class="desc">Servi avec du riz et des légumes (ou avec des nouilles +0,50€)<br><em>2 lemongrass sausages served with rice and vegetables (or noodles +0.50)</em></p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="menu-grill-5.jpg" alt="Canard laqué" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Canard laqué</span><span class="price">13,50€</span></h3>
-            <p class="desc">Servi avec du riz et des légumes (ou avec des nouilles +0,50€)<br><em>Peking duck served with rice and vegetables (or noodles +0.50)</em></p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-
-    <!-- Soupes -->
-    <section class="section" id="soupes">
-      <h2 data-i18n="sSoupes">Soupes</h2>
-      <div class="grid">
-        <article class="card">
-          <img src="menu-soup-1.jpg" alt="Kuy teav Phnom Penh" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Kuy teav Phnom Penh : Soupe de pâtes de riz accompagnée de poulet, crevettes émincés et boulettes de poisson</span><span class="price">13,50€</span></h3>
-            <p class="desc">Rice noodles soup with minced chicken, shrimp and fish balls</p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="menu-soup-2.jpg" alt="Phò (soupe de bœuf)" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Phò (soupe de bœuf)</span><span class="price">13,50€</span></h3>
-            <p class="desc">Beef soup</p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="menu-soup-3.jpg" alt="Soupe de nouilles au canard laqué" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Soupe de nouilles au canard laqué</span><span class="price">13,50€</span></h3>
-            <p class="desc">Peking Duck Noodle Soup</p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="menu-soup-4.jpg" alt="Soupe de nouilles au porc laqué" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Soupe de nouilles au porc laqué</span><span class="price">12,50€</span></h3>
-            <p class="desc">Lacquered pork Noodle Soup</p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="menu-soup-5.jpg" alt="Soupe de nouilles aux légumes" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Soupe de nouilles aux légumes</span><span class="price">10,50€</span></h3>
-            <p class="desc">Vegetable Noodle Soup</p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="menu-soup-6.jpg" alt="Soupe de nouilles aux raviolis crevettes" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Soupe de nouilles aux raviolis crevettes</span><span class="price">12,50€</span></h3>
-            <p class="desc">Shrimp Dumplings Noodle Soup</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-
-    <!-- Menus du soir -->
-    
-
-
-<section class="section" id="desserts">
-      <h2 data-i18n="sDesserts">Desserts</h2>
-      <div class="grid">
-        <article class="card">
-          <img src="dessert-1.jpg" alt="Banane tapioca au lait de coco" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Banane tapioca au lait de coco</span><span class="price">4,50€</span></h3>
-            <p class="desc">Banana tapioca pudding with coconut milk</p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="dessert-2.jpg" alt="Perles de coco au lait de coco" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Perles de coco au lait de coco</span><span class="price">3,90€</span></h3>
-            <p class="desc">Coconut pearl with coconut milk</p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="dessert-3.jpg" alt="Lychee au sirop" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Lychee au sirop</span><span class="price">3,90€</span></h3>
-            <p class="desc">Lychee with syrup</p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="dessert-4.jpg" alt="Tarte soja et œufs au lait de coco" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Tarte soja et œufs au lait de coco</span><span class="price">4,50€</span></h3>
-            <p class="desc">Soy and egg tart with coconut milk</p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="dessert-5.jpg" alt="Gingembre confit" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Gingembre confit</span><span class="price">3,90€</span></h3>
-            <p class="desc">Candied ginger</p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="dessert-6.jpg" alt="Nougats mous" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>Nougats mous</span><span class="price">3,90€</span></h3>
-            <p class="desc">Soft nougat</p>
-          </div>
-        </article>
-        <article class="card">
-          <img src="dessert-7.jpg" alt="2 boules de glace (vanille ou chocolat)" loading="lazy">
-          <div class="card-body">
-            <h3 class="card-title"><span>2 boules de glace (vanille ou chocolat)</span><span class="price">3,90€</span></h3>
-            <p class="desc">2 scoops of ice cream (vanilla or chocolate)</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-
-
-
-    <!-- Desserts -->
-    
-
-
-
-
-
-    <!-- Desserts -->
-    
-
-    <!-- Boissons -->
-    
-    <!-- Boissons (texte uniquement) -->
-    
-    <!-- Boissons (texte uniquement, i18n + vins sur 2 lignes) -->
+    <!-- BOISSONS -->
     <section class="section" id="boissons">
       <h2 data-i18n="sBoissons">Boissons</h2>
-      <div class="card" style="background:#f6f6f6;color:#222;border-radius:12px;border:2px solid rgba(218,165,32,.35);box-shadow:0 0 0 2px rgba(218,165,32,.15), 0 12px 26px rgba(0,0,0,.15);">
-        <div class="card-body" style="padding:16px 18px">
-          <h3 data-i18n="drinksCanettes" style="margin:4px 0 6px;color:#b8860b;">CANETTES</h3>
+      <div class="card" style="background:#f9f9f9;">
+        <div class="card-body">
+          <h4 data-i18n="drinksCanettes">CANETTES</h4>
           <ul class="drinks">
-            <li><span class="lbl">Coca‑Cola / Zero (33 cl)</span><span class="price">3,50€</span></li>
-            <li><span class="lbl">Perrier (33 cl)</span><span class="price">3,50€</span></li>
-            <li><span class="lbl">Ice tea (33 cl)</span><span class="price">3,50€</span></li>
-            <li><span class="lbl">Fanta (33 cl)</span><span class="price">3,50€</span></li>
-            <li><span class="lbl">Oasis (33 cl)</span><span class="price">3,50€</span></li>
-            <li><span class="lbl">Orangina (33 cl)</span><span class="price">3,50€</span></li>
-            <li><span class="lbl">Evian (50 cl)</span><span class="price">3,50€</span></li>
+            <li><span class="lbl">Coca‑Cola / Zero</span><span class="price">3,50€</span></li>
+            <li><span class="lbl">Ice Tea / Fanta / Orangina</span><span class="price">3,50€</span></li>
+            <li><span class="lbl">Evian (50cl)</span><span class="price">3,50€</span></li>
           </ul>
 
-          <h3 data-i18n="drinksExotiques" style="margin:10px 0 6px;color:#b8860b;">EXOTIQUES</h3>
+          <h4 data-i18n="drinksExotiques" style="margin-top:20px">JUS EXOTIQUES</h4>
           <ul class="drinks">
-            <li><span class="lbl" data-i18n="drinkLychee">Jus de lychee (25 cl)</span><span class="price">3,50€</span></li>
-            <li><span class="lbl" data-i18n="drinkCoconut">Jus de coco (25 cl)</span><span class="price">3,50€</span></li>
-            <li><span class="lbl" data-i18n="drinkMango">Jus de mangue (25 cl)</span><span class="price">3,50€</span></li>
+            <li><span class="lbl" data-i18n="drinkCoconut">Jus de coco</span><span class="price">3,50€</span></li>
+            <li><span class="lbl" data-i18n="drinkLychee">Jus de lychee</span><span class="price">3,50€</span></li>
+            <li><span class="lbl" data-i18n="drinkMango">Jus de mangue</span><span class="price">3,50€</span></li>
           </ul>
 
-          <h3 data-i18n="drinksChaudes" style="margin:10px 0 6px;color:#b8860b;">BOISSONS CHAUDES</h3>
+          <h4 data-i18n="drinksBieres" style="margin-top:20px">BIÈRES</h4>
           <ul class="drinks">
-            <li><span class="lbl" data-i18n="drinkEspresso">Café expresso</span><span class="price">2,90€</span></li>
-            <li><span class="lbl" data-i18n="drinkJasmineTea">Thé au jasmin</span><span class="price">3,00€</span></li>
-            <li><span class="lbl" data-i18n="drinkGreenTea">Thé vert</span><span class="price">3,00€</span></li>
-            <li><span class="lbl" data-i18n="drinkMintTea">Thé vert à la menthe</span><span class="price">3,00€</span></li>
-            <li><span class="lbl" data-i18n="drinkLemonTea">Thé vert au citron</span><span class="price">3,00€</span></li>
-            <li><span class="lbl" data-i18n="drinkGingerTea">Thé vert au gingembre</span><span class="price">3,00€</span></li>
-          </ul>
-
-          <h3 data-i18n="drinksBieres" style="margin:10px 0 6px;color:#b8860b;">BIÈRES</h3>
-          <ul class="drinks">
-            <li><span class="lbl" data-i18n="beerAngkor">Bière Angkor (Cambodgienne)</span><span class="price">5,20€</span></li>
-            <li><span class="lbl" data-i18n="beerTsingTao">Bière Tsing Tao (Chinoise)</span><span class="price">4,90€</span></li>
-            <li><span class="lbl" data-i18n="beerSingha">Bière Singha (Thaïlandaise)</span><span class="price">4,90€</span></li>
-            <li><span class="lbl" data-i18n="beerSaigon">Bière Saigon (Vietnamienne)</span><span class="price">4,90€</span></li>
-          </ul>
-
-          <h3 data-i18n="drinksVins" style="margin:10px 0 6px;color:#b8860b;">VINS EN PICHET</h3>
-          <ul class="drinks">
-            <li>
-              <span class="lbl" data-i18n="wineRed">Rouge</span>
-              <span class="price price-block"><span>(12 cl) 4,20€ · (25 cl) 7,20€</span><span>(50 cl) 11,20€</span></span>
-            </li>
-            <li>
-              <span class="lbl" data-i18n="wineRose">Rosé</span>
-              <span class="price price-block"><span>(12 cl) 4,20€ · (25 cl) 7,20€</span><span>(50 cl) 11,20€</span></span>
-            </li>
-            <li>
-              <span class="lbl" data-i18n="wineWhite">Blanc</span>
-              <span class="price price-block"><span>(12 cl) 4,20€ · (25 cl) 7,20€</span><span>(50 cl) 11,20€</span></span>
-            </li>
+            <li><span class="lbl" data-i18n="beerAngkor">Bière Angkor</span><span class="price">5,20€</span></li>
+            <li><span class="lbl" data-i18n="beerTsingTao">Bière Tsing Tao</span><span class="price">4,90€</span></li>
+            <li><span class="lbl" data-i18n="beerSaigon">Bière Saigon</span><span class="price">4,90€</span></li>
           </ul>
         </div>
       </div>
     </section>
 
-
-<section class="section" id="menus">
+    <!-- MENUS -->
+    <section class="section" id="menus">
       <h2 data-i18n="sMenus">Menus</h2>
       <div class="grid">
         <!-- Menu 17€ -->
-        <article class="card menu-card">
+        <article class="card menu-card" style="border: 2px solid var(--gold);">
           <div class="card-body">
-            <h3 class="card-title">
-              <span data-i18n="menu17Title">Menu du soir 17€</span>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+              <h3 style="margin:0;" data-i18n="menu17Title">Menu 17€</h3>
               <span class="badge-price">17€</span>
-            </h3>
-            <h4 style="margin:.2rem 0 .3rem;color:#8b6a14" data-i18n="entree">ENTRÉE (AU CHOIX)</h4>
-            <ul class="menu-list" style="margin:0 0 .6rem 0">
-              <li><span class="lbl" data-i18n="m17e1">Nems (3 pièces) porc / poulet / légumes</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m17e2">Samoussa (1 pièce)</span><span class="price"></span></li>
+            </div>
+
+            <h4 style="font-size:14px; opacity:0.7;" data-i18n="entree">ENTRÉE</h4>
+            <ul class="menu-list">
+              <li>Nems (3p), Samoussa (1p)</li>
             </ul>
-            <h4 style="margin:.2rem 0 .3rem;color:#8b6a14" data-i18n="plat">PLAT (AU CHOIX)</h4>
-            <ul class="menu-list" style="margin:0 0 .6rem 0">
-              <li><span class="lbl" data-i18n="m17p1">Bo‑Bun Bœuf (servi avec des nems au porc / poulet)</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m17p2">Bo‑Bun Poulet (servi avec des nems au poulet)</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m17p3">Bo‑Bun végétarien (servi avec des nems aux légumes)</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m17p4">Salade mixte (poulet et crevette)</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m17p5">Légumes sautés (riz parfumé ou nouilles sautées)</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m17p6">Soupe de nouilles aux légumes</span><span class="price"></span></li>
+
+            <h4 style="font-size:14px; opacity:0.7; margin-top:10px;" data-i18n="plat">PLAT</h4>
+            <ul class="menu-list">
+              <li>Bo-Bun (Bœuf/Poulet/Végé)</li>
+              <li>Soupe de nouilles légumes</li>
             </ul>
-            <h4 style="margin:.2rem 0 .3rem;color:#8b6a14" data-i18n="dessert">DESSERT(AU CHOIX)</h4>
+
+            <h4 style="font-size:14px; opacity:0.7; margin-top:10px;" data-i18n="dessert">DESSERT</h4>
             <div data-i18n="m17d">Café ou thé</div>
           </div>
         </article>
 
         <!-- Menu 19€ -->
-        <article class="card menu-card">
+        <article class="card menu-card" style="border: 2px solid var(--gold);">
           <div class="card-body">
-            <h3 class="card-title">
-              <span data-i18n="menu19Title">Menu du soir 19€</span>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+              <h3 style="margin:0;" data-i18n="menu19Title">Menu 19€</h3>
               <span class="badge-price">19€</span>
-            </h3>
-            <h4 style="margin:.2rem 0 .3rem;color:#8b6a14" data-i18n="entree">ENTRÉE(AU CHOIX)</h4>
-            <ul class="menu-list" style="margin:0 0 .6rem 0">
-              <li><span class="lbl" data-i18n="m19e1">Nems porc / poulet / légumes</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m19e2">Samoussa</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m19e3">Ravioli frit</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m19e4">Raviolis aux crevettes</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m19e5">Bouchées aux crevettes</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m19e6">Saucisse à la citronnelle</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m19e7">Brioche vietnamienne au porc à la vapeur</span><span class="price"></span></li>
+            </div>
+            <ul class="menu-list">
+              <li><strong>Entrée :</strong> Nems, Raviolis, Samoussa...</li>
+              <li><strong>Plat :</strong> Bo-Bun, Poulet Citronnelle, Bœuf Saté, Porc Laqué...</li>
+              <li><strong>Dessert :</strong> Perles de coco, Nougats, Café...</li>
             </ul>
-            <h4 style="margin:.2rem 0 .3rem;color:#8b6a14" data-i18n="plat">PLAT(AU CHOIX)</h4>
-            <ul class="menu-list" style="margin:0 0 .6rem 0">
-              <li><span class="lbl" data-i18n="m19p1">Bo‑Bun Bœuf / Poulet</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m19p2">Salade mixte Royale</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m19p3">Poulet à la citronnelle ou au curry</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m19p4">Bœuf au saté ou gingembre</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m19p5">Cuisse de poulet grillée à la citronnelle</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m19p6">Travers de porc grillés</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m19p7">Porc laqué</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m19p8">Saucisse grillée</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m19p9">Soupe de nouilles au canard laqué</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m19p10">Phở (soupe de bœuf)</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m19p11">Soupe Kuyteav Phnom Penh</span><span class="price"></span></li>
-            </ul>
-            <h4 style="margin:.2rem 0 .3rem;color:#8b6a14" data-i18n="dessert">DESSERT(AU CHOIX)</h4>
-            <ul class="menu-list"><li><span class="lbl" data-i18n="m19dList">Perles de coco · Nougats mous · Lychee au sirop · Gingembre confit · Boisson soft · Café ou thé</span><span class="price"></span></li></ul>
-          </div>
-        </article>
-
-        <!-- Menu 21€ -->
-        <article class="card menu-card">
-          <div class="card-body">
-            <h3 class="card-title">
-              <span data-i18n="menu21Title">Menu du soir 21€</span>
-              <span class="badge-price">21€</span>
-            </h3>
-            <h4 style="margin:.2rem 0 .3rem;color:#8b6a14" data-i18n="entree">ENTRÉE(AU CHOIX)</h4>
-            <ul class="menu-list" style="margin:0 0 .6rem 0">
-              <li><span class="lbl" data-i18n="m21e1">Nems crevettes / porc / poulet / légumes</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m21e2">Samoussa</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m21e3">Raviolis aux crevettes</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m21e4">Saucisse à la citronnelle</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m21e5">Brioche vietnamienne au porc à la vapeur</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m21e6">Ravioli frit</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m21e7">Banh‑cuan</span><span class="price"></span></li>
-            </ul>
-            <h4 style="margin:.2rem 0 .3rem;color:#8b6a14" data-i18n="plat">PLAT(AU CHOIX)</h4>
-            <ul class="menu-list" style="margin:0 0 .6rem 0">
-              <li><span class="lbl" data-i18n="m21p1">Mi Kola (nouilles khmer)</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m21p2">Bo‑Bun Crevettes</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m21p3">Bo‑Bun Royal Bœuf / Poulet</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m21p4">Kouyteav Kat</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m21p5">Crevettes au saté</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m21p6">Bœuf‑Loclac</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m21p7">Poisson Hamok</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m21p8">Canard laqué</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m21p9">Soupe de nouilles au canard laqué</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m21p10">Phở (soupe de bœuf)</span><span class="price"></span></li>
-              <li><span class="lbl" data-i18n="m21p11">Soupe Kuyteav Phnom Penh</span><span class="price"></span></li>
-            </ul>
-            <h4 style="margin:.2rem 0 .3rem;color:#8b6a14" data-i18n="dessert">DESSERT(AU CHOIX)</h4>
-            <ul class="menu-list"><li><span class="lbl" data-i18n="m21dList">Banane tapioca au lait de coco · Tarte au soja et œuf au lait de coco · Perles de coco · Nougats mous · Lychee au sirop · Gingembre confit · Boisson soft · Café ou thé</span><span class="price"></span></li></ul>
           </div>
         </article>
       </div>
     </section>
-
-
 
   </main>
 
   <footer>
     <div class="container">
       <a class="btn" href="index.html" data-i18n="backHome">← Retour à l'accueil</a>
+      <div style="margin-top:20px; font-size:14px;">
+        © <span id="year"></span> Mom's Restaurant.
+      </div>
     </div>
   </footer>
 
-  <script>
-    // I18N (sync avec localStorage('lang'))
-    
-    const i18n = {
-      fr: {
-        htmlLang: 'fr',
-        menuTitle: 'Menu',
-        menuSub: 'Photos, descriptions & prix — à jour.',
-        navHome: 'Accueil',
-        navEntrees: 'Entrées',
-        navSpec: 'Spécialités',
-        navBobuns: 'Bo-Buns',
-        navSalades: 'Salades',
-        navPlats: 'Plats Sautés',
-        navGrillades: 'Grillades',
-        navSoupes: 'Soupes',
-        navDesserts: 'Desserts',
-        navBoissons: 'Boissons',
-        navMenus: 'Menus',
-        sEntrees: 'Entrées',
-        sSpec: 'Spécialités',
-        sBobuns: 'Bo-Buns',
-        sSalades: 'Salades',
-        sSaute: 'Plats Sautés',
-        sGrillades: 'Grillades',
-        sSoupes: 'Soupes',
-        sDesserts: 'Desserts',
-        sBoissons: 'Boissons',
-        sMenus: 'Menus',
-        backHome: '← Retour à l\'accueil',
-        menu17Title: 'Menu du soir 17€',
-        menu19Title: 'Menu du soir 19€',
-        menu21Title: 'Menu du soir 21€',
-        entree: 'ENTRÉE (AU CHOIX)',
-        plat: 'PLAT (AU CHOIX)',
-        dessert: 'DESSERT (AU CHOIX)',
-        m17e1: 'Nems (3 pièces) porc / poulet / légumes',
-        m17e2: 'Samoussa (1 pièce)',
-        m17p1: 'Bo‑Bun Bœuf (servi avec des nems au porc / poulet)',
-        m17p2: 'Bo‑Bun Poulet (servi avec des nems au poulet)',
-        m17p3: 'Bo‑Bun végétarien (servi avec des nems aux légumes)',
-        m17p4: 'Salade mixte (poulet et crevette)',
-        m17p5: 'Légumes sautés (riz parfumé ou nouilles sautées)',
-        m17p6: 'Soupe de nouilles aux légumes',
-        m17d: 'Café ou thé',
-        m19e1: 'Nems porc / poulet / légumes',
-        m19e2: 'Samoussa',
-        m19e3: 'Ravioli frit',
-        m19e4: 'Raviolis aux crevettes',
-        m19e5: 'Bouchées aux crevettes',
-        m19e6: 'Saucisse à la citronnelle',
-        m19e7: 'Brioche vietnamienne au porc à la vapeur',
-        m19p1: 'Bo‑Bun Bœuf / Poulet',
-        m19p2: 'Salade mixte Royale',
-        m19p3: 'Poulet à la citronnelle ou au curry',
-        m19p4: 'Bœuf au saté ou gingembre',
-        m19p5: 'Cuisse de poulet grillée à la citronnelle',
-        m19p6: 'Travers de porc grillés',
-        m19p7: 'Porc laqué',
-        m19p8: 'Saucisse grillée',
-        m19p9: 'Soupe de nouilles au canard laqué',
-        m19p10: 'Phở (soupe de bœuf)',
-        m19p11: 'Soupe Kuyteav Phnom Penh',
-        m19dList: 'Perles de coco · Nougats mous · Lychee au sirop · Gingembre confit · Boisson soft · Café ou thé',
-        m21e1: 'Nems crevettes / porc / poulet / légumes',
-        m21e2: 'Samoussa',
-        m21e3: 'Raviolis aux crevettes',
-        m21e4: 'Saucisse à la citronnelle',
-        m21e5: 'Brioche vietnamienne au porc à la vapeur',
-        m21e6: 'Ravioli frit',
-        m21e7: 'Banh‑cuan',
-        m21p1: 'Mi Kola (nouilles khmer)',
-        m21p2: 'Bo‑Bun Crevettes',
-        m21p3: 'Bo‑Bun Royal Bœuf / Poulet',
-        m21p4: 'Kouyteav Kat',
-        m21p5: 'Crevettes au saté',
-        m21p6: 'Bœuf‑Loclac',
-        m21p7: 'Poisson Hamok',
-        m21p8: 'Canard laqué',
-        m21p9: 'Soupe de nouilles au canard laqué',
-        m21p10: 'Phở (soupe de bœuf)',
-        m21p11: 'Soupe Kuyteav Phnom Penh',
-        m21dList: 'Banane tapioca au lait de coco · Tarte au soja et œuf au lait de coco · Perles de coco · Nougats mous · Lychee au sirop · Gingembre confit · Boisson soft · Café ou thé',
-        drinksCanettes: 'CANETTES',
-        drinksExotiques: 'EXOTIQUES',
-        drinksChaudes: 'BOISSONS CHAUDES',
-        drinksBieres: 'BIÈRES',
-        drinksVins: 'VINS EN PICHET',
-        drinkLychee: 'Jus de lychee (25 cl)',
-        drinkCoconut: 'Jus de coco (25 cl)',
-        drinkMango: 'Jus de mangue (25 cl)',
-        drinkEspresso: 'Café expresso',
-        drinkJasmineTea: 'Thé au jasmin',
-        drinkGreenTea: 'Thé vert',
-        drinkMintTea: 'Thé vert à la menthe',
-        drinkLemonTea: 'Thé vert au citron',
-        drinkGingerTea: 'Thé vert au gingembre',
-        beerAngkor: 'Bière Angkor (Cambodgienne)',
-        beerTsingTao: 'Bière Tsing Tao (Chinoise)',
-        beerSingha: 'Bière Singha (Thaïlandaise)',
-        beerSaigon: 'Bière Saigon (Vietnamienne)',
-        wineRed: 'Rouge',
-        wineRose: 'Rosé',
-        wineWhite: 'Blanc'
-      },
-      en: {
-        htmlLang: 'en',
-        menuTitle: 'Menu',
-        menuSub: 'Photos, descriptions & prices — up to date.',
-        navHome: 'Home',
-        navEntrees: 'Starters',
-        navSpec: 'Specialties',
-        navBobuns: 'Bo-Buns',
-        navSalades: 'Salads',
-        navPlats: 'Stir-Fried Dishes',
-        navGrillades: 'Grilled Dishes',
-        navSoupes: 'Soups',
-        navDesserts: 'Desserts',
-        navBoissons: 'Drinks',
-        navMenus: 'Set Menus',
-        sEntrees: 'Starters',
-        sSpec: 'Specialties',
-        sBobuns: 'Bo-Buns',
-        sSalades: 'Salads',
-        sSaute: 'Stir-Fried Dishes',
-        sGrillades: 'Grilled Dishes',
-        sSoupes: 'Soups',
-        sDesserts: 'Desserts',
-        sBoissons: 'Drinks',
-        sMenus: 'Set Menus',
-        backHome: '← Back to home',
-        menu17Title: 'Evening Menu €17',
-        menu19Title: 'Evening Menu €19',
-        menu21Title: 'Evening Menu €21',
-        entree: 'STARTER (CHOICE)',
-        plat: 'MAIN (CHOICE)',
-        dessert: 'DESSERT (CHOICE)',
-        m17e1: 'Egg rolls (3 pcs) pork / chicken / vegetables',
-        m17e2: 'Samosa (1 pc)',
-        m17p1: 'Beef Bo‑bun (with pork/chicken egg rolls)',
-        m17p2: 'Chicken Bo‑bun (with chicken egg rolls)',
-        m17p3: 'Vegetarian Bo‑bun (with vegetable egg rolls)',
-        m17p4: 'Mixed salad (chicken & shrimp)',
-        m17p5: 'Stir-fried vegetables (steamed rice or fried noodles)',
-        m17p6: 'Vegetable noodle soup',
-        m17d: 'Coffee or tea',
-        m19e1: 'Egg rolls pork / chicken / vegetables',
-        m19e2: 'Samosa',
-        m19e3: 'Fried dumpling',
-        m19e4: 'Shrimp dumplings',
-        m19e5: 'Shrimp bites',
-        m19e6: 'Lemongrass sausage',
-        m19e7: 'Vietnamese steamed pork bun',
-        m19p1: 'Beef / Chicken Bo‑bun',
-        m19p2: 'Royal mixed salad',
-        m19p3: 'Lemongrass or curry chicken',
-        m19p4: 'Beef with satay or ginger',
-        m19p5: 'Grilled chicken leg with lemongrass',
-        m19p6: 'Grilled pork ribs',
-        m19p7: 'Lacquered pork',
-        m19p8: 'Grilled sausage',
-        m19p9: 'Noodle soup with Peking duck',
-        m19p10: 'Phở (beef soup)',
-        m19p11: 'Kuyteav Phnom Penh soup',
-        m19dList: 'Coconut pearls · Soft nougat · Lychee in syrup · Candied ginger · Soft drink · Coffee or tea',
-        m21e1: 'Shrimp / pork / chicken / vegetable egg rolls',
-        m21e2: 'Samosa',
-        m21e3: 'Shrimp dumplings',
-        m21e4: 'Lemongrass sausage',
-        m21e5: 'Vietnamese steamed pork bun',
-        m21e6: 'Fried dumpling',
-        m21e7: 'Banh‑cuan',
-        m21p1: 'Mi Kola (Khmer noodles)',
-        m21p2: 'Shrimp Bo‑bun',
-        m21p3: 'Royal Bo‑bun (Beef / Chicken)',
-        m21p4: 'Kouyteav Kat',
-        m21p5: 'Satay shrimp',
-        m21p6: 'Beef Loc‑lac',
-        m21p7: 'Fish Hamok',
-        m21p8: 'Peking duck',
-        m21p9: 'Noodle soup with Peking duck',
-        m21p10: 'Phở (beef soup)',
-        m21p11: 'Kuyteav Phnom Penh soup',
-        m21dList: 'Banana tapioca in coconut milk · Soy & egg tart in coconut milk · Coconut pearls · Soft nougat · Lychee in syrup · Candied ginger · Soft drink · Coffee or tea',
-        drinksCanettes: 'CANS',
-        drinksExotiques: 'EXOTIC DRINKS',
-        drinksChaudes: 'HOT DRINKS',
-        drinksBieres: 'BEERS',
-        drinksVins: 'WINE (CARAFE)',
-        drinkLychee: 'Lychee juice (25 cl)',
-        drinkCoconut: 'Coconut juice (25 cl)',
-        drinkMango: 'Mango juice (25 cl)',
-        drinkEspresso: 'Espresso',
-        drinkJasmineTea: 'Jasmine tea',
-        drinkGreenTea: 'Green tea',
-        drinkMintTea: 'Mint green tea',
-        drinkLemonTea: 'Lemon green tea',
-        drinkGingerTea: 'Ginger green tea',
-        beerAngkor: 'Angkor beer (Cambodian)',
-        beerTsingTao: 'Tsing Tao beer (Chinese)',
-        beerSingha: 'Singha beer (Thai)',
-        beerSaigon: 'Saigon beer (Vietnamese)',
-        wineRed: 'Red',
-        wineRose: 'Rosé',
-        wineWhite: 'White'
-      }
-    };
-
-    function setLang(lang){
-      const t = i18n[lang] || i18n.fr;
-      document.documentElement.lang = t.htmlLang;
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (key && t[key] !== undefined) el.textContent = t[key];
-      });
-      const btn = document.getElementById('langToggle');
-      if (btn) {
-        btn.textContent = (lang === 'fr') ? 'EN' : 'FR';
-        btn.setAttribute('aria-label', (lang === 'fr') ? 'Switch to English' : 'Passer en français');
-      }
-      localStorage.setItem('lang', lang);
-    }
-    (function(){
-      const saved = localStorage.getItem('lang') || 'fr';
-      setLang(saved);
-      const btn = document.getElementById('langToggle');
-      if (btn) {
-        btn.addEventListener('click', ()=>{
-          const current = localStorage.getItem('lang') || 'fr';
-          setLang(current === 'fr' ? 'en' : 'fr');
-        });
-      }
-    })();
-  </script>
-
-<script>
-(function(){
-  var btn = document.getElementById('menuBtn');
-  var dd  = document.getElementById('mobileNav');
-  if(btn && dd){
-    btn.addEventListener('click', function(e){
-      e.stopPropagation();
-      var open = dd.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    document.addEventListener('click', function(e){
-      if(dd.classList.contains('open') && !dd.contains(e.target) && e.target !== btn){
-        dd.classList.remove('open'); btn.setAttribute('aria-expanded','false');
-      }
-    });
-    document.addEventListener('keydown', function(e){
-      if(e.key==='Escape'){ dd.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
-    });
-    // Auto-close on link click inside dropdown
-    dd.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click', function(){
-        dd.classList.remove('open');
-        btn.setAttribute('aria-expanded','false');
-      });
-    });
-  }
-})();
-</script>
-
+  <script src="script.js"></script>
 </body>
+
 </html>
