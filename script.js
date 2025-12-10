@@ -209,40 +209,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     initLightbox();
     initFilters();
-    initFloatingReviews();
+
 });
 
-function initFloatingReviews() {
-    const el = document.getElementById('floating-text');
-    if (!el) return;
 
-    // Use specific keys that match the i18n object
-    const reviews = ["rev1", "rev2", "rev3", "rev4", "rev5"];
-    let idx = 0;
-
-    const updateReview = () => {
-        const lang = localStorage.getItem(STORAGE_KEY_LANG) || 'fr';
-        // Ensure i18n object exists and has keys
-        if (!i18n[lang]) return;
-
-        const key = reviews[idx];
-        const text = i18n[lang][key];
-
-        if (text) {
-            // Fade out/in
-            el.style.opacity = 0;
-            setTimeout(() => {
-                el.textContent = text;
-                el.style.opacity = 1;
-            }, 300);
-        }
-
-        idx = (idx + 1) % reviews.length;
-    };
-
-    updateReview(); // Initial
-    setInterval(updateReview, 5000); // Loop
-}
 
 function initScrollAnimations() {
     const observer = new IntersectionObserver((entries) => {

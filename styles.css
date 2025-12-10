@@ -334,57 +334,26 @@ header {
 }
 
 /* === HERO SECTION (Home) === */
-/* Banner with Parallax Fix */
-/* Banner Fix (Hybrid) */
+/* Banner - Responsive & Full Width */
 .banner {
-    position: relative;
     width: 100%;
     height: 50vh;
     min-height: 300px;
-    background: #000 url('photos/hero-home.jpg') center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
     overflow: hidden;
 }
 
-/* Hide the IMG tag on mobile (use CSS background instead) */
 .banner-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Ensure image covers the area */
     display: block;
 }
 
-/* Desktop: Switch to IMG tag for perfect scaling/text visibility */
 @media (min-width: 900px) {
     .banner {
-        height: auto;
-        min-height: auto;
-        background-image: none;
-        /* Remove background on desktop */
+        height: 65vh;
     }
-
-    .banner-img {
-        display: block;
-        width: 100%;
-        height: auto;
-        max-height: 60vh;
-        object-fit: cover;
-        max-width: 1400px;
-        margin: 0 auto;
-    }
-}
-
-/* Overlay gradient for text readability if we add text over it (optional) */
-.banner::after {
-    content: "";
-    /* Keep it if needed, or remove if image has text burned in */
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, .12), rgba(0, 0, 0, .28));
-    pointer-events: none;
 }
 
 .hero {
@@ -755,43 +724,3 @@ header {
     box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
 }
 
-/* === FLOATING REVIEWS === */
-.floating-reviews {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #111;
-    border: 1px solid var(--gold);
-    border-radius: 12px;
-    padding: 12px 20px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-    z-index: 900;
-    max-width: 300px;
-    animation: slideInUp 0.5s ease-out;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.floating-reviews .stars {
-    color: var(--gold);
-    font-size: 12px;
-}
-
-.floating-reviews #floating-text {
-    font-size: 13px;
-    color: #fff;
-    font-style: italic;
-}
-
-@keyframes slideInUp {
-    from {
-        transform: translateY(100px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
