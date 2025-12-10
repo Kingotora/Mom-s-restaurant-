@@ -13,6 +13,10 @@
     /* Pour les cartes fond clair */
     --card-dark: #1a1d24;
 
+    /* Accessibility Focus Color */
+    --focus-ring: #fff;
+    --focus-offset: 2px;
+
     /* Typography */
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Inter', system-ui, -apple-system, sans-serif;
@@ -79,6 +83,13 @@ a {
     color: inherit;
     text-decoration: none;
     transition: var(--transition);
+}
+
+/* Accessibility: Visible Focus */
+:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: var(--focus-offset);
+    border-radius: 4px;
 }
 
 img {
@@ -293,6 +304,55 @@ header {
     }
 }
 
+@keyframes slideInUp {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* === BACK TO TOP BUTTON === */
+#backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: #111;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    z-index: 1000;
+}
+
+#backToTop.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#backToTop:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+    background: #fff;
+}
+
 /* === BUTTONS === */
 .btn {
     padding: 10px 16px;
@@ -389,7 +449,8 @@ header {
 }
 
 .lede {
-    color: #e0e0e0;
+    color: #f0f0f0;
+    /* Increased contrast from #e0e0e0 */
     font-size: 18px;
     max-width: 65ch;
     margin: 0 auto 2rem;
@@ -544,29 +605,70 @@ header {
 }
 
 /* === GALLERY & REVIEWS (Home) === */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 16px;
-}
-
-.gallery-item {
+/* === CAROUSEL (Interactive Gallery) === */
+.carousel {
     position: relative;
+    max-width: 800px;
+    margin: 0 auto;
     border-radius: 16px;
     overflow: hidden;
-    height: 250px;
-    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--gold);
 }
 
-.gallery-item img {
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 100%;
+    position: relative;
+    height: 400px;
+}
+
+.carousel-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
 }
 
-.gallery-item:hover img {
-    transform: scale(1.05);
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    z-index: 10;
+}
+
+.carousel-control:hover {
+    background: var(--gold);
+    color: #111;
+}
+
+.carousel-control.prev {
+    left: 10px;
+}
+
+.carousel-control.next {
+    right: 10px;
+}
+
+@media (max-width: 600px) {
+    .carousel-item {
+        height: 250px;
+    }
 }
 
 .caption {

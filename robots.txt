@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://moms-restaurant.com/sitemap.xml

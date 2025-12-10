@@ -17,6 +17,21 @@
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600;700&display=swap"
         rel="stylesheet">
 
+    <!-- Open Graph / Visibility -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://moms-restaurant.com/">
+    <meta property="og:title" content="Mom's Restaurant — Cuisine cambodgienne à Paris">
+    <meta property="og:description"
+        content="Authentique cuisine cambodgienne au cœur de Paris 20e. Nems, Bo-Buns, Amok et spécialités maison.">
+    <meta property="og:image" content="https://moms-restaurant.com/photos/hero-home.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://moms-restaurant.com/">
+    <meta property="twitter:title" content="Mom's Restaurant — Cuisine cambodgienne à Paris">
+    <meta property="twitter:description" content="Authentique cuisine cambodgienne au cœur de Paris 20e.">
+    <meta property="twitter:image" content="https://moms-restaurant.com/photos/hero-home.jpg">
+
 
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
@@ -115,24 +130,29 @@
             </div>
         </section>
 
-        <!-- Gallery Preview -->
+        <!-- Gallery Preview (Carousel) -->
         <section id="galerie" class="section reveal">
             <div class="text-center">
                 <h2 data-i18n="galleryTitle">Quelques spécialités à découvrir</h2>
             </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="photos/plat1.jpg" alt="Boeuf Loc Lac" loading="lazy">
-                    <div class="caption">Bœuf Loc Lac</div>
+
+            <div class="carousel" aria-label="Galerie photos">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="photos/plat1.jpg" alt="Boeuf Loc Lac" loading="lazy">
+                        <div class="caption">Bœuf Loc Lac</div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="photos/plat2.jpg" alt="Bo Bun" loading="lazy">
+                        <div class="caption">Bo Bun</div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="photos/plat3.jpg" alt="Boeuf sauté au saté" loading="lazy">
+                        <div class="caption">Bœuf sauté au saté</div>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="photos/plat2.jpg" alt="Bo Bun" loading="lazy">
-                    <div class="caption">Bo Bun</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="photos/plat3.jpg" alt="Boeuf sauté au saté" loading="lazy">
-                    <div class="caption">Bœuf sauté au saté</div>
-                </div>
+                <button class="carousel-control prev" aria-label="Précédent">❮</button>
+                <button class="carousel-control next" aria-label="Suivant">❯</button>
             </div>
         </section>
 
@@ -212,7 +232,11 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button id="backToTop" aria-label="Retour en haut">↑</button>
+
     <!-- Scripts -->
+    <script src="translations.js"></script>
     <script src="script.js"></script>
 </body>
 

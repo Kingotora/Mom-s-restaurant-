@@ -3,203 +3,29 @@ const DEFAULT_LANG = 'fr';
 const STORAGE_KEY_LANG = 'moms_restaurant_lang';
 
 /* === I18N DICTIONARY === */
-const i18n = {
-    fr: {
-        htmlLang: 'fr',
-        // HEADER
-        // Filters
-        filterAll: 'Tout',
-        filterVeggie: 'Végétarien 🌱',
-        filterGF: 'Sans Gluten 🌾',
-        filterSpicy: 'Épicé 🌶️',
+// i18n object is now loaded from translations.js as 'i18nData'
+// We will assign it to 'i18n' for compatibility
+const i18n = i18nData;
 
-        navHome: 'Accueil',
-        navEntrees: 'Entrées',
-        navSpec: 'Spécialités',
-        navBobuns: 'Bo-Buns',
-        navSalades: 'Salades',
-        navPlats: 'Plats sautés',
-        navGrillades: 'Grillades',
-        navSoupes: 'Soupes',
-        navDesserts: 'Desserts',
-        navBoissons: 'Boissons',
-        navMenus: 'Menus',
-        backHome: "← Retour à l'accueil",
+// Add Days (complex object kept here)
+i18n.fr.days = [
+    ['Lundi', '12:00–15:00, 19:00–23:00'],
+    ['Mardi', '12:00–15:00'],
+    ['Mercredi', '19:00–23:00'],
+    ['Jeudi', '12:00–15:00, 19:00–23:00'],
+    ['Vendredi', '12:00–15:00, 19:00–23:00'],
+    ['Samedi', '12:00–15:00, 19:00–23:00']
+];
 
-        // HOME
-        badge: 'Cuisine cambodgienne authentique',
-        lede: "Mom's Restaurant vous accueille au <strong>3 rue Planchat, 75020 Paris</strong>, pour une cuisine familiale inspirée des marchés de Phnom Penh et des traditions khmères.",
-        btnMenu: 'Voir la Carte & Menus',
-        btnMap: 'Nous trouver',
-        histTitle: "L'histoire de Mom",
-        histText: "Dans la tradition khmère, la cuisine est un héritage. Chez Mom's, on retrouve les parfums de la maison : la citronnelle, le galanga, le lait de coco et le poivre de Kampot.",
-        infoTitle: 'Informations pratiques',
-        lblAddress: 'Adresse :',
-        lblMetro: 'Métro :',
-        lblPhone: 'Tél :',
-        hoursTitle: "Horaires d'ouverture",
-        hoursNote: 'Les horaires peuvent varier les jours fériés.',
-        reviewsTitle: 'Avis des clients',
-        // Reviews (Added missing keys)
-        rev1: '« Une excellente découverte ! Les plats sont authentiques et savoureux. »',
-        rev2: '« Absolument délicieux, les serveuses sont adorables, le service est rapide et les plats frais ! »',
-        rev3: '« Je recommande à 100% ce restaurant ! Tout était parfait : nourriture traditionnelle raffinée. »',
-        rev4: '« Une très belle découverte ! Le poisson amok est incroyable. L\'ambiance est calme. »',
-        rev5: '« Excellent rapport qualité prix. Les nems sont croustillants et faits maison. »',
-
-        galleryTitle: 'Quelques spécialités',
-        footerRights: 'Tous droits réservés.',
-
-        // TITLES SECTIONS
-        sEntrees: 'Entrées',
-        sSpec: 'Spécialités',
-        sBobuns: 'Bo-Buns',
-        sSalades: 'Salades',
-        sSaute: 'Plats sautés',
-        sGrillades: 'Grillades',
-        sSoupes: 'Soupes',
-        sDesserts: 'Desserts',
-        sBoissons: 'Boissons',
-        sMenus: 'Menus du Soir',
-
-        // DRINKS TITLES
-        drinksCanettes: 'CANETTES',
-        drinksExotiques: 'JUS EXOTIQUES',
-        drinksChaudes: 'BOISSONS CHAUDES',
-        drinksBieres: 'BIÈRES',
-        drinksVins: 'VINS EN PICHET',
-
-        // DRINKS ITEMS
-        drinkLychee: "Jus de lychee",
-        drinkCoconut: "Jus de coco",
-        drinkMango: "Jus de mangue",
-        drinkEspresso: "Café expresso",
-        drinkJasmineTea: "Thé au jasmin",
-        drinkGreenTea: "Thé vert",
-        drinkMintTea: "Thé vert à la menthe",
-        drinkLemonTea: "Thé vert au citron",
-        drinkGingerTea: "Thé vert au gingembre",
-        beerAngkor: "Bière Angkor (Cambodgienne)",
-        beerTsingTao: "Bière Tsing Tao (Chinoise)",
-        beerSingha: "Bière Singha (Thaïlandaise)",
-        beerSaigon: "Bière Saigon (Vietnam)",
-        wineRed: "Rouge",
-        wineRose: "Rosé",
-        wineWhite: "Blanc",
-
-        // MENUS
-        menu17Title: "Menu du soir 17€",
-        menu19Title: "Menu du soir 19€",
-        menu21Title: "Menu du soir 21€",
-        entree: "ENTRÉE (AU CHOIX)",
-        plat: "PLAT (AU CHOIX)",
-        dessert: "DESSERT (AU CHOIX)",
-
-        // DAYS
-        days: [
-            ['Lundi', '12:00–15:00, 19:00–23:00'],
-            ['Mardi', '12:00–15:00'],
-            ['Mercredi', '19:00–23:00'],
-            ['Jeudi', '12:00–15:00, 19:00–23:00'],
-            ['Vendredi', '12:00–15:00, 19:00–23:00'],
-            ['Samedi', '12:00–15:00, 19:00–23:00']
-        ]
-    },
-    en: {
-        htmlLang: 'en',
-        // HEADER
-        // Filters
-        filterAll: 'All',
-        filterVeggie: 'Vegetarian 🌱',
-        filterGF: 'Gluten Free 🌾',
-        filterSpicy: 'Spicy 🌶️',
-
-        navHome: 'Home',
-        navEntrees: 'Starters',
-        navSpec: 'Specialties',
-        navBobuns: 'Bo-Buns',
-        navSalades: 'Salads',
-        navPlats: 'Stir-fried',
-        navGrillades: 'Grills',
-        navSoupes: 'Soups',
-        navDesserts: 'Desserts',
-        navBoissons: 'Drinks',
-        navMenus: 'Menus',
-        menuDropdownTitle: 'THE MENU',
-        backHome: "← Back to Home",
-
-        // HOME
-        badge: 'Authentic Cambodian cuisine',
-        lede: "Mom's Restaurant welcomes you at <strong>3 rue Planchat, 75020 Paris</strong>, offering homestyle recipes inspired by Phnom Penh markets and Khmer traditions.",
-        btnMenu: 'View Menu',
-        btnMap: 'Find us',
-        histTitle: "Mom's Story",
-        histText: "In Khmer tradition, cooking is heritage. At Mom's, you'll find the aromas of lemongrass, galangal, coconut milk and Kampot pepper.",
-        infoTitle: 'Practical Info',
-        lblAddress: 'Address:',
-        lblMetro: 'Metro:',
-        lblPhone: 'Tel:',
-        hoursTitle: 'Opening Hours',
-        hoursNote: 'Hours may vary on public holidays.',
-        reviewsTitle: 'Customer Reviews',
-        galleryTitle: 'Specialties',
-        footerRights: 'All rights reserved.',
-
-        // Reviews (Translated)
-        rev1: '"Here you will find the best Loc Lac in Paris. I have rarely eaten such tender and well-marinated beef..."',
-        rev2: '"Absolutely delicious, the waitresses are adorable, the service is fast and the dishes are fresh and truly tasty!"',
-        rev3: '"Small prices for this neighborhood restaurant but very good food and great kindness. Thank you."',
-        rev4: '"I recommend this restaurant 100%! Everything was perfect: refined traditional food, generous portions..."',
-        rev5: '"The food is divine, pity the place is a bit small! A beautiful address to remember in the Avron district."',
-
-        // TITLES SECTIONS
-        sEntrees: 'Starters',
-        sSpec: 'Chef\'s Specialties',
-        sBobuns: 'Bo-Buns',
-        sSalades: 'Salads',
-        sSaute: 'Stir-fried Dishes',
-        sGrillades: 'Grills',
-        sSoupes: 'Soups',
-        sDesserts: 'Desserts',
-        sBoissons: 'Drinks',
-        sMenus: 'Set Menus',
-
-        // DRINKS
-        drinksCanettes: 'CANS (€3.50)',
-        drinksExotiques: 'EXOTIC JUICES (€3.50)',
-        drinksChaudes: 'HOT DRINKS',
-        drinksBieres: 'BEERS',
-        drinksVins: 'PITCHER WINE',
-
-        drinkLychee: 'Lychee juice (25 cl)',
-        drinkCoconut: 'Coconut juice (25 cl)',
-        drinkMango: 'Mango juice (25 cl)',
-        drinkEspresso: 'Espresso',
-        beerAngkor: 'Angkor / Tsing Tao / Saigon / Singha Beer',
-        wineRed: "Red",
-        wineRose: "Rosé",
-        wineWhite: "White",
-
-        // MENUS
-        menu17Title: "Dinner Menu 17€",
-        menu19Title: "Dinner Menu 19€",
-        menu21Title: "Dinner Menu 21€",
-        entree: "STARTER (CHOICE)",
-        plat: "MAIN COURSE (CHOICE)",
-        dessert: "DESSERT (CHOICE)",
-
-        // DAYS
-        days: [
-            ['Monday', '12:00–15:00, 19:00–23:00'],
-            ['Tuesday', '12:00–15:00'],
-            ['Wednesday', '19:00–23:00'],
-            ['Thursday', '12:00–15:00, 19:00–23:00'],
-            ['Friday', '12:00–15:00, 19:00–23:00'],
-            ['Saturday', '12:00–15:00, 19:00–23:00'],
-            ['Sunday', 'Closed']
-        ]
-    }
-};
+i18n.en.days = [
+    ['Monday', '12:00–15:00, 19:00–23:00'],
+    ['Tuesday', '12:00–15:00'],
+    ['Wednesday', '19:00–23:00'],
+    ['Thursday', '12:00–15:00, 19:00–23:00'],
+    ['Friday', '12:00–15:00, 19:00–23:00'],
+    ['Saturday', '12:00–15:00, 19:00–23:00'],
+    ['Sunday', 'Closed']
+];
 
 /* === CORE FUNCTIONS === */
 
@@ -210,7 +36,101 @@ document.addEventListener('DOMContentLoaded', () => {
     initLightbox();
     initFilters();
 
+    initBackToTop();
+    initCarousel();
 });
+
+function initBackToTop() {
+    const btn = document.getElementById('backToTop');
+    if (!btn) return;
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            btn.classList.add('show');
+        } else {
+            btn.classList.remove('show');
+        }
+    });
+
+    btn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+function initCarousel() {
+    const carouselInner = document.querySelector('.carousel-inner');
+    const items = document.querySelectorAll('.carousel-item');
+    const prevBtn = document.querySelector('.carousel-control.prev');
+    const nextBtn = document.querySelector('.carousel-control.next');
+
+    if (!carouselInner || items.length === 0) return;
+
+    let currentIndex = 0;
+    const totalItems = items.length;
+    let autoPlayInterval;
+
+    function updateCarousel() {
+        // Move inner using transform translate
+        carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalItems;
+        updateCarousel();
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+        updateCarousel();
+    }
+
+    function startAutoPlay() {
+        stopAutoPlay();
+        autoPlayInterval = setInterval(nextSlide, 5000);
+    }
+
+    function stopAutoPlay() {
+        if (autoPlayInterval) clearInterval(autoPlayInterval);
+    }
+
+    // Event Listeners
+    nextBtn?.addEventListener('click', () => {
+        nextSlide();
+        startAutoPlay(); // Reset timer
+    });
+
+    prevBtn?.addEventListener('click', () => {
+        prevSlide();
+        startAutoPlay();
+    });
+
+    // Start
+    startAutoPlay();
+
+    // Pause on hover
+    const carouselContainer = document.querySelector('.carousel');
+    carouselContainer?.addEventListener('mouseenter', stopAutoPlay);
+    carouselContainer?.addEventListener('mouseleave', startAutoPlay);
+
+    // Keyboard Navigation
+    carouselContainer?.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            prevSlide();
+            startAutoPlay();
+        } else if (e.key === 'ArrowRight') {
+            nextSlide();
+            startAutoPlay();
+        }
+    });
+
+    // Make carousel focusable for keyboard events
+    if (carouselContainer) {
+        carouselContainer.setAttribute('tabindex', '0');
+    }
+}
 
 
 
@@ -395,6 +315,15 @@ function initMobileMenu() {
                 btn.textContent = '☰';
             }
         });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && nav.classList.contains('open')) {
+                nav.classList.remove('open');
+                btn.textContent = '☰';
+                btn.focus(); // Return focus to button
+            }
+        });
     }
 }
 
@@ -421,16 +350,4 @@ function initSmoothScroll() {
             }
         });
     });
-}
-
-function initParallax() {
-    // Only on desktop and if enabled
-    const banner = document.querySelector('.banner');
-    if (!banner || window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.innerWidth < 900) return;
-
-    window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
-        // Simple parallax: move background slower than scroll
-        banner.style.backgroundPosition = `center ${40 + (scrolled * 0.05)}%`;
-    }, { passive: true });
 }
